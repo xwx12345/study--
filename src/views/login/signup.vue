@@ -1,6 +1,6 @@
 <template>
   <div class="pc-container">
-    login
+    signup
   </div>
 </template>
 
