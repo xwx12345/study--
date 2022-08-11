@@ -54,7 +54,7 @@ export default {
 
 <style scoped lang="scss">
 .container{
-  background: linear-gradient(120deg,rgba(170,255,255,0.5),rgba(170,170,255,0.5),rgba(71, 170, 25, 0.5));
+  background: linear-gradient(120deg,rgba(170,255,255,0.5),rgba(170,170,255,0.5),rgba(255, 170, 127, 0.5));
   display: flex;
   justify-content: center;
   align-items:center;
@@ -191,7 +191,7 @@ export default {
         }
         100%{
           bottom: 60%;
-          background: #00557f;
+          background: #ffaa7f;
         }
       }
       .bubble_home{
