@@ -1,6 +1,6 @@
 <template>
   <div class="pc-container">
-    个人中心
+    feedback
   </div>
 </template>
 

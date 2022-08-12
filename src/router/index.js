@@ -26,7 +26,24 @@ const routes = [
      {
        path: '/usercenter',
        name: 'usercenter',
-       component: resolve => import('@/views/home/usercenter')
+       component: resolve => import('@/views/home/user/center'),
+       children: [
+         {
+           path: '/usercenter/userinfo',
+           name: 'userinfo',
+           component: resolve => import('@/views/home/user/info')
+         },
+         {
+           path: '/usercenter/collection',
+           name: 'collection',
+           component: resolve => import('@/views/home/user/collection')
+         },
+         {
+           path: '/usercenter/feedback',
+           name: 'feedback',
+           component: resolve => import('@/views/home/user/feedback')
+         }
+       ]
      }
      ]
   },
