@@ -14,8 +14,7 @@
 </template>
 
 <script>
-//我不知道这里该怎么引入quq，之前给我报了一大堆错
-// import axios from 'axios'
+import axios from 'axios'
 export default {
   data () {
     return {
@@ -26,14 +25,14 @@ export default {
   methods: {
     login () {
       if (!this.userName) {
-        alert('请输入用户名')
+        this.$message.error('请输入用户名')
         return
       }
       if (!this.password) {
-        alert('请输入密码')
+        this.$message.error('请输入密码')
         return
       }
-      alert('名' + this.userName + 'password' + this.password)
+      this.$message('名' + this.userName + 'password' + this.password)
       // axios.defaults.headers.post['token'] = '6e996d0aa210482c8599b087daccb0e0'
       // const result = axios({
       //   method: 'POST',

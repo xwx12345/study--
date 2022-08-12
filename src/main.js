@@ -2,11 +2,16 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-//这俩也引入不了不知道为啥
-// import ElementUI from 'element-ui'
+//我成功了！！
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import axios from 'axios'
+
 
 Vue.config.productionTip = false
-// Vue.use(ElementUI)
+
+Vue.prototype.$axios = axios
+Vue.use(ElementUI)
 
 new Vue({
   router,
