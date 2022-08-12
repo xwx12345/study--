@@ -2,7 +2,7 @@
   <div class="container">
     <div class="sub_div">
       我是左侧导航栏
-      <router-link to="/usercenter/userinfo">个人信息</router-link>
+      <router-link to="/usercenter/">个人信息</router-link>
       <router-link to="/usercenter/collection">收藏夹</router-link>
       <router-link to="/usercenter/feedback">反馈</router-link>
     </div>

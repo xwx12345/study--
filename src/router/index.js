@@ -29,7 +29,7 @@ const routes = [
        component: resolve => import('@/views/home/user/center'),
        children: [
          {
-           path: '/usercenter/userinfo',
+           path: '/usercenter/',
            name: 'userinfo',
            component: resolve => import('@/views/home/user/info')
          },
