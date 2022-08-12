@@ -2,8 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+//这俩也引入不了不知道为啥
+// import ElementUI from 'element-ui'
 
 Vue.config.productionTip = false
+// Vue.use(ElementUI)
 
 new Vue({
   router,

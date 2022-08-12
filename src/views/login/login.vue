@@ -26,14 +26,14 @@ export default {
   methods: {
     login () {
       if (!this.userName) {
-        this.$message.error('请输入用户名')
+        alert('请输入用户名')
         return
       }
       if (!this.password) {
-        this.$message.error('请输入密码')
+        alert('请输入密码')
         return
       }
-      this.$message('名' + this.userName + 'password' + this.password)
+      alert('名' + this.userName + 'password' + this.password)
       // axios.defaults.headers.post['token'] = '6e996d0aa210482c8599b087daccb0e0'
       // const result = axios({
       //   method: 'POST',
