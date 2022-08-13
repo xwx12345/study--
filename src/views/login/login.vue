@@ -56,7 +56,7 @@ export default {
 
 <style scoped lang="scss">
 .container{
-  background: linear-gradient(120deg,rgba(230,84,111,0.5),rgba(170, 255, 255, 0.5),rgba(140,0,0,0.5));
+  background: linear-gradient(120deg,rgba(230,84,111,0.5),rgba(170, 255, 255, 0.5),rgba(255,170,200,0.5));
   display: flex;
   justify-content: center;
   align-items:center;
@@ -70,7 +70,7 @@ export default {
     .picture{
       width:50%;
       height: 100%;
-      background: rgba(170,14,35,0.5);
+      background: rgba(255,170,180,0.3);
     }
     .input{
       width: 50%;

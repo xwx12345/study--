@@ -39,8 +39,9 @@ export default {
       }
       if (!this.password) {
         this.$message.error('请输入密码')
-        // return
+         return
       }
+      this.$router.push('/login')
     }
 
   },
