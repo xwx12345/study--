@@ -68,17 +68,15 @@ export default {
   display: flex;
   justify-content:space-between;
   .logo{
-    margin: 0;
+    margin: auto 10px;
     padding: 0;
     // background: #000;
-    width: 60px;
+    width: 90px;
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     img{
-      margin: 0;
-      padding: 0;
       width: 100%;
       height: 100%;
     }
@@ -90,18 +88,18 @@ export default {
       color: #676767;
       border: 1px solid #ffffff;
       border-radius: 4px;
-      height: 30px;
-      width: 250px;
-     // font-size: 12px;
+      height: 35px;
+      width: 300px;
+     font-size: 14px;
       margin: 6px 0;
-      // letter-spacing: 1px;
+      letter-spacing: 1px;
     }
     button{
       outline: none;
       border: none;
       //width: 20%;
-      height: 32px;
-      width: 32px;
+      height: 37px;
+      width: 37px;
       background: #ffaa7f;
       border-radius: 100%;
       font-size: 12px;
@@ -118,11 +116,11 @@ export default {
     button{
       outline: none;
       border: none;
-      padding: 6px;
+      padding: 10px;
       margin: 2px;
       background: #aaaaff;
       border-radius: 5px;
-      font-size: 12px;
+      font-size: 13px;
       letter-spacing: 2px;
       color: #fff;
       transition: 1s;
