@@ -30,6 +30,7 @@ export default {
     },
     exitlogin () {
       console.log("退出登录！")
+      this.$message('您已退出登录！')
       this.$router.push('/')
     }
   },
