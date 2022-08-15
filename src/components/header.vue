@@ -33,13 +33,13 @@ export default {
     return {
       content:'',
       // 这个实际上要从store里面取数据,现在没考虑store所以先写死
-      usertype:'1'
+      usertype:'0'
     }
   },
   methods: {
     search () {
       console.log(this.content)
-      //this.$router.push('/search')
+      this.$router.push('/search')
     },
     gotologin () {
       this.$router.push('/login')
