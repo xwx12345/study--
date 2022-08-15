@@ -56,7 +56,7 @@ export default {
 
 <style scoped lang="scss">
 .container{
-  background: linear-gradient(120deg,rgba(230,84,111,0.5),rgba(170, 255, 255, 0.5),rgba(255,170,200,0.5));
+  background: linear-gradient(120deg,rgba(244,230,229,1),rgba(228, 232, 243, 1),rgba(205,194,208,1));
   display: flex;
   justify-content: center;
   align-items:center;
@@ -88,7 +88,7 @@ export default {
         color: #000;
       }
       input{
-        background-color: #AA0E23;
+        background-color: #b1797a;
         color: #ffffff;
         width: 60%;
         border: 1px solid #ffffff;
@@ -109,7 +109,7 @@ export default {
         margin-top: 20px;
         outline: none;
         border: none;
-        background: #f35c42;
+        background: #CF797A;
         border-radius: 8px;
         padding: 13px;
         font-size: 16px;
@@ -118,7 +118,7 @@ export default {
         transition: 1s;
       }
       button:hover{
-        background: #AA0E23;
+        background: #DE797A;
       }
       a{
         // text-decoration: none;

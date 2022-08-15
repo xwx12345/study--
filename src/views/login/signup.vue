@@ -55,7 +55,7 @@ export default {
 
 <style scoped lang="scss">
 .container{
-  background: linear-gradient(120deg,rgba(170,255,255,0.5),rgba(170,170,255,0.5),rgba(71, 170, 25, 0.5));
+  background: linear-gradient(120deg,#E4FCF3,#F0E8E5,#E4E8F3);
   display: flex;
   justify-content: center;
   align-items:center;
@@ -69,7 +69,7 @@ export default {
     .picture{
       width:50%;
       height: 100%;
-      background: rgba(57,115,173,0.2);
+      background: rgba(102,170,224,0.3);
     }
     .input{
       width: 50%;
@@ -88,7 +88,7 @@ export default {
         color: #000;
       }
       input{
-        background-color: rgba(57,115,173,0.2);
+        background-color: #C9C7DF;
         color: #ffffff;
         width: 60%;
         border: 1px solid #ffffff;
@@ -109,7 +109,7 @@ export default {
          margin-top: 20px;
         outline: none;
         border: none;
-        background: #8fe4e4;
+        background: #cec8ed;
         border-radius: 8px;
         padding: 13px;
         font-size: 16px;
@@ -118,10 +118,10 @@ export default {
         transition: 1s;
       }
       button:hover{
-        background: #3973ad;
+        background: #F4D5D3;
       }
       .bubble{
-        background: #aaaaff;
+        background: #DAC8ED;
         border-radius:100%;
         position: absolute;
         bottom: 0;
@@ -188,7 +188,7 @@ export default {
       @keyframes bubbleMoveUp {
         0%{
           bottom: 0;
-          background: #aaaaff;
+          background: #DAC8ED;
         }
         100%{
           bottom: 60%;
@@ -198,7 +198,7 @@ export default {
       .bubble_home{
         width: 100%;
         height: 60px;
-        background: #aaaaff;
+        background: #DAC8ED;
         position: absolute;
         bottom: 0;
         border-radius: 50% 50% 0 0;
