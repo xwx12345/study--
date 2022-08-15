@@ -48,7 +48,7 @@ export default {
       this.$router.push('/usercenter')
     },
     gotosubject () {
-      // this.$router.push('/subject')
+      this.$router.push('/subject')
     },
     gotoadmin () {
       // this.$router.push('/admin')
@@ -64,13 +64,12 @@ export default {
 
 <style scoped lang="scss">
 .container{
-  background: #e6ebff;
+  background: #f4f7ff;
   display: flex;
   justify-content:space-between;
   .logo{
     margin: auto 10px;
     padding: 0;
-    // background: #000;
     width: 90px;
     height: 100%;
     display: flex;
@@ -100,7 +99,7 @@ export default {
       //width: 20%;
       height: 37px;
       width: 37px;
-      background: #ffaa7f;
+      background: #FFBC7F;
       border-radius: 100%;
       font-size: 12px;
       letter-spacing: 2px;
@@ -108,7 +107,7 @@ export default {
       transition: 1s;
     }
     button:hover{
-      background: #ffc9d2;
+      background: #F4B8A8;
     }
   }
   .jump{

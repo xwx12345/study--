@@ -79,6 +79,33 @@ const routes = [
         component: resolve => import('@/views/home/user/feedback')
       }
     ]
+  },
+  {
+    path: '/subject',
+    name: 'subject',
+    component: resolve => require(['@/views/subject/center'], resolve),
+    children: [
+      {
+        path: '/subject/',
+        name: 'subjectinfo',
+        component: resolve => require(['@/views/subject/info'], resolve)
+      },
+      {
+        path: '/subject/collection',
+        name: 'subjectCollection',
+        component: resolve => require(['@/views/subject/collection'], resolve)
+      },
+      {
+        path: '/subject/feedback',
+        name: 'subjectFeedback',
+        component: resolve => require(['@/views/subject/feedback'], resolve)
+      },
+      {
+        path: '/subject/answer',
+        name: 'subjectAnswer',
+        component: resolve => require(['@/views/subject/answer'], resolve)
+      }
+    ]
   }
 ]
 

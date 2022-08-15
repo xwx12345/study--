@@ -10,8 +10,8 @@
         class="el-menu-demo"
         mode="horizontal"
         background-color="#fdf6f9"
-        text-color="#aaaad9"
-        active-text-color="#ebca6d">
+        text-color="#7E789A"
+        active-text-color="#DCA55F">
         <el-menu-item index="/"><i class="el-icon-s-home"></i>首页</el-menu-item>
         <el-menu-item index="/books"><i class="el-icon-reading"></i>书籍</el-menu-item>
         <el-menu-item index="/courses"><i class="el-icon-s-cooperation"></i>课程</el-menu-item>
