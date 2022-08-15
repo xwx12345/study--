@@ -1,0 +1,135 @@
+<template>
+  <div class="container">
+    <div class="logo">
+      <img src="../../public/logo.png"/>
+    </div>
+    <div class="search">
+      <input type="text" placeholder=" 搜索关键词" v-model="content"/>
+        <button @click="search()">
+          <i class="el-icon-search"></i>
+        </button>
+      </el-input>
+    </div>
+    <div class="jump">
+      <button @click="gotologin()">
+        登录
+      </button>
+      <button @click="gotouser()" v-show="usertype==='0'">
+        个人中心
+      </button>
+      <button @click="gotosubject()" v-show="usertype==='1'">
+        专家中心
+      </button>
+      <button @click="gotoadmin()" v-show="usertype==='2'">
+        管理员中心
+      </button>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      content:'',
+      // 这个实际上要从store里面取数据,现在没考虑store所以先写死
+      usertype:'1'
+    }
+  },
+  methods: {
+    search () {
+      console.log(this.content)
+      //this.$router.push('/search')
+    },
+    gotologin () {
+      this.$router.push('/login')
+    },
+    gotouser () {
+      this.$router.push('/usercenter')
+    },
+    gotosubject () {
+      // this.$router.push('/subject')
+    },
+    gotoadmin () {
+      // this.$router.push('/admin')
+    }
+  },
+  mounted () {
+  },
+  created () {
+
+  }
+}
+</script>
+
+<style scoped lang="scss">
+.container{
+  background: #e6ebff;
+  display: flex;
+  justify-content:space-between;
+  .logo{
+    margin: 0;
+    padding: 0;
+    // background: #000;
+    width: 60px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    img{
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .search{
+    margin: auto 0;
+    input{
+      background-color: #ffffff;
+      color: #676767;
+      border: 1px solid #ffffff;
+      border-radius: 4px;
+      height: 30px;
+      width: 250px;
+     // font-size: 12px;
+      margin: 6px 0;
+      // letter-spacing: 1px;
+    }
+    button{
+      outline: none;
+      border: none;
+      //width: 20%;
+      height: 32px;
+      width: 32px;
+      background: #ffaa7f;
+      border-radius: 100%;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: #fff;
+      transition: 1s;
+    }
+    button:hover{
+      background: #ffc9d2;
+    }
+  }
+  .jump{
+    margin:auto 6px;
+    button{
+      outline: none;
+      border: none;
+      padding: 6px;
+      margin: 2px;
+      background: #aaaaff;
+      border-radius: 5px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: #fff;
+      transition: 1s;
+    }
+    button:hover{
+      background: #aaccff;
+    }
+  }
+}
+</style>

@@ -1,21 +1,38 @@
 <template>
-  <div>
-    我是头部，需要导航栏搜索栏等
-    先写点跳转的东西</br>
-    <router-link to="/">go to home...</router-link>
-    <router-link to="/books">go to books...</router-link>
-    <router-link to="/courses">go to courses...</router-link>
-    <router-link to="/usercenter">go to usercenter...</router-link>
-    <router-link to="/login">go to login...</router-link>
-    <router-view></router-view>
+  <div class="container">
+    <div>
+      <Header></Header>
+    </div>
+    <div>
+      <el-menu
+        :default-active="activeIndex"
+        :router="true"
+        class="el-menu-demo"
+        mode="horizontal"
+        @select="handleSelect"
+        background-color="#fdf6f9"
+        text-color="#aaaad9"
+        active-text-color="#ebca6d">
+        <el-menu-item index="/"><i class="el-icon-s-home"></i>首页</el-menu-item>
+        <el-menu-item index="/books"><i class="el-icon-reading"></i>书籍</el-menu-item>
+        <el-menu-item index="/courses"><i class="el-icon-s-cooperation"></i>课程</el-menu-item>
+      </el-menu>
+    </div>
+    <div class="main">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
+import Header from './header.vue'
 export default {
+  components: {
+    Header
+  },
   data () {
     return {
-
+       activeIndex: '1'
     }
   },
   methods: {
@@ -30,5 +47,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.container{
+  width: 1200px;
+  margin: 0 auto;
+  .main{
+    background: linear-gradient(rgba(222,223,251,1) 0%,rgba(255,255,255,0) 99.794%),linear-gradient(rgba(255,216,211,1) 0%,rgba(255,194,220,0.7647058823529411) 100%);;
+  }
+}
 </style>
