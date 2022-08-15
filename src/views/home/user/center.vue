@@ -3,10 +3,26 @@
     <centerHeader></centerHeader>
     <div class="main">
       <div class="sub_div">
-        我是左侧导航栏
-        <router-link to="/usercenter/">个人信息</router-link>
-        <router-link to="/usercenter/collection">收藏夹</router-link>
-        <router-link to="/usercenter/feedback">反馈</router-link>
+        <el-menu
+          :default-active="activeIndex"
+          :router="true"
+          class="el-menu-vertical-demo"
+          background-color="#fdf6f9"
+          text-color="#7E789A"
+          active-text-color="#DCA55F">
+          <el-menu-item index="/usercenter/">
+            <i class="el-icon-user-solid"></i>
+            个人信息
+          </el-menu-item>
+          <el-menu-item index="/usercenter/collection">
+            <i class="el-icon-star-on"></i>
+            收藏夹
+          </el-menu-item>
+          <el-menu-item index="/usercenter/feedback">
+            <i class="el-icon-question"></i>
+            反馈中心
+          </el-menu-item>
+        </el-menu>
       </div>
       <div>
         <router-view></router-view>
@@ -23,7 +39,7 @@ export default {
   },
   data () {
     return {
-
+      activeIndex:'/usercenter/'
     }
   },
   methods: {
@@ -44,11 +60,6 @@ export default {
   .main{
     background: #ffaa00;
     display: flex;
-    .sub_div{
-      background: #aa007f;
-      display: flex;
-      flex-direction:column;
-    }
   }
 }
 </style>
