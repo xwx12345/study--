@@ -72,7 +72,7 @@ export default {
       section: {
         main_info: '我是主文本',
         sub_info: '我是副文本',
-        img_info: '..//..//..//..//public//test1.png'
+        img_info: '..//..//..//..//public//test2.png'
       },
       items: [
         [
