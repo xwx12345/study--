@@ -14,13 +14,13 @@
       <button @click="gotologin()">
         登录
       </button>
-      <button @click="gotouser()" v-show="usertype==='0'">
+      <button @click="gotouser()" v-show="usertype==='1'">
         个人中心
       </button>
-      <button @click="gotosubject()" v-show="usertype==='1'">
+      <button @click="gotosubject()" v-show="usertype==='2'">
         专家中心
       </button>
-      <button @click="gotoadmin()" v-show="usertype==='2'">
+      <button @click="gotoadmin()" v-show="usertype==='3'">
         管理员中心
       </button>
     </div>
@@ -33,7 +33,7 @@ export default {
     return {
       content:'',
       // 这个实际上要从store里面取数据,现在没考虑store所以先写死
-      usertype:'0'
+      usertype:'2'
     }
   },
   methods: {
