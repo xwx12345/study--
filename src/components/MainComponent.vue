@@ -47,7 +47,7 @@ export default {
 
 <style scoped lang="scss">
 .container{
-  width: 1200px;
+  width: calc(100vw - 80px);
   margin: 0 auto;
   .main{
     background: linear-gradient(rgba(222,223,251,1) 0%,rgba(255,255,255,0) 99.794%),linear-gradient(rgba(255,216,211,1) 0%,rgba(255,194,220,0.7647058823529411) 100%);;

@@ -55,7 +55,7 @@ export default {
 
 <style scoped lang="scss">
 .container{
-  width: 1200px;
+  width: calc(100vw - 80px);
   margin: 0 auto;
   .main{
     // background: #ffaa00;
