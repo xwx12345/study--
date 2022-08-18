@@ -35,6 +35,7 @@ export default {
   top: -6px;
   left: -1px;
   border-radius: 15px;
+  margin: 30px;
   .cover {
     margin: auto 10px;
     padding: 0;

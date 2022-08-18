@@ -34,16 +34,18 @@ export default {
       content: "",
       // 这个实际上要从store里面取数据,现在没考虑store所以先写死
       usertype: "1",
+      searchContent:""
     };
   },
   methods: {
     search() {
       if (this.searchContent != "") {
-        console.log(this.searchContent);
         this.$router.push({
           name: "search",
-          params: { searchtext: this.searchContent },
+          query: { searchtext: this.searchContent },
         });
+        location.reload();
+        // console.log(this.searchContent);
       }
     },
     gotologin() {
