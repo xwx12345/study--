@@ -31,37 +31,37 @@
 export default {
   data() {
     return {
-      content: '',
+      content: "",
       // 这个实际上要从store里面取数据,现在没考虑store所以先写死
-      usertype: '1'
-    }
+      usertype: "1",
+    };
   },
   methods: {
     search() {
       if (this.searchContent != "") {
         console.log(this.searchContent);
-        this.$router.push('/search');
+        this.$router.push({
+          name: "search",
+          params: { searchtext: this.searchContent },
+        });
       }
     },
     gotologin() {
-      this.$router.push('/login')
+      this.$router.push("/login");
     },
     gotouser() {
-      this.$router.push('/usercenter')
+      this.$router.push("/usercenter");
     },
     gotosubject() {
-      this.$router.push('/subject')
+      this.$router.push("/subject");
     },
     gotoadmin() {
       // this.$router.push('/admin')
-    }
+    },
   },
-  mounted() {
-  },
-  created() {
-
-  }
-}
+  mounted() {},
+  created() {},
+};
 </script>
 
 <style scoped lang="scss">
@@ -106,7 +106,7 @@ export default {
       //width: 20%;
       height: 37px;
       width: 37px;
-      background: #FFBC7F;
+      background: #ffbc7f;
       border-radius: 100%;
       font-size: 12px;
       letter-spacing: 2px;
@@ -115,7 +115,7 @@ export default {
     }
 
     button:hover {
-      background: #F4B8A8;
+      background: #f4b8a8;
     }
   }
 

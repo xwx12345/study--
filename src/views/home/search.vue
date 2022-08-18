@@ -15,14 +15,17 @@ export default {
   },
   data() {
     return {
-      content: "1",
+      content:'1',
     };
   },
   methods: {},
   mounted() {},
-  created() {},
+  created() {
+    this.content=this.$route.params.searchtext;
+  },
 };
 </script>
 
 <style scoped lang="scss">
+
 </style>
