@@ -58,7 +58,7 @@ export default {
   width: 1200px;
   margin: 0 auto;
   .main{
-    background: #ffaa00;
+    
     display: flex;
   }
 }

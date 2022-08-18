@@ -1,11 +1,17 @@
 <template>
   <div class="pc-container">
     <div class="content">
-      <form action="/actions.vue">
-      <label for="feedback" style="font-size:20px">反馈问题：</label>
-      <textarea id="feedback" name="fback" placeholder="您的反馈..." style="height:397px"></textarea>
-      <input type="submit" value="Submit">
-    </form>
+      <p><i class="el-icon-edit"></i>反馈问题：</p>
+      <el-input 
+        placeholder="请输入您的反馈..."
+        v-model="input" 
+        type="textarea"
+        :rows="3">
+        </el-input>
+       <a index="/usercenter/feedback">ja</a> 
+      <el-button @click="success">submit</el-button>
+   
+    
     </div>
     
   </div>
@@ -15,11 +21,17 @@
 export default {
   data () {
     return {
-
+      input:'',
+      
+      
     }
   },
   methods: {
-
+    success()
+      {
+        this.$message('反馈提交成功');
+       
+      }
   },
   mounted () {
   },
@@ -30,21 +42,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-textarea{
-  position:flex;
-  width:100%;
-  height:397px;
-  margin:8px 0;
-  background: rgb(196, 196, 196);
-  padding:12px 20px;
-  box-sizing: border-box;
-  border:2px solid white;
-  border-radius:4px;
-  top:100px;
-  left:199px;
-}
 
-input[type=submit]{
+el-button{
   width:100%;
   background-color:black;
   color:white;
@@ -53,12 +52,10 @@ input[type=submit]{
   border-radius:4px;
   cursor:pointer;
 }
-input[type=submit]:hover{
-  background-color:#45a049;
-}
+
 .pc-container{
   display:flex;
-  width: 909px;
+  width: 1070px;
   height: 810px;
   top: 90px;
   left: 419px;
