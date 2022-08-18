@@ -55,10 +55,14 @@ export default {
 
 <style scoped lang="scss">
 .container{
-  width: 1200px;
+  width: calc(100vw - 80px);
   margin: 0 auto;
   .main{
+<<<<<<< HEAD
     
+=======
+    // background: #ffaa00;
+>>>>>>> f06c04499faefb3ef738d8290edfd68e0314dd8f
     display: flex;
   }
 }

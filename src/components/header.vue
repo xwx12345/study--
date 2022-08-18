@@ -1,26 +1,26 @@
 <template>
   <div class="container">
     <div class="logo">
-      <img src="../../public/logo.png"/>
+      <img src="../../public/logo.png" />
     </div>
     <div class="search">
-      <input type="text" placeholder=" 搜索关键词" v-model="content"/>
-        <button @click="search()">
-          <i class="el-icon-search"></i>
-        </button>
+      <input type="text" placeholder=" 搜索关键词" v-model="searchContent" />
+      <button @click="search()">
+        <i class="el-icon-search"></i>
+      </button>
       </el-input>
     </div>
     <div class="jump">
       <button @click="gotologin()">
         登录
       </button>
-      <button @click="gotouser()" v-show="usertype==='0'">
+      <button @click="gotouser()" v-show="usertype === '1'">
         个人中心
       </button>
-      <button @click="gotosubject()" v-show="usertype==='1'">
+      <button @click="gotosubject()" v-show="usertype === '2'">
         专家中心
       </button>
-      <button @click="gotoadmin()" v-show="usertype==='2'">
+      <button @click="gotoadmin()" v-show="usertype === '3'">
         管理员中心
       </button>
     </div>
@@ -29,45 +29,48 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      content:'',
+      content: '',
       // 这个实际上要从store里面取数据,现在没考虑store所以先写死
-      usertype:'0'
+      usertype: '1'
     }
   },
   methods: {
-    search () {
-      console.log(this.content)
-      this.$router.push('/search')
+    search() {
+      if (this.searchContent != "") {
+        console.log(this.searchContent);
+        this.$router.push('/search');
+      }
     },
-    gotologin () {
+    gotologin() {
       this.$router.push('/login')
     },
-    gotouser () {
+    gotouser() {
       this.$router.push('/usercenter')
     },
-    gotosubject () {
+    gotosubject() {
       this.$router.push('/subject')
     },
-    gotoadmin () {
+    gotoadmin() {
       // this.$router.push('/admin')
     }
   },
-  mounted () {
+  mounted() {
   },
-  created () {
+  created() {
 
   }
 }
 </script>
 
 <style scoped lang="scss">
-.container{
+.container {
   background: #f4f7ff;
   display: flex;
-  justify-content:space-between;
-  .logo{
+  justify-content: space-between;
+
+  .logo {
     margin: auto 10px;
     padding: 0;
     width: 90px;
@@ -75,25 +78,29 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    img{
+
+    img {
       width: 100%;
       height: 100%;
     }
   }
-  .search{
+
+  .search {
     margin: auto 0;
-    input{
+
+    input {
       background-color: #ffffff;
       color: #676767;
       border: 1px solid #ffffff;
       border-radius: 4px;
       height: 35px;
       width: 300px;
-     font-size: 14px;
+      font-size: 14px;
       margin: 6px 0;
       letter-spacing: 1px;
     }
-    button{
+
+    button {
       outline: none;
       border: none;
       //width: 20%;
@@ -106,13 +113,16 @@ export default {
       color: #fff;
       transition: 1s;
     }
-    button:hover{
+
+    button:hover {
       background: #F4B8A8;
     }
   }
-  .jump{
-    margin:auto 6px;
-    button{
+
+  .jump {
+    margin: auto 6px;
+
+    button {
       outline: none;
       border: none;
       padding: 10px;
@@ -124,7 +134,8 @@ export default {
       color: #fff;
       transition: 1s;
     }
-    button:hover{
+
+    button:hover {
       background: #aaccff;
     }
   }

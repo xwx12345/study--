@@ -1,28 +1,28 @@
 <template>
   <div class="pc-container">
-    搜索页面
-    搜索的内容是{{content}}
+    搜索页面 搜索的内容是{{ content }}
+    <div>
+      <book></book>
+    </div>
   </div>
 </template>
 
 <script>
+import book from "../../components/book.vue";
 export default {
-  data () {
+  components: {
+    book,
+  },
+  data() {
     return {
-      content:'1'
-    }
+      content: "1",
+    };
   },
-  methods: {
-
-  },
-  mounted () {
-  },
-  created () {
-
-  }
-}
+  methods: {},
+  mounted() {},
+  created() {},
+};
 </script>
 
 <style scoped lang="scss">
-
 </style>

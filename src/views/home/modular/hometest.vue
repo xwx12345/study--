@@ -72,11 +72,15 @@ export default {
       section: {
         main_info: '我是主文本',
         sub_info: '我是副文本',
-        img_info: '..//..//..//..//public//test1.png'
+        img_info: '..//..//..//..//public//test2.png'
       },
       items: [
         [
-          { id: 1, main_info: '主文本1', sub_info: '副文本1' },
+          { id: 1,
+            main_info: '主文本1',
+            sub_info: '副文本1',
+            img_info: '..//..//..//..//public//feedback.png'
+          },
           { id: 2, main_info: '主文本a', sub_info: '副文本a' },
           { id: 3, main_info: '主文本1', sub_info: '副文本1' },
           { id: 4, main_info: '主文本1', sub_info: '副文本1' },
