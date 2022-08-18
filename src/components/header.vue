@@ -44,8 +44,7 @@ export default {
           name: "search",
           query: { searchtext: this.searchContent },
         });
-        location.reload();
-        // console.log(this.searchContent);
+        console.log(this.searchContent);
       }
     },
     gotologin() {
@@ -60,9 +59,18 @@ export default {
     gotoadmin() {
       // this.$router.push('/admin')
     },
+
+  
   },
-  mounted() {},
-  created() {},
+  mounted() {
+
+  },
+  destroyed() {
+
+  },
+  created() {
+    
+  },
 };
 </script>
 
