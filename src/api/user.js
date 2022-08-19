@@ -1,13 +1,20 @@
-import service from '../utils/axios.js'
+import request from '../utils/request.js'
 
-export function UserLogin(data:any){
-    let param= new URLSearchParams(data);
-    console.log('paras',param);
-    console.log('data',data);
+export function UserLogin(data) {
+    let param = new URLSearchParams(data);
+    console.log('paras', param);
+    console.log('data', data);
 
     return request({
-        url:'Authenticate/LoginGenerateJWT',
-        method:'POST',
-        data:param
+        url: '/Authenticate/LoginGenerateJWT',
+        method: 'POST',
+        data: param
+    })
+}
+
+export function Test(){
+    return request({
+        url:'/Test',
+        method:'POST'
     })
 }

@@ -14,8 +14,9 @@
 </template>
 
 <script>
-import axios from 'axios'
-import service from '../../utils/axios.js'
+// import axios from 'axios'
+// import service from '../../utils/axios.js'
+import {UserLogin,Test} from '../../api/user'
 export default {
   data () {
     return {
@@ -43,17 +44,24 @@ export default {
       //     password: this.password
       //   }
       // })
-      const result=service({
-        method: 'POST',
-        url: 'Authenticate/LoginGenerateJWT',
-        data: {
+      // const result=service({
+      //   method: 'POST',
+      //   url: 'Authenticate/LoginGenerateJWT',
+      //   data: {
+      //     phone_number: this.phone_number,
+      //     password: this.password
+      //   }
+      // })
+      UserLogin(
+        {
           phone_number: this.phone_number,
           password: this.password
         }
-      })
+      )
       // 这里没有成功得到过好数据所以不知道怎么处理,需要等到哪次真的有数据才行
-      console.log(result)
+      // console.log(result)
       // this.$router.push('/')
+      // Test();
       this.$message('您已成功登录！')
     }
   },
