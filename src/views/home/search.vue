@@ -3,7 +3,17 @@
     搜索页面 搜索的内容是{{ content }}
     <div class="books">
       <p class="btext">书籍</p>
-      <book></book>
+      <el-row type="flex" :gutter="24" style="flex-wrap:wrap; flex-direction: row">
+      <el-col :lg="8" :xs="24" v-for="(item, index) in BooksList" :key="item.isbn">
+        <book
+        :img_url="item.img_url"
+        :bname="item.bname" 
+        :author="item.author"
+        :publisher="item.publisher"
+        :publish_year="item.pub_year"
+        ></book>
+      </el-col>
+      </el-row>
     </div>
   </div>
 </template>
@@ -19,6 +29,7 @@ export default {
       content: "1",
       BooksList: [
         {
+          isbn: "001",
           bname: "高等数学",
           author: "鼠来宝",
           publisher: "同济大学出版社",
@@ -26,6 +37,7 @@ export default {
           img_url: "https://s3.bmp.ovh/imgs/2022/08/17/a45d18cbf6e41773.jpeg",
         },
         {
+          isbn: "002",
           bname: "低等数学",
           author: "米老鼠",
           publisher: "同济大学出版社",
@@ -33,12 +45,29 @@ export default {
           img_url: "https://s3.bmp.ovh/imgs/2022/08/17/a45d18cbf6e41773.jpeg",
         },
         {
+          isbn: "003",
           bname: "中等数学",
           author: "马里奥",
           publisher: "同济大学出版社",
           pub_year: 2021,
           img_url: "https://s3.bmp.ovh/imgs/2022/08/17/a45d18cbf6e41773.jpeg",
         },
+        {
+          isbn: "004",
+          bname: "没有数学",
+          author: "马里奥",
+          publisher: "同济大学出版社",
+          pub_year: 2080,
+          img_url: "https://s3.bmp.ovh/imgs/2022/08/17/a45d18cbf6e41773.jpeg",
+        },
+        {
+          isbn: "004",
+          bname: "全是数学",
+          author: "胡锦辉",
+          publisher: "同济大学出版社",
+          pub_year: 2045,
+          img_url: "https://s3.bmp.ovh/imgs/2022/08/17/a45d18cbf6e41773.jpeg",
+        }
       ],
     };
   },
@@ -55,13 +84,13 @@ export default {
   created() {
     this.content = this.$route.query.searchtext;
   },
-
 };
 </script>
 
 <style scoped lang="scss">
 .books {
   width: auto;
+  height: auto;
   padding: 20px;
   margin: 5%;
   background: rgb(238, 237, 246);
