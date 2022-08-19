@@ -6,12 +6,13 @@ import { Message, MessageBox } from 'element-ui'
 
 axios.defaults.headers.post['Content-type']='application/x-www-form-urlencoded'
 axios.defaults.withCredentials = true
+axios.defaults.baseURL='/api'
 const service = axios.create({
-  baseURL: 'http://124.220.158.211:5000/api/',
+  // baseURL: '/api',
   timeout: 180000,
   async:true,
-  crossDomain:true
-  // withCredentials: true
+  crossDomain:true,
+  withCredentials: true
 })
 
 // 请求拦截器配置
