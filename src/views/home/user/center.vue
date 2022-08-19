@@ -24,7 +24,7 @@
           </el-menu-item>
         </el-menu>
       </div>
-      <div>
+      <div class="right">
         <router-view></router-view>
       </div>
     </div>
@@ -60,6 +60,14 @@ export default {
   .main{
     // background: #ffaa00;
     display: flex;
+    .sub_div{
+      background: #fdf6f9;
+      width: 15%;
+    }
+    .right{
+      // background: #fdf6f9;
+      width: 85%;
+    }
   }
 }
 
