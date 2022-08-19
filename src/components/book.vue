@@ -45,6 +45,7 @@ export default {
   left: -1px;
   border-radius: 15px;
   margin: 30px;
+  font-size: 15px;
   .cover {
     margin: auto 10px;
     padding: 0;
