@@ -11,6 +11,17 @@ export function UserLogin(data) {
         data: param
     })
 }
+export function SignUp(data) {
+    let param = new URLSearchParams(data);
+    console.log('paras', param);
+    console.log('data', data);
+
+    return request({
+        url: '/Authenticate/RegisterGenerateJWT',
+        method: 'POST',
+        data: param
+    })
+}
 
 export function Test(){
     return request({
