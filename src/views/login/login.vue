@@ -45,7 +45,7 @@ export default {
       // })
       const result=service({
         method: 'POST',
-        url: '/Authenticate/LoginGenerateJWT',
+        url: 'Authenticate/LoginGenerateJWT',
         data: {
           phone_number: this.phone_number,
           password: this.password

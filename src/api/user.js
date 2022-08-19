@@ -6,7 +6,7 @@ export function UserLogin(data:any){
     console.log('data',data);
 
     return request({
-        url:'/Authenticate/LoginGenerateJWT',
+        url:'Authenticate/LoginGenerateJWT',
         method:'POST',
         data:param
     })

@@ -60,7 +60,7 @@ export default {
       // this.$router.push('/admin')
     },
 
-  
+
   },
   mounted() {
 
@@ -69,7 +69,7 @@ export default {
 
   },
   created() {
-    
+
   },
 };
 </script>

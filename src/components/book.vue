@@ -41,10 +41,13 @@ export default {
   display: flex;
   width: 352px;
   height: 270px;
-  top: -6px;
-  left: -1px;
+  // top: -6px;
+  // left: -1px;
   border-radius: 15px;
-  margin: 30px;
+  margin: 10px;
+  // margin-top: 15px;
+  // margin-bottom: 15px;
+  font-size: 15px;
   .cover {
     margin: auto 10px;
     padding: 0;
