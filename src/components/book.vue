@@ -12,13 +12,21 @@
 
 <script>
 export default {
+  props:[
+    'bname',
+    'author',
+    'publisher',
+    'publish_year',
+    'img_url'
+  ]
+  ,
   data() {
     return {
-      bname: "高等数学很难很难版",
-      author: "这是一个很长的作者",
-      publisher: "SOS教育出版社",
-      publish_year: 2077,
-      img_url: "https://s3.bmp.ovh/imgs/2022/08/17/a45d18cbf6e41773.jpeg",
+      // bname: "高等数学很难很难版",
+      // author: "这是一个很长的作者",
+      // publisher: "SOS教育出版社",
+      // publish_year: 2077,
+      // img_url: "https://s3.bmp.ovh/imgs/2022/08/17/a45d18cbf6e41773.jpeg",
     };
   },
   mounted() {},
