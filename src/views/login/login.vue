@@ -39,10 +39,10 @@ export default {
       const result = axios({
         method: 'POST',
         url: '/Authenticate/LoginGenerateJWT',
-        data: {
+        data: new URLSearchParams({
           phone_number: this.phone_number,
           password: this.password
-        }
+        })
       })
       // const result=service({
       //   method: 'GET',
@@ -53,7 +53,7 @@ export default {
       //   }
       // })
       // 这里没有成功得到过好数据所以不知道怎么处理,需要等到哪次真的有数据才行
-      // console.log(result)
+      console.log(result)
       // this.$router.push('/')
       // Test();
       this.$message('您已成功登录！')

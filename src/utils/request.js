@@ -4,7 +4,7 @@ import store from '../store'
 import { Message, MessageBox } from 'element-ui'
 // import { MessageBox } from 'element-ui'
 
-axios.defaults.headers.post['Content-type']='application/x-www-form-urlencoded'
+// axios.defaults.headers.post['Content-type']='application/x-www-form-urlencoded;charset=UTF-8'
 // axios.defaults.headers.post['Access-Control-Allow-Origin']='http://localhost:8080/'
 // axios.defaults.withCredentials = true
 axios.defaults.baseURL='/api'
