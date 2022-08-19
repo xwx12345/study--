@@ -2,18 +2,22 @@
   <div class="pc-container">
     搜索页面 搜索的内容是{{ content }}
     <div class="books">
-      <p class="btext">书籍</p>
-      <el-row type="flex" :gutter="24" style="flex-wrap:wrap; flex-direction: row">
-      <el-col :lg="8" :xs="24" v-for="(item, index) in BooksList" :key="item.isbn">
-        <book
-        :img_url="item.img_url"
-        :bname="item.bname" 
-        :author="item.author"
-        :publisher="item.publisher"
-        :publish_year="item.pub_year"
-        ></book>
-      </el-col>
-      </el-row>
+      <div class="btext">
+        <p>书籍</p>
+      </div>
+      <div class="binfo">
+        <el-row :gutter="24" class="box">
+        <el-col :lg="8" :xs="24" v-for="(item, index) in BooksList" :key="item.isbn">
+          <book
+          :img_url="item.img_url"
+          :bname="item.bname"
+          :author="item.author"
+          :publisher="item.publisher"
+          :publish_year="item.pub_year"
+          ></book>
+        </el-col>
+        </el-row>
+      </div>
     </div>
   </div>
 </template>
@@ -89,19 +93,27 @@ export default {
 
 <style scoped lang="scss">
 .books {
-  width: auto;
-  height: auto;
-  padding: 20px;
-  margin: 5%;
+  width: 96%;
+  // padding: 20px;
+  margin: 0 auto;
+  margin-top: 20px;
   background: rgb(238, 237, 246);
   border-radius: 14px;
-}
-
-.btext {
-  margin: 3%;
-  font-size: 40px;
-  font-weight: 400;
-  line-height: 18px;
-  letter-spacing: 0px;
+  display: flex;
+  flex-direction:column;
+  .btext {
+    margin: 3%;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+  }
+  .binfo{
+    // background: #000;
+    .box{
+      // background: #ffaa7f;
+      // width: 100%;
+    }
+  }
 }
 </style>
