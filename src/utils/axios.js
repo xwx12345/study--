@@ -4,12 +4,14 @@ import store from '../store'
 import { Message, MessageBox } from 'element-ui'
 // import { MessageBox } from 'element-ui'
 
-axios.defaults.withCredentials = true
 axios.defaults.headers.post['Content-type']='application/x-www-form-urlencoded'
+axios.defaults.withCredentials = true
 const service = axios.create({
   baseURL: 'http://124.220.158.211:5000/api/',
   timeout: 180000,
-  withCredentials: true
+  async:true,
+  crossDomain:true
+  // withCredentials: true
 })
 
 // 请求拦截器配置
