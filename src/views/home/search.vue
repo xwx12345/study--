@@ -7,15 +7,20 @@
       </div>
       <div class="binfo">
         <el-row :gutter="24" class="box">
-        <el-col :lg="8" :xs="24" v-for="(item, index) in BooksList" :key="item.isbn">
-          <book
-          :img_url="item.img_url"
-          :bname="item.bname"
-          :author="item.author"
-          :publisher="item.publisher"
-          :publish_year="item.pub_year"
-          ></book>
-        </el-col>
+          <el-col
+            :lg="8"
+            :xs="24"
+            v-for="(item, index) in BooksList"
+            :key="item.isbn"
+          >
+            <book
+              :img_url="item.img_url"
+              :bname="item.bname"
+              :author="item.author"
+              :publisher="item.publisher"
+              :publish_year="item.pub_year"
+            ></book>
+          </el-col>
         </el-row>
       </div>
     </div>
@@ -71,7 +76,7 @@ export default {
           publisher: "同济大学出版社",
           pub_year: 2045,
           img_url: "https://s3.bmp.ovh/imgs/2022/08/17/a45d18cbf6e41773.jpeg",
-        }
+        },
       ],
     };
   },
@@ -100,7 +105,7 @@ export default {
   background: rgb(238, 237, 246);
   border-radius: 14px;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   .btext {
     margin: 3%;
     font-size: 40px;
@@ -108,9 +113,9 @@ export default {
     line-height: 18px;
     letter-spacing: 0px;
   }
-  .binfo{
+  .binfo {
     // background: #000;
-    .box{
+    .box {
       // background: #ffaa7f;
       // width: 100%;
     }

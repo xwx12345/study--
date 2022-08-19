@@ -15,7 +15,8 @@
 
 <script>
 import axios from 'axios'
-import service from '../../utils/axios.js'
+// import service from '../../utils/axios.js'
+import {UserLogin,Test} from '../../api/user'
 export default {
   data () {
     return {
@@ -35,25 +36,26 @@ export default {
       }
       // this.$message('phone' + this.phone_number + 'password' + this.password)
       // axios.defaults.headers.post['token'] = '6e996d0aa210482c8599b087daccb0e0'
-      // const result = axios({
-      //   method: 'GET',
-      //   url: 'http://124.220.158.211:5000/api/Authenticate/LoginGenerateJWT',
-      //   data: {
-      //     phone_number: this.phone_number,
-      //     password: this.password
-      //   }
-      // })
-      const result=service({
-        method: 'GET',
+      const result = axios({
+        method: 'POST',
         url: '/Authenticate/LoginGenerateJWT',
         data: {
           phone_number: this.phone_number,
           password: this.password
         }
       })
+      // const result=service({
+      //   method: 'GET',
+      //   url: '/Authenticate/LoginGenerateJWT',
+      //   data: {
+      //     phone_number: this.phone_number,
+      //     password: this.password
+      //   }
+      // })
       // 这里没有成功得到过好数据所以不知道怎么处理,需要等到哪次真的有数据才行
-      console.log(result)
+      // console.log(result)
       // this.$router.push('/')
+      // Test();
       this.$message('您已成功登录！')
     }
   },
