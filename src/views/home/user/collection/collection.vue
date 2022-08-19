@@ -1,7 +1,6 @@
 <template>
 <div>
   <div class="container">
-    <div class="occupation"></div>
     <div class="search">
       <input type="text" placeholder=" 搜索关键词" v-model="searchContent" />
       <button @click="search()">
@@ -14,7 +13,7 @@
     ref="filterTable"
     :data="tableData"
     style="width: 100%"
-    max-height="450">
+    max-height="460">
     <el-table-column
       fixed
       prop="tag"
@@ -32,7 +31,7 @@
     <el-table-column
       prop="title"
       label="收藏内容"
-      width="1500">
+      width="1200">
     </el-table-column>
     <el-table-column
       fixed="right"
@@ -83,7 +82,7 @@ export default {
           title: '天黑了该睡觉了，晚安唔西迪西，晚安玛卡巴卡，晚安依古比古，晚安小点点，晚安叮叮车，晚安飞飞鱼，晚安小朋友们。'
         }, {
           tag: '题目',
-          title: 'Hi 小蜗，Hi 派大星，Hi 章鱼哥，Hi 珊迪，Hi 泡芙老师，Hi 蟹老板，Hi 珍妮。我准备好了，我准备好了，我准备好了，我准备好了，我准备好了，我准备好了，……'
+          title: 'Hi 小蜗，Hi 派大星，Hi 章鱼哥，Hi 珊迪，Hi 泡芙老师，Hi 蟹老板，Hi 珍妮。我准备好了，我准备好了，我准备好了，我准备好了，我准备好了，我准备好了，我准备好了，……'
         }, {
           tag: '课程',
           title: '乌鸦坐飞机'
