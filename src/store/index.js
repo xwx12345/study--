@@ -28,7 +28,6 @@ export default new Vuex.Store({
       } else {
         sessionStorage.removeItem('user')
       }
-      console.log(state.user)
     },
     SET_Token (state, token)
     {

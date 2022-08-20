@@ -45,7 +45,6 @@ export default {
           this.$message('您已成功登录！')
           var token=r.data.token
           var user=r.data.user
-          console.log(user)
           this.$store.dispatch('setUser',user)
           this.$store.dispatch('setToken',token)
           this.$router.push('/')
