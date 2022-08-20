@@ -59,6 +59,7 @@ export default {
   margin: 0 auto;
   .main{
     // background: #ffaa00;
+
     display: flex;
     .sub_div{
       background: #fdf6f9;
