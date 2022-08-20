@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import book from "../../components/book.vue";
 export default {
   data () {
     return {
