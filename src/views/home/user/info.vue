@@ -74,9 +74,13 @@ img{
     width: 30%;
     display: flex;
     justify-content: center;
+    transition: 1s;
     img{
       border: #fff solid 10px;
     }
+  }
+  .picture:hover{
+    transform: scale(1.1);
   }
   .info{
     background: rgba(255,255,255,0.7);
@@ -89,15 +93,23 @@ img{
       color: #d89f9f;
       font-weight: 600;
       letter-spacing: 1px;
+      transition: 1s;
+    }
+    .name:hover{
+      transform: rotate(2deg);
     }
     .phone{
       font-size: 16px;
       padding: 5px;
       color: #8585c7;
+      transition: 2s;
       i{
         display: inline-block;
         padding: 3px;
         }
+    }
+    .phone:hover{
+      transform: rotate(-3deg);
     }
     .form{
       // background: #ffaa7f;
@@ -118,6 +130,12 @@ img{
         font-size: 16px;
         margin: 6px 0;
         letter-spacing: 1px;
+        transition: 1s;
+      }
+      input:focus{
+        color: #d89f9f;
+        font-size: 17px;
+        letter-spacing: 2px;
       }
     }
     .button{
