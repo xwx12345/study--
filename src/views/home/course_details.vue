@@ -1,6 +1,6 @@
 <template>
   <div class="pc-container">
-    收藏的书籍
+    
   </div>
 </template>
 
