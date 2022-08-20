@@ -63,14 +63,11 @@ img{
   display:flex;
   width: 100%;
   height: calc(100vh - 80px);
-  top: 90px;
-  left: 419px;
   background: linear-gradient(120deg,#e8efff,#F3E8F0,#F4EAEA);
   /* 阴影效果 不好意思我感觉丑丑的*/
   // box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
   align-items: center;
   .picture{
-    // background: #000;
     width: 30%;
     display: flex;
     justify-content: center;

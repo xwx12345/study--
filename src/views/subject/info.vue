@@ -1,5 +1,5 @@
 <template>
-  <div class="pc-container">
+  <div class="container">
     <info></info>
   </div>
 </template>
@@ -26,5 +26,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.container{
+  width: 100%;
+}
 </style>
