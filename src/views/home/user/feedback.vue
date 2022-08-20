@@ -8,7 +8,7 @@
         type="textarea"
         :rows="3">
         </el-input>
-       <a index="/usercenter/feedback">ja</a> 
+       
       <el-button @click="success">submit</el-button>
    
     
@@ -55,7 +55,7 @@ el-button{
 
 .pc-container{
   display:flex;
-  width: 1070px;
+  width: 100%px;
   height: 810px;
   top: 90px;
   left: 419px;
