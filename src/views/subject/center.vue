@@ -2,7 +2,7 @@
   <div class="container">
     <centerHeader></centerHeader>
     <div class="main">
-      <div>
+      <div class="left">
         <el-menu
           :default-active="activeIndex"
           :router="true"
@@ -28,7 +28,7 @@
           </el-menu-item>
         </el-menu>
       </div>
-      <div class="box">
+      <div class="right">
         <router-view></router-view>
       </div>
     </div>
@@ -63,6 +63,14 @@ export default {
   margin: 0 auto;
   .main{
     display: flex;
+    .left{
+      width: 15%;
+      background: #fdf6f9;
+    }
+    .right{
+      width: 85%;
+      background: linear-gradient(120deg,#e8efff,#F3E8F0,#F4EAEA);
+    }
   }
 }
 </style>

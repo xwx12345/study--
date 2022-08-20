@@ -4,7 +4,7 @@
       <div class="picture"></div>
       <div class="input">
         <h1>欢迎登录</h1>
-        <input type="text" placeholder=" 用户名" v-model="userName"/>
+        <input type="text" placeholder=" 手机号" v-model="phone_number"/>
         <input type="password" placeholder=" 密码" v-model="password"/>
         <button @click="login()">登录</button>
         <router-link to="/signup">新用户注册</router-link>
@@ -14,38 +14,41 @@
 </template>
 
 <script>
-import axios from 'axios'
+import {UserLogin} from '../../api/user'
 export default {
   data () {
     return {
-      userName: '',
+      phone_number: '',
       password: ''
     }
   },
   methods: {
     login () {
-      if (!this.userName) {
-        this.$message.error('请输入用户名')
+      if (!this.phone_number) {
+        this.$message.error('请输入手机号')
         return
       }
       if (!this.password) {
         this.$message.error('请输入密码')
         return
       }
-      this.$message('名' + this.userName + 'password' + this.password)
-      // axios.defaults.headers.post['token'] = '6e996d0aa210482c8599b087daccb0e0'
-      // const result = axios({
-      //   method: 'POST',
-      //   url: 'http://192.168.2.254:8080/JSCheck/group/queryAllGroupsTree',
-      //   data: {
-      //     userName: this.userName,
-      //     password: this.password
-      //   }
-      // })
-      // 这里没有成功得到过好数据所以不知道怎么处理,需要等到哪次真的有数据才行
-      // console.log(result)
-      this.$router.push('/')
-      this.$message('您已成功登录！')
+      //测试数据：18946576245 Lwq111
+      UserLogin ({
+        phone_number: this.phone_number,
+        password: this.password
+      }).then((r)=>{
+        // console.log(r)
+        if(r.header.code === -1){
+          this.$message.error(r.header.message)
+          return
+        }
+        else{
+          this.$message('您已成功登录！')
+          this.$router.push('/')
+        }
+      }).catch((err)=>{
+        console.log(err)
+      })
     }
   },
   mounted () {

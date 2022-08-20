@@ -2,10 +2,7 @@
   <div class="container">
     <img :src=img_url class="cover" />
     <div class="content">
-      <p>书名:{{ bname }}</p>
-      <p>作者:{{ author }}</p>
-      <p>出版社:{{ publisher }}</p>
-      <p>出版年份:{{ publish_year }}</p>
+      <p>课程名:{{ cname }}</p>
     </div>
   </div>
 </template>
@@ -13,19 +10,13 @@
 <script>
 export default {
   props:[
-    'bname',
-    'author',
-    'publisher',
-    'publish_year',
+    'cname',
     'img_url'
   ]
   ,
   data() {
     return {
       // bname: "高等数学很难很难版",
-      // author: "这是一个很长的作者",
-      // publisher: "SOS教育出版社",
-      // publish_year: 2077,
       // img_url: "https://s3.bmp.ovh/imgs/2022/08/17/a45d18cbf6e41773.jpeg",
     };
   },

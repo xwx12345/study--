@@ -4,9 +4,9 @@
       <div class="picture"></div>
       <div class="input">
         <h1>欢迎注册</h1>
-        <input type="text" placeholder=" 用户名" v-model="userName"/>
+        <input type="text" placeholder=" 用户名" v-model="user_name"/>
         <input type="password" placeholder=" 密码" v-model="password"/>
-        <input type="text" placeholder=" 手机号" v-model="phone"/>
+        <input type="text" placeholder=" 手机号" v-model="phone_number"/>
         <button @click="signup()">注册</button>
         <span class="bubble bubble1"></span>
         <span class="bubble bubble2"></span>
@@ -23,25 +23,47 @@
 </template>
 
 <script>
+import {SignUp} from '../../api/user'
 export default {
   data () {
     return {
-      username: '',
-      phone: '',
+      user_name: '',
+      phone_number: '',
       password: ''
     }
   },
   methods: {
     signup () {
-      if (!this.userName) {
+      if (!this.user_name) {
         this.$message.error('请输入用户名')
         return
       }
       if (!this.password) {
         this.$message.error('请输入密码')
-         return
+        return
       }
-      this.$router.push('/login')
+      if(!this.phone_number) {
+        this.$message.error('请输入电话号码')
+        return
+      }
+      SignUp({
+        user_name: this.user_name,
+        password: this.password,
+        phone_number: this.phone_number
+      }).then((r)=>{
+        console.log(r)
+        if(r.header.code === 0){
+          this.$message(r.header.message)
+          this.$router.push('/login')
+        }
+        else{
+          this.$message.error(r.header.message)
+          // this.$router.push('/')
+          return
+        }
+      }).catch((err)=>{
+        console.log(err)
+      })
     }
 
   },

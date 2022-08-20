@@ -153,7 +153,8 @@ export default {
 
 <style scoped lang="scss">
   .container{
-    width: 1200px;
+    width: calc(100vw - 80px);
+    margin: 0 auto;
     background: #eeedf6;
     .modular_title{
       display: flex;
