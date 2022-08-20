@@ -2,16 +2,21 @@
   <div class="pc-container">
 
     <img src="..//..//..//..//public//userphoto.png" width="200px" height="200px">
-    <ul class="information">
-       <li> 
-        <i class="el-icon-user-solid"></i>
-        用户名：{{userinfo.username}}
-      </li>
-      <li>
-        <i class="el-icon-office-building"></i>
-        专业：{{userinfo.major}}</li>
-      <li>表单项：{{userinfo.item}}</li>
-    </ul>
+    <el-form ref="form" :model="form" label-width="80px">
+      <el-form-item label="用户名">
+        <el-input v-model="form.username" :disable="true" value={{userinfo.username}}>{{userinfo.username}}</el-input>
+      </el-form-item>
+      <el-form-item label="电话">
+        <el-input v-model="form.tel" :disable="true" >{{userinfo.tel}}</el-input>
+      </el-form-item>
+      <el-form-item label="学校">
+        <el-input v-model="form.school" >{{userinfo.school}}</el-input>
+      </el-form-item>
+      <el-form-item label="专业">
+        <el-input v-model="form.major" >{{userinfo.major}}</el-input>
+      </el-form-item>
+    </el-form>
+    
      
   </div>
   
@@ -25,7 +30,15 @@ export default {
       userinfo:{
         username:'我是用户名',
         major:'我是专业',
-        item:'我是表单项'
+        tel:'我是电话',
+        school:'我是学校'
+        
+      },
+      form:{
+        username:'',
+        tel:'',
+        school:'',
+        major:''
       }
        
       
