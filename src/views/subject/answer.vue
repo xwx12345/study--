@@ -10,7 +10,8 @@
           <el-table-column
             fixed
             label="序号"
-            type="index">
+            type="index"
+            width="50">
           </el-table-column>
           <el-table-column
             prop="date"
@@ -18,41 +19,21 @@
             width="150">
           </el-table-column>
           <el-table-column
-            prop="name"
-            label="姓名"
-            width="120">
+            prop="source"
+            label="来源"
+            width="200">
           </el-table-column>
           <el-table-column
-            prop="province"
-            label="省份"
-            width="120">
-          </el-table-column>
-          <el-table-column
-            prop="city"
-            label="市区"
-            width="120">
-          </el-table-column>
-          <el-table-column
-            prop="address"
-            label="地址"
-            width="300">
-          </el-table-column>
-          <el-table-column
-            prop="zip"
-            label="邮编"
-            width="120">
+            prop="stem"
+            label="题干"
+            width="400">
           </el-table-column>
           <el-table-column
             fixed="right"
-            label="操作"
-            width="120">
+            label="题目编号"
+            width="180">
             <template slot-scope="scope">
-              <el-button
-                @click="Jump(scope.$index, tableData1)"
-                icon="el-icon-search"
-                circle
-                size="big">
-              </el-button>
+              <span @click="Jump(scope.row.id)" class="button">{{scope.row.id}}</span>
             </template>
           </el-table-column>
         </el-table>
@@ -67,39 +48,30 @@
           <el-table-column
             fixed
             label="序号"
-            type="index">
+            type="index"
+            width="50">
           </el-table-column>
           <el-table-column
-            prop="name"
-            label="姓名"
-            width="120">
+            prop="date"
+            label="日期"
+            width="150">
           </el-table-column>
           <el-table-column
-            prop="province"
-            label="省份"
-            width="120">
+            prop="source"
+            label="来源"
+            width="200">
           </el-table-column>
           <el-table-column
-            prop="city"
-            label="市区"
-            width="120">
-          </el-table-column>
-          <el-table-column
-            prop="address"
-            label="地址"
-            width="300">
-          </el-table-column>
-          <el-table-column
-            prop="zip"
-            label="邮编"
-            width="120">
+            prop="stem"
+            label="题干"
+            width="400">
           </el-table-column>
           <el-table-column
             fixed="right"
             label="题目编号"
             width="180">
             <template slot-scope="scope">
-              <span @click="Jump(scope.row.date)" class="button">{{scope.row.date}}</span>
+              <span @click="Jump(scope.row.id)" class="button">{{scope.row.id}}</span>
             </template>
           </el-table-column>
         </el-table>
@@ -114,116 +86,88 @@ export default {
       tableData1: [
         {
           date: '2016-05-03',
-          name: '我乱写',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
+          id: '我乱写',
+          source: '《上海》',
+          stem:'abababbababababab'
         },
         {
-          date: '2016-05-02',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
+          date: '2016-05-03',
+          id: '我才不乱想',
+          source: '《上海？》',
+          stem:'abababbababababab'
         },
         {
-          date: '2016-05-04',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
+          date: '2016-05-03',
+          id: '我乱写',
+          source: '上海',
+          stem:'abababbababababab'
         },
         {
-          date: '2016-05-01',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
+          date: '2016-05-03',
+          id: '我乱写',
+          source: '上海',
+          stem:'abababbababababab'
          },
          {
-          date: '2016-05-08',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
+           date: '2016-05-03',
+           id: '我乱写',
+           source: '上海',
+           stem:'abababbababababab'
           },
-          {
-            date: '2016-05-06',
-            name: '王小虎',
-            province: '上海',
-            city: '普陀区',
-            address: '上海市普陀区金沙江路 1518 弄',
-            zip: 200333
-          },
-          {
-            date: '2016-05-07',
-            name: '王小虎',
-            province: '上海',
-            city: '普陀区',
-            address: '上海市普陀区金沙江路 1518 弄',
-            zip: 200333
-          }],
-      tableData2: [
           {
             date: '2016-05-03',
-            name: '王小虎',
-            province: '上海',
-            city: '普陀区',
-            address: '上海市普陀区金沙江路 1518 弄',
-            zip: 200333
+            id: '我乱写',
+            source: '上海',
+            stem:'abababbababababab'
           },
           {
-            date: '2016-05-02',
-            name: '王小虎',
-            province: '上海',
-            city: '普陀区',
-            address: '上海市普陀区金沙江路 1518 弄',
-            zip: 200333
+            date: '2016-05-03',
+            id: '我乱写',
+            source: '上海',
+            stem:'abababbababababab'
+          }],
+      tableData2: [
+        {
+          date: '2016-05-03',
+          id: '我乱写',
+          source: '上海',
+          stem:'abababbababababab'
+        },
+        {
+          date: '2016-05-03',
+          id: '我乱写',
+          source: '上海',
+          stem:'abababbababababab'
+        },
+        {
+          date: '2016-05-03',
+          id: '我乱写',
+          source: '上海',
+          stem:'abababbababababab'
+        },
+        {
+          date: '2016-05-03',
+          id: '我乱写',
+          source: '上海',
+          stem:'abababbababababab'
+         },
+         {
+           date: '2016-05-03',
+           id: '我乱写',
+           source: '上海',
+           stem:'abababbababababab'
           },
           {
-            date: '2016-05-04',
-            name: '王小虎',
-            province: '上海',
-            city: '普陀区',
-            address: '上海市普陀区金沙江路 1518 弄',
-            zip: 200333
+            date: '2016-05-03',
+            id: '我乱写',
+            source: '上海',
+            stem:'abababbababababab'
           },
           {
-            date: '2016-05-01',
-            name: '王小虎',
-            province: '上海',
-            city: '普陀区',
-            address: '上海市普陀区金沙江路 1518 弄',
-            zip: 200333
-          },
-          {
-            date: '2016-05-08',
-            name: '王小虎',
-            province: '上海',
-            city: '普陀区',
-            address: '上海市普陀区金沙江路 1518 弄',
-            zip: 200333
-          },
-          {
-            date: '2016-05-06',
-            name: '王小虎',
-            province: '上海',
-            city: '普陀区',
-            address: '上海市普陀区金沙江路 1518 弄',
-            zip: 200333
-           },
-           {
-            date: '2016-05-07',
-            name: '王小虎',
-            province: '上海',
-            city: '普陀区',
-            address: '上海市普陀区金沙江路 1518 弄',
-            zip: 200333
+            date: '2016-05-03',
+            id: '我乱写',
+            source: '上海',
+            stem:'abababbababababab'
           }]
     }
   },
@@ -254,6 +198,14 @@ export default {
       background:#ffaa92;
       border-radius: 10px;
       color: #ffffff;
+    }
+    .button{
+      font-size: 16px;
+      padding: 10px;
+      margin:0;
+    }
+    .button:hover{
+      cursor: pointer;
     }
   }
   .bottom{
