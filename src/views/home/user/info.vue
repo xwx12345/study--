@@ -72,6 +72,8 @@ img{
   .picture{
     // background: #000;
     width: 30%;
+    display: flex;
+    justify-content: center;
     img{
       border: #fff solid 10px;
     }
@@ -132,6 +134,10 @@ img{
         font-size: 18px;
         letter-spacing: 2px;
         color: #fff;
+        transition: 1s;
+      }
+      button:hover{
+        background: #F2B1A4;
       }
     }
   }
