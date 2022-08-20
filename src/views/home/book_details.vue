@@ -1,6 +1,6 @@
 <template>
   <div class="pc-container">
-    
+    书籍详情
   </div>
 </template>
 

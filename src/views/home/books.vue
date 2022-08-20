@@ -1,6 +1,8 @@
 <template>
   <div class="pc-container">
-    <div class="o-header"></div>
+    <div class="o-header">
+      <router-link to="/bookDetails">对不起我们要试试这个跳转</router-link>
+    </div>
     <div class="books">
       <div class="binfo">
         <el-row :gutter="24" class="box">
