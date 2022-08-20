@@ -8,7 +8,10 @@
         <div class="info">
           <span>welcome</span>
           <h1>title</h1>
-          <span>随便说点啥随便说点叭叭叭叭叭叭baba啊八八八八阿布阿八八八八八八八阿八八八八八八八吧嗷嗷叭叭叭叭叭叭吧</span>
+          <span>
+            随便说点啥随便说点叭叭叭叭叭叭baba啊八八八八阿布阿八八八八八八八阿八八八八八八八吧嗷嗷叭叭叭叭叭叭吧
+          <router-link to="/">..More</router-link>
+          </span>
         </div>
       </div>
       <div class="left_bottom">
@@ -16,6 +19,7 @@
         <span>
           1231414我是乱写的后面随便按阿达v八点半v骄傲v啊是不是卡港口局啊v的vJava，
           的可靠的v阿达v绿卡女啊，的v啊的飞机奥巴马是v那
+          <router-link to="/">..More</router-link>
         </span>
       </div>
     </div>
@@ -76,7 +80,8 @@ export default {
 <style scoped lang="scss">
 .container{
   display: flex;
-  background: #f7ffff;
+  // background: #F4EAEA;
+  background: linear-gradient(120deg,#e8efff,#F3E8F0,#F4EAEA);
   padding-top: 10px;
   .left{
     width: 70%;
@@ -106,6 +111,11 @@ export default {
           font-size: 18px;
           letter-spacing: 1px;
           color: #4d7474;
+          a{
+            text-decoration: none;
+            color: #B8A8DA;
+            font-weight: 600;
+          }
         }
         h1{
           font-size: 36px;
@@ -131,6 +141,11 @@ export default {
         font-size: 16px;
         letter-spacing: 1px;
         color: #4d7474;
+        a{
+          text-decoration: none;
+          color: #B8A8DA;
+          font-weight: 600;
+        }
       }
     }
   }
@@ -159,6 +174,7 @@ export default {
         padding: 10px;
         display: flex;
         border-radius: 10px;
+        box-shadow:0px 0px 10px rgba(170,170,255,0.2);
         .picture{
           height: 100px;
           width: 100px;
