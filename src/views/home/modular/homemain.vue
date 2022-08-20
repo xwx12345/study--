@@ -96,7 +96,6 @@ export default {
   padding-top: 10px;
   .left{
     width: 70%;
-    border: #fff solid 1px;
     .left_top{
       background: #ffffff;
       display: flex;

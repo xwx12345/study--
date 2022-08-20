@@ -5,32 +5,50 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    userInfo: sessionStorage.getItem('userInfo')
+    user: sessionStorage.getItem('user'),
+    token:sessionStorage.getItem('token')
   },
   getters: {
-    userInfo(state) {
-      if (state.userInfo) {
-        return JSON.parse(state.userInfo)
-      }
-      else {
+    user(state) {
+      if (state.user) {
+        return JSON.parse(state.user)
+      } else {
         return null
       }
     },
+    token(state){
+      return state.token
+    }
   },
   mutations: {
-    SET_UserInfo(state, userinfo) {
-      state.userInfo = JSON.stringify(userinfo)
-      if (userinfo) {
-        sessionStorage.setItem('userInfo', JSON.stringify(userinfo))
+    SET_User(state, user) {
+      state.user = JSON.stringify(user)
+      if (user) {
+        sessionStorage.setItem('user', JSON.stringify(user))
+      } else {
+        sessionStorage.removeItem('user')
       }
-      else {
-        sessionStorage.removeItem('userInfo')
-      }
+      console.log(state.user)
+    },
+    SET_Token (state, token)
+    {
+      sessionStorage.setItem("token", token);
+    },
+    LOGOUT (state){
+      sessionStorage.clear();
+      state.user = {};
+      state.token = null
     }
   },
   actions: {
-    setUserInfo({ commit }, userinfo) {
-      commit('SET_UserInfo', userinfo)
+    setUser({ commit }, user) {
+      commit('SET_User', user)
+    },
+    setToken({ commit },token) {
+      commit('SET_Token',token)
+    },
+    logout({commit}) {
+      commit('LOGOUT')
     }
   },
   modules: {

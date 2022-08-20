@@ -133,12 +133,10 @@ export default {
     changeValue (title) {
       this.activeIndex = title.id
       this.item_selected = this.items[this.activeIndex - '1']
-      console.log(this.activeIndex)
     },
     handleSelect (title) {
       this.activeIndex = title.id
       this.item_selected = this.items[this.activeIndex - '1']
-      console.log(title.id)
     }
 
   },
@@ -155,7 +153,7 @@ export default {
   .container{
     width: calc(100vw - 80px);
     margin: 0 auto;
-    background: #eeedf6;
+    background: linear-gradient(120deg,#e8efff,#F3E8F0,#F4EAEA);
     .modular_title{
       display: flex;
       justify-content: space-between;

@@ -53,11 +53,7 @@ export default {
   margin: 0 auto;
   .main {
     background: rgb(222, 223, 251);
-    background: linear-gradient(
-      40deg,
-      rgba(222, 223, 251, 1) 0%,
-      rgba(255, 194, 220, 1) 100%
-    );
+    background: linear-gradient(40deg,#e8efff,#F3E8F0,#F4EAEA);
   }
 }
 </style>
