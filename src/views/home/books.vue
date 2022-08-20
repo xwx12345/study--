@@ -23,6 +23,7 @@
     </div>
     <div class="o-footer"></div>
   </div>
+  
 </template>
 
 <script>
