@@ -1,14 +1,17 @@
 <template>
   <div class="pc-container">
-    专家信息
+    <info></info>
   </div>
 </template>
 
 <script>
+import info from "../home/user/info.vue"
 export default {
+  components:{
+    info
+  },
   data () {
     return {
-
     }
   },
   methods: {
