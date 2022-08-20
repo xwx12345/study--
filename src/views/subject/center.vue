@@ -69,7 +69,7 @@ export default {
     }
     .right{
       width: 85%;
-      // background: #000;
+      background: linear-gradient(120deg,#e8efff,#F3E8F0,#F4EAEA);
     }
   }
 }

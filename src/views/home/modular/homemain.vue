@@ -3,23 +3,22 @@
     <div class="left">
       <div class="left_top">
         <div class="img">
-          <img src="../../../../public/feedback.png"/>
+          <img :src="main.img"/>
         </div>
         <div class="info">
           <span>welcome</span>
-          <h1>title</h1>
+          <h1>{{main.title}}</h1>
           <span>
-            随便说点啥随便说点叭叭叭叭叭叭baba啊八八八八阿布阿八八八八八八八阿八八八八八八八吧嗷嗷叭叭叭叭叭叭吧
-          <router-link to="/">..More</router-link>
+            {{main.info}}
+            <router-link to="/">..More</router-link>
           </span>
         </div>
       </div>
       <div class="left_bottom">
-        <h1>标题</h1>
+        <h1>{{sub.title}}</h1>
         <span>
-          1231414我是乱写的后面随便按阿达v八点半v骄傲v啊是不是卡港口局啊v的vJava，
-          的可靠的v阿达v绿卡女啊，的v啊的飞机奥巴马是v那
-          <router-link to="/">..More</router-link>
+        {{sub.info}}
+        <router-link to="/">..More</router-link>
         </span>
       </div>
     </div>
@@ -32,7 +31,10 @@
           <div class="picture">
             <img :src="item.img_info" />
           </div>
-          <span>{{item.text}}</span>
+          <span>
+          {{item.text}}<br />
+          <router-link to="/">..More</router-link>
+          </span>
         </div>
       </div>
     </div>
@@ -43,15 +45,24 @@
 export default {
   data () {
     return {
+      main:{
+        img:'..//..//..//..//public//feedback.png',
+        title:'title',
+        info:'随便说点啥随便说点叭叭叭叭叭叭baba啊八八八八阿布阿八八八八八八八阿八八八八八八八吧嗷嗷叭叭叭叭叭叭吧'
+      },
+      sub:{
+        title:'标题',
+        info:'1231414我是乱写的后面随便按阿达v八点半v骄傲v啊是不是卡港口局啊v的vJava，的可靠的v阿达v绿卡女啊，的v啊的飞机奥巴马是v那'
+      },
       info_list:[
         {
           id:1,
-          img_info:'..//..//..//..//public//feedback.png',
+          img_info:'..//..//..//..//public//test1.png',
           text:'我是1'
         },
         {
           id:2,
-          img_info:'',
+          img_info:'..//..//..//..//public//test2.png',
           text:'我是2'
         },
         {
@@ -118,7 +129,8 @@ export default {
           }
         }
         h1{
-          font-size: 36px;
+          font-size: 38px;
+          letter-spacing: 1px;
           margin-bottom: -20px;
         }
       }
@@ -174,7 +186,7 @@ export default {
         padding: 10px;
         display: flex;
         border-radius: 10px;
-        box-shadow:0px 0px 10px rgba(170,170,255,0.2);
+        box-shadow:0px 0px 10px rgba(170,170,255,0.3);
         .picture{
           height: 100px;
           width: 100px;
@@ -190,6 +202,15 @@ export default {
           font-size: 16px;
           font-weight: 700;
           color: #4d7474;
+          a{
+            text-decoration: none;
+            color: #B8A8DA;
+            font-weight: 600;
+            transition: 1s;
+          }
+          a:hover{
+            color: #ffb6a3;
+          }
         }
       }
     }
