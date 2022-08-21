@@ -47,16 +47,16 @@ export default {
       }
     },
     gotologin() {
-      this.$router.push("/login");
+      this.$router.push("/login")
     },
     gotouser() {
-      this.$router.push("/usercenter");
+      this.$router.push("/usercenter")
     },
     gotosubject() {
-      this.$router.push("/subject");
+      this.$router.push("/subject")
     },
     gotoadmin() {
-      // this.$router.push('/admin')
+      this.$router.push('/admin')
     }
   },
   mounted() {
