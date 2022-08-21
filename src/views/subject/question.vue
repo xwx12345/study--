@@ -76,12 +76,12 @@ export default {
       tableData1: [
         {
           date: '2016-05-03',
-          id: '我乱写',
+          id: '01',
           stem:'abababbababababab'
         },
         {
           date: '2016-05-03',
-          id: '我才不乱想',
+          id: '02',
           stem:'abababbababababab'
         },
         {
@@ -161,7 +161,10 @@ export default {
   methods: {
     Jump(data){
       console.log(data)
-      this.$router.push('/subject/answer')
+      this.$router.push({
+        path: "/subject/answer",
+        query: { id: data }
+      })
     }
   },
   mounted () {

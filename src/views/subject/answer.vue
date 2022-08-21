@@ -1,6 +1,10 @@
 <template>
   <div class="container">
     <div class="top">
+      <span>
+        <i class="el-icon-notebook-2"></i><br />
+        {{id}}
+      </span>
       <div class="stem">
         <i class="el-icon-s-promotion"></i>
         {{stem}}
@@ -32,6 +36,7 @@
 export default {
   data () {
     return {
+      id:'',
       answer:'',
       stem:'黑虎阿福怎么坐飞机'
     }
@@ -44,7 +49,7 @@ export default {
   mounted () {
   },
   created () {
-
+    this.id = this.$route.query.id;
   }
 }
 </script>
@@ -57,6 +62,13 @@ export default {
     background: rgba(255,255,255,0.5);
     display: flex;
     justify-content: center;
+    span{
+      display: inline-block;
+      // background-color: #9294BD;
+      font-weight: 700;
+      padding: 10px 0 0 5px;
+      color:#a2a4bd;
+    }
     .stem{
       // background: rgba(255,255,255,0.5);
       // border-radius: 10px;
