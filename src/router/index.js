@@ -106,6 +106,11 @@ const routes = [
         component: resolve => require(['@/views/subject/feedback'], resolve)
       },
       {
+        path: '/subject/question',
+        name: 'subjectQuestion',
+        component: resolve => require(['@/views/subject/question'], resolve)
+      },
+      {
         path: '/subject/answer',
         name: 'subjectAnswer',
         component: resolve => require(['@/views/subject/answer'], resolve)
