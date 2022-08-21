@@ -19,3 +19,23 @@ export function GetBook(data) {
         }
     })
 }
+
+export function TextSearchCourses(data) {
+    return request({
+        url: '/Query/QueryCourse',
+        method: 'GET',
+        params: {
+            text: data
+        }
+    })
+}
+
+export function GetCourse(data) {
+    return request({
+        url:'/Query/GetCourse',
+        method:'GET',
+        params:{
+            course_id:data
+        }
+    })
+}
