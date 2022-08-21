@@ -46,7 +46,7 @@ export default {
   data () {
     return {
       main:{
-        img:'..//..//..//..//public//feedback.png',
+        img:'..//..//..//..//public//poster.png',
         title:'title',
         info:'随便说点啥随便说点叭叭叭叭叭叭baba啊八八八八阿布阿八八八八八八八阿八八八八八八八吧嗷嗷叭叭叭叭叭叭吧'
       },
