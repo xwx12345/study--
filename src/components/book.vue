@@ -39,7 +39,7 @@ export default {
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
   display: flex;
-  width: 352px;
+  width: 350px;
   height: 270px;
   // top: -6px;
   // left: -1px;

@@ -1,26 +1,32 @@
 <template>
   <div class="container">
-    <div class="text">● {{ display }}</div>
+    <div class="text">
+      <div class="qtext"><span v-html="display" /></div>
+      <div class="atext"><span v-html="acontent" /></div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["keyword", "content"],
+  props: ["keyword", "qcontent", "acontent"],
   data() {
     return {
-      display: this.content,
+      display: this.qcontent,
     };
   },
-  mounted() {},
-  created() {
+  methods: {},
+  mounted() {
     if (this.keyword) {
-      this.display.replace(
-        new RegExp(this.keyword, "g"),
-        '<span class="keyword">${keyword}</span>'
+      // console.log(this.display);
+      this.display = this.display.replace(
+        new RegExp(this.keyword, "i"),
+        '<span style="color: goldenrod">' + this.keyword + "</span>"
       );
+      // console.log(this.display);
     }
   },
+  created() {},
 };
 </script>
 
@@ -30,13 +36,20 @@ export default {
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
   display: flex;
   width: auto;
-  height: 100px;
+  height: 120px;
   border-radius: 15px;
+  text-align: left;
   .text {
-    padding: 30px;
-    font-size: 20px;
-    .keyword {
-      color: goldenrod;
+    height: 20%;
+    width: 100%;
+    padding: 30px 30px 0px;
+    .qtext {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .atext {
+      padding: 15px 0 0 0;
+      font-size: 18px;
     }
   }
 }
