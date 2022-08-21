@@ -1,9 +1,9 @@
 <template>
 <el-container>
-  <left></left>
+  <el-header><chooseMajor></chooseMajor></el-header>
   <el-main class="pc-container">
     <div class="o-header">
-      <router-link to="/bookDetails">对不起我们要试试这个跳转</router-link>
+      <!--<router-link to="/bookDetails">对不起我们要试试这个跳转</router-link>-->
     </div>
     <div class="books">
       <div class="binfo">
@@ -32,11 +32,11 @@
 
 <script>
 import book from "../../components/book.vue";
-import left from "../../components/left.vue";
+import chooseMajor from "../../components/chooseMajor.vue";
 export default {
   components: {
     book,
-    left,
+    chooseMajor,
 },
   data() {
     return {
@@ -139,6 +139,7 @@ export default {
         // background: #ffaa7f;
         // width: 100%;
           .el-col {
+            
           }
       }
     }

@@ -1,6 +1,6 @@
 <template>
 <el-container>
-  <left></left>
+  <el-header><chooseMajor></chooseMajor></el-header>
   <el-main class="pc-container">
     <div class="o-header"></div>
     <div class="courses">
@@ -27,12 +27,12 @@
 
 <script>
 import course from "../../components/course.vue";
-import left from "../../components/left.vue"
+import chooseMajor from "../../components/chooseMajor.vue";
 export default {
   components: {
     course,
-    left,
-  },
+    chooseMajor,
+},
   data() {
     return {
       content: "1",
