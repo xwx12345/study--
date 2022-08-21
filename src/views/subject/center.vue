@@ -22,7 +22,7 @@
             <i class="el-icon-question"></i>
             反馈中心
           </el-menu-item>
-          <el-menu-item index="/subject/answer">
+          <el-menu-item index="/subject/question">
             <i class="el-icon-s-order"></i>
             答题中心
           </el-menu-item>
