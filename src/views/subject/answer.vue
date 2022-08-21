@@ -33,6 +33,7 @@
 </template>
 
 <script>
+  import {getQuestion,answerQuestion} from '../../api/subject.js'
 export default {
   data () {
     return {
@@ -44,12 +45,39 @@ export default {
   methods: {
     submit(answer){
       console.log(answer)
+      answerQuestion(
+        this.id,
+        this.$store.getters.user.user_id,
+        {answer_content:answer}
+      ).then(r=>{
+        if(r.header.code === 0){
+          this.$message(r.header.message)
+          console.log('回答成功')
+        }
+        else{
+          this.$message.error(r.header.message)
+          return
+        }
+      }).catch((err)=>{
+        console.log(err)
+      })
     }
   },
   mounted () {
   },
   created () {
     this.id = this.$route.query.id;
+    getQuestion(this.id).then(r=>{
+      if(r.header.code === 0){
+        this.stem=r.data.question_stem
+      }
+      else{
+        this.$message.error(r.header.message)
+        return
+      }
+    }).catch((err)=>{
+        console.log(err)
+      })
   }
 }
 </script>

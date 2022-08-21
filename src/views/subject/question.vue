@@ -3,7 +3,7 @@
     <div class="top">
       <span>待回答</span>
       <el-table
-          :data="tableData1"
+          :data="unfinishedList"
           class="table"
           style="width: 80%"
           max-height="400">
@@ -14,12 +14,12 @@
             width="50">
           </el-table-column>
           <el-table-column
-            prop="date"
+            prop="post_time"
             label="日期"
             width="150">
           </el-table-column>
           <el-table-column
-            prop="stem"
+            prop="question_stem"
             label="题干"
             width="400">
           </el-table-column>
@@ -28,7 +28,7 @@
             label="题目编号"
             width="180">
             <template slot-scope="scope">
-              <span @click="Jump(scope.row.id)" class="button">{{scope.row.id}}</span>
+              <span @click="Jump(scope.row.question_id)" class="button">{{scope.row.question_id}}</span>
             </template>
           </el-table-column>
         </el-table>
@@ -36,7 +36,7 @@
     <div class="bottom">
       <span>已回答</span>
       <el-table
-          :data="tableData2"
+          :data="finishedList"
           class="table"
           style="width: 80%"
           max-height="400">
@@ -47,12 +47,12 @@
             width="50">
           </el-table-column>
           <el-table-column
-            prop="date"
-            label="日期"
+            prop="post_time"
+            label="时间"
             width="150">
           </el-table-column>
           <el-table-column
-            prop="stem"
+            prop="question_stem"
             label="题干"
             width="400">
           </el-table-column>
@@ -61,7 +61,7 @@
             label="题目编号"
             width="180">
             <template slot-scope="scope">
-              <span @click="Jump(scope.row.id)" class="button">{{scope.row.id}}</span>
+              <span @click="Jump(scope.row.question_id)" class="button">{{scope.row.question_id}}</span>
             </template>
           </el-table-column>
         </el-table>
@@ -70,97 +70,16 @@
 </template>
 
 <script>
+import {getExpertQuestionList,getQuestion} from '../../api/subject.js'
 export default {
   data () {
     return {
-      tableData1: [
-        {
-          date: '2016-05-03',
-          id: '01',
-          stem:'abababbababababab'
-        },
-        {
-          date: '2016-05-03',
-          id: '02',
-          stem:'abababbababababab'
-        },
-        {
-          date: '2016-05-03',
-          id: '我乱写',
-          stem:'abababbababababab'
-        },
-        {
-          date: '2016-05-03',
-          id: '我乱写',
-          source: '上海',
-          stem:'abababbababababab'
-         },
-         {
-           date: '2016-05-03',
-           id: '我乱写',
-           source: '上海',
-           stem:'abababbababababab'
-          },
-          {
-            date: '2016-05-03',
-            id: '我乱写',
-            source: '上海',
-            stem:'abababbababababab'
-          },
-          {
-            date: '2016-05-03',
-            id: '我乱写',
-            source: '上海',
-            stem:'abababbababababab'
-          }],
-      tableData2: [
-        {
-          date: '2016-05-03',
-          id: '我乱写',
-          source: '上海',
-          stem:'abababbababababab'
-        },
-        {
-          date: '2016-05-03',
-          id: '我乱写',
-          source: '上海',
-          stem:'abababbababababab'
-        },
-        {
-          date: '2016-05-03',
-          id: '我乱写',
-          source: '上海',
-          stem:'abababbababababab'
-        },
-        {
-          date: '2016-05-03',
-          id: '我乱写',
-          source: '上海',
-          stem:'abababbababababab'
-         },
-         {
-           date: '2016-05-03',
-           id: '我乱写',
-           source: '上海',
-           stem:'abababbababababab'
-          },
-          {
-            date: '2016-05-03',
-            id: '我乱写',
-            source: '上海',
-            stem:'abababbababababab'
-          },
-          {
-            date: '2016-05-03',
-            id: '我乱写',
-            source: '上海',
-            stem:'abababbababababab'
-          }]
+      unfinishedList:[],
+      finishedList:[]
     }
   },
   methods: {
     Jump(data){
-      console.log(data)
       this.$router.push({
         path: "/subject/answer",
         query: { id: data }
@@ -170,7 +89,45 @@ export default {
   mounted () {
   },
   created () {
-
+    getExpertQuestionList(this.$store.getters.user.user_id).then((r)=>{
+        if(r.header.code === -1){
+          this.$message.error(r.header.message)
+          return
+        }
+        else{
+          var result=r.data
+          var finished=result.finishedIDList
+          var unfinished=result.unfinishedIDList
+          for(var i=0;i<finished.length;i++){
+            var j=0;
+            getQuestion(parseInt(finished[i])).then((r1)=>{
+              if(r1.header.code === 0){
+                this.finishedList.push(r1.data)
+                j++;
+              }
+              else{
+                this.$message.error(r1.header.message)
+                return
+              }
+            })
+          }
+          for(var i=0;i<unfinished.length;i++){
+            var j=0;
+            getQuestion(parseInt(unfinished[i])).then((r2)=>{
+              if(r2.header.code === 0){
+                this.unfinishedList.push(r2.data)
+                j++;
+              }
+              else{
+                this.$message.error(r2.header.message)
+                return
+              }
+            })
+          }
+        }
+      }).catch((err)=>{
+        console.log(err)
+      })
   }
 }
 </script>

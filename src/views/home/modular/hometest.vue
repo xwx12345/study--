@@ -81,7 +81,11 @@ export default {
             sub_info: '副文本1',
             img_info: '..//..//..//..//public//feedback.png'
           },
-          { id: 2, main_info: '主文本a', sub_info: '副文本a' },
+          { id: 2,
+            main_info: '主文本a',
+            sub_info: '副文本a',
+            img_info: '..//..//..//..//public//poster.png'
+            },
           { id: 3, main_info: '主文本1', sub_info: '副文本1' },
           { id: 4, main_info: '主文本1', sub_info: '副文本1' },
           { id: 5, main_info: '主文本1', sub_info: '副文本1' },
@@ -270,8 +274,8 @@ export default {
       .small_cards{
         width:75%;
         .img_box{
-          height: 100px;
-          width: 240px;
+          height: 150px;
+          width: 200px;
           margin:0px auto;
           padding:0 0 15px 0;
           img{
