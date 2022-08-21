@@ -52,7 +52,7 @@ export default {
     margin: auto 10px;
     padding: 0;
     display: flex;
-    width: 160px;
+    width: 180px;
     height: 240px;
     top: 9px;
     left: 15px;

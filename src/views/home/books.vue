@@ -1,18 +1,6 @@
 <template>
 <el-container>
-  <el-aside :width="isCollapse ? '65px' : '100px'">
-      <div class="toggle-button" @click="toggleCollapse()">|||</div>
-      <el-menu background-color="#B8A8DA" text-color="#fff" 
-        active-text-color="#409BFF" :unique-opened="true" 
-        :collapse="isCollapse" :collapse-transition="false">
-          <el-submenu :index="item.id+' '" v-for="item in menuList" :key="item.id">
-            <template #title>
-              <el-icon :class="iconsObj[item.id]"></el-icon>
-              <span>{{item.authName}}</span>
-            </template>
-          </el-submenu>
-      </el-menu>
-  </el-aside>
+  <left></left>
   <el-main class="pc-container">
     <div class="o-header">
       <router-link to="/bookDetails">对不起我们要试试这个跳转</router-link>
@@ -44,10 +32,12 @@
 
 <script>
 import book from "../../components/book.vue";
+import left from "../../components/left.vue";
 export default {
   components: {
     book,
-  },
+    left,
+},
   data() {
     return {
       isCollapse: true,
@@ -131,22 +121,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.toggle-button{
-    background-color: #4A5064;//背景色(浅灰)
-    font-size: 10px;//字体大小10像素
-    line-height: 24px;//行高24像素
-    color: #fff;//字体颜色白色
-    text-align: center;//字体居中
-    letter-spacing: 0.2em;//字体之间的距离
-    cursor: pointer;//鼠标的形状（手形）
-  }
 .pc-container {
-
   .o-header {
-    height: 25px;
+    height: 2px;
   }
   .books {
-    width: 96%;
+    width: 100%;
     // padding: 20px;
     margin: 0 auto;
     background: rgb(238, 237, 246);
@@ -158,11 +138,13 @@ export default {
       .box {
         // background: #ffaa7f;
         // width: 100%;
+          .el-col {
+          }
       }
     }
   }
   .o-footer {
-    height: 25px;
+    height: 2px;
   }
 }
 </style>
