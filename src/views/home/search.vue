@@ -1,6 +1,6 @@
 <template>
   <div class="pc-container">
-    搜索页面 搜索的内容是{{ content }}
+    <!-- 搜索页面 搜索的内容是{{ content }} -->
     <div class="bigbox">
       <div class="btext">
         <p>书籍</p>
@@ -34,11 +34,13 @@
     <div class="bigbox">
       <div class="btext">
         <p>题目</p>
-        <question
-          qcontent="这里是题目的内容"
-          keyword="内容"
-          acontent="这里是答案的内容"
-        ></question>
+        <div class="qinfo" v-for="(item, index) in QuestionsList" :key="index">
+          <question
+            :qcontent="item.qtext"
+            :keyword="content"
+            :acontent="item.atext"
+          ></question>
+        </div>
       </div>
     </div>
   </div>
@@ -52,7 +54,10 @@ import {
   TextSearchBooks,
   GetBook,
   TextSearchCourses,
-  GetCourse
+  GetCourse,
+  TextSearchQuestions,
+  GetQuestion,
+  GetAnswer,
 } from "../../api/query.js";
 export default {
   components: {
@@ -131,6 +136,7 @@ export default {
         //   img_url: "",
         // },
       ],
+      QuestionsList: [],
     };
   },
   methods: {},
@@ -170,12 +176,30 @@ export default {
     TextSearchCourses(this.content).then((r) =>
       r.data.idList.forEach((item, index) => {
         console.log(item, index);
-        GetCourse(item).then((cr)=>{
+        GetCourse(item).then((cr) => {
+          console.log(cr.data.pic_url)
           this.CoursesList.push({
-            cname:cr.data.course_name,
-            
-          })
-        })
+            cname: cr.data.course_name,
+            img_url: cr.data.pic_url,
+          });
+        });
+      })
+    );
+    TextSearchQuestions(this.content).then((r) =>
+      r.data.idList.forEach((item, index) => {
+        console.log(item, index);
+        GetQuestion(item).then((qr) => {
+          this.QuestionsList.push({
+            qtext: qr.data.question_stem,
+            atext: "现在还没有回答~",
+          });
+          if (qr.data.answer_id_list[0]) {
+            GetAnswer(item.data.answer_id_list[0]).then((ar) => {
+              this.QuestionsList[index].atext = ar.data.answer_content;
+            });
+          }
+          console.log(this.QuestionsList[0]);
+        });
       })
     );
   },
@@ -183,32 +207,35 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.bigbox {
-  width: 96%;
-  // padding: 20px;
-  margin: 0 auto;
-  margin-top: 20px;
-  /* 白色透明 */
-  background: rgba(255, 255, 255, 0.5);
-  opacity: 0.8;
-  /* 阴影效果 */
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 14px;
-  display: flex;
-  flex-direction: column;
-  .btext {
-    margin: 3%;
-    font-size: 40px;
-    font-weight: 400;
-    line-height: 18px;
-    letter-spacing: 0px;
-  }
-  .info {
+.pc-container {
+  padding: 2%;
+  .bigbox {
     width: 96%;
-    display: grid;
-    justify-content: space-between;
-    grid-template-columns: repeat(auto-fill, 300px);
-    grid-gap: 20px;
+    // padding: 20px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    /* 白色透明 */
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0.8;
+    /* 阴影效果 */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    .btext {
+      margin: 3%;
+      font-size: 40px;
+      font-weight: 400;
+      line-height: 18px;
+      letter-spacing: 0px;
+    }
+    .info {
+      width: 96%;
+      display: grid;
+      justify-content: space-between;
+      grid-template-columns: repeat(auto-fill, 300px);
+      grid-gap: 20px;
+    }
   }
 }
 </style>

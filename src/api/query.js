@@ -32,10 +32,40 @@ export function TextSearchCourses(data) {
 
 export function GetCourse(data) {
     return request({
-        url:'/Query/GetCourse',
+        url: '/Query/GetCourse',
+        method: 'GET',
+        params: {
+            course_id: data
+        }
+    })
+}
+
+export function TextSearchQuestions(data) {
+    return request({
+        url: '/Query/QueryQuestion',
+        method: 'GET',
+        params: {
+            text: data
+        }
+    })
+}
+
+export function GetQuestion(data) {
+    return request({
+        url: '/Query/GetQuestion',
+        method: 'GET',
+        params: {
+            question_id: data
+        }
+    })
+}
+
+export function GetAnswer(data) {
+    return request({
+        url:'/Query/GetAnswer',
         method:'GET',
         params:{
-            course_id:data
+            answer_id:data
         }
     })
 }

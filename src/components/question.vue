@@ -20,7 +20,7 @@ export default {
     if (this.keyword) {
       // console.log(this.display);
       this.display = this.display.replace(
-        new RegExp(this.keyword, "i"),
+        new RegExp(this.keyword, "ig"),
         '<span style="color: goldenrod">' + this.keyword + "</span>"
       );
       // console.log(this.display);
@@ -32,6 +32,7 @@ export default {
 
 <style scoped lang="scss">
 .container {
+  margin: 20px 0 0 0;
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
   display: flex;
