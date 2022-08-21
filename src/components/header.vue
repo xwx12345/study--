@@ -4,11 +4,10 @@
       <img src="../../public/logo.png" />
     </div>
     <div class="search">
-      <input type="text" placeholder=" 搜索关键词" v-model="searchContent" />
+      <input type="text" placeholder=" 搜索关键词" v-model="searchContent" @keyup.enter="search()" />
       <button @click="search()">
         <i class="el-icon-search"></i>
       </button>
-      </el-input>
     </div>
     <div class="jump">
       <button @click="gotologin()">

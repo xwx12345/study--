@@ -27,17 +27,20 @@
     <div class="bigbox">
       <div class="btext">
         <p>题目</p>
+        <question content="这里是题目的内容" keyword="内容"></question>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import book from "../../components/book.vue";
-import {TextSearchBooks,GetBook} from "../../api/query.js";
+import book from "../../components/book.vue"
+import question from "../../components/question.vue"
+import {TextSearchBooks,GetBook} from "../../api/query.js"
 export default {
   components: {
     book,
+    question
   },
   data() {
     return {
@@ -102,8 +105,8 @@ export default {
     TextSearchBooks(
       this.content,
     ).then((r)=>
-        r.data.idList.forEach(item => {
-            console.log(item)
+        r.data.idList.forEach((item,index) => {
+            console.log(item,index)
             GetBook(item).then((br)=>{
                 console.log(br.data);
                 this.BooksList.push(
@@ -112,10 +115,13 @@ export default {
                         bname:br.data.book_name,
                         author:br.data.author,
                         publisher:br.data.publisher,
-                        pub_year:br.data.publish_time,
+                        pub_year:br.data.publish_time.slice(0,4),
                         img_url:br.data.pic_url
                     }
                 )
+            }).catch((err)=>{
+              console.log(err);
+              location.reload();
             })
         })
     );
