@@ -16,7 +16,7 @@
         <el-input v-model="userinfo.major" ></el-input> 
       </el-form-item>
       <el-form-item>  
-        <el-button tpye="primary" @click="">保存</el-button>  
+        <el-button type="primary" @click="">保存</el-button>  
       </el-form-item>
     </el-form>
   

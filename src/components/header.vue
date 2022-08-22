@@ -32,13 +32,13 @@ export default {
   data() {
     return {
       content: "",
-<<<<<<< HEAD
+
       // 这个实际上要从store里面取数据,现在没考虑store所以先写死
       usertype: '1',
-=======
+
       // 已经可以变化啦哈哈
       usertype: 0,
->>>>>>> 65b31416918ed8b97100ea754a8039b43bcbb998
+
       searchContent:""
     };
   },
