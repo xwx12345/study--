@@ -1,8 +1,6 @@
 <template>
   <div class="pc-container">
-    <div class="detail">
-      
-    </div>
+   
   </div>
 </template>
 

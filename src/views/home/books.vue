@@ -26,13 +26,13 @@
       </div>
     </div>
     <div class="o-footer"></div>
-<<<<<<< HEAD
-  </div>
+
+ 
   
-=======
+
   </el-main>
 </el-container>
->>>>>>> a07b3d3e1d85222e48ac874ed238926e15e66128
+
 </template>
 
 <script>
