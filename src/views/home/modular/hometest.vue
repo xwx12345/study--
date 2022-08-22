@@ -274,7 +274,7 @@ export default {
       .small_cards{
         width:75%;
         .img_box{
-          height: 150px;
+          height: 120px;
           width: 200px;
           margin:0px auto;
           padding:0 0 15px 0;
