@@ -1,5 +1,7 @@
 <template>
-  <div class="pc-container">
+<el-container>
+  <el-header><chooseMajor></chooseMajor></el-header>
+  <el-main class="pc-container">
     <div class="o-header"></div>
     <div class="courses">
       <div class="cinfo">
@@ -19,15 +21,18 @@
       </div>
     </div>
     <div class="o-footer"></div>
-  </div>
+  </el-main>
+</el-container>
 </template>
 
 <script>
 import course from "../../components/course.vue";
+import chooseMajor from "../../components/chooseMajor.vue";
 export default {
   components: {
     course,
-  },
+    chooseMajor,
+},
   data() {
     return {
       content: "1",
@@ -74,10 +79,10 @@ export default {
 <style scoped lang="scss">
 .pc-container {
   .o-header {
-    height: 25px;
+    height: 2px;
   }
   .courses {
-    width: 96%;
+    width: 99%;
     // padding: 20px;
     margin: 0 auto;
     background: rgb(238, 237, 246);
@@ -93,7 +98,7 @@ export default {
     }
   }
   .o-footer {
-    height: 25px;
+    height: 2px;
   }
 }
 </style>

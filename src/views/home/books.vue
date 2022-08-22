@@ -1,7 +1,9 @@
 <template>
-  <div class="pc-container">
+<el-container>
+  <el-header><chooseMajor></chooseMajor></el-header>
+  <el-main class="pc-container">
     <div class="o-header">
-      <router-link to="/bookDetails">对不起我们要试试这个跳转</router-link>
+      <!--<router-link to="/bookDetails">对不起我们要试试这个跳转</router-link>-->
     </div>
     <div class="books">
       <div class="binfo">
@@ -24,19 +26,41 @@
       </div>
     </div>
     <div class="o-footer"></div>
+<<<<<<< HEAD
   </div>
   
+=======
+  </el-main>
+</el-container>
+>>>>>>> a07b3d3e1d85222e48ac874ed238926e15e66128
 </template>
 
 <script>
 import book from "../../components/book.vue";
+import chooseMajor from "../../components/chooseMajor.vue";
 export default {
   components: {
     book,
-  },
+    chooseMajor,
+},
   data() {
     return {
+      isCollapse: true,
       content: "1",
+      menuList: [
+        {
+          id: 1,
+          authName: "Xjx"
+        },
+        {
+          id: 2,
+          authName: "Xjx"
+        }
+      ],
+      iconsObj: {
+        1 : 'el-icon-user',
+        2 : 'el-icon-user-solid',
+      },
       BooksList: [
         {
           isbn: "001",
@@ -81,7 +105,11 @@ export default {
       ],
     };
   },
-  methods: {},
+  methods: {
+    toggleCollapse() {
+      this.isCollapse = !this.isCollapse;
+    },
+  },
   mounted() {},
   watch: {
     $route(to, from) {
@@ -100,10 +128,10 @@ export default {
 <style scoped lang="scss">
 .pc-container {
   .o-header {
-    height: 25px;
+    height: 2px;
   }
   .books {
-    width: 96%;
+    width: 100%;
     // padding: 20px;
     margin: 0 auto;
     background: rgb(238, 237, 246);
@@ -115,11 +143,14 @@ export default {
       .box {
         // background: #ffaa7f;
         // width: 100%;
+          .el-col {
+            
+          }
       }
     }
   }
   .o-footer {
-    height: 25px;
+    height: 2px;
   }
 }
 </style>

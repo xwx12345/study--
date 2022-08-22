@@ -4,11 +4,10 @@
       <img src="../../public/logo.png" />
     </div>
     <div class="search">
-      <input type="text" placeholder=" 搜索关键词" v-model="searchContent" />
+      <input type="text" placeholder=" 搜索关键词" v-model="searchContent" @keyup.enter="search()" />
       <button @click="search()">
         <i class="el-icon-search"></i>
       </button>
-      </el-input>
     </div>
     <div class="jump">
       <button @click="gotologin()">
@@ -53,16 +52,16 @@ export default {
       }
     },
     gotologin() {
-      this.$router.push("/login");
+      this.$router.push("/login")
     },
     gotouser() {
-      this.$router.push("/usercenter");
+      this.$router.push("/usercenter")
     },
     gotosubject() {
-      this.$router.push("/subject");
+      this.$router.push("/subject")
     },
     gotoadmin() {
-      // this.$router.push('/admin')
+      this.$router.push('/admin')
     }
   },
   mounted() {

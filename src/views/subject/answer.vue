@@ -1,233 +1,154 @@
 <template>
   <div class="container">
     <div class="top">
-      <span>待回答</span>
-      <el-table
-          :data="tableData1"
-          class="table"
-          style="width: 80%"
-          max-height="400">
-          <el-table-column
-            fixed
-            label="序号"
-            type="index"
-            width="50">
-          </el-table-column>
-          <el-table-column
-            prop="date"
-            label="日期"
-            width="150">
-          </el-table-column>
-          <el-table-column
-            prop="source"
-            label="来源"
-            width="200">
-          </el-table-column>
-          <el-table-column
-            prop="stem"
-            label="题干"
-            width="400">
-          </el-table-column>
-          <el-table-column
-            fixed="right"
-            label="题目编号"
-            width="180">
-            <template slot-scope="scope">
-              <span @click="Jump(scope.row.id)" class="button">{{scope.row.id}}</span>
-            </template>
-          </el-table-column>
-        </el-table>
+      <span>
+        <i class="el-icon-notebook-2"></i><br />
+        {{id}}
+      </span>
+      <div class="stem">
+        <i class="el-icon-s-promotion"></i>
+        {{stem}}
+      </div>
     </div>
     <div class="bottom">
-      <span>已回答</span>
-      <el-table
-          :data="tableData2"
-          class="table"
-          style="width: 80%"
-          max-height="400">
-          <el-table-column
-            fixed
-            label="序号"
-            type="index"
-            width="50">
-          </el-table-column>
-          <el-table-column
-            prop="date"
-            label="日期"
-            width="150">
-          </el-table-column>
-          <el-table-column
-            prop="source"
-            label="来源"
-            width="200">
-          </el-table-column>
-          <el-table-column
-            prop="stem"
-            label="题干"
-            width="400">
-          </el-table-column>
-          <el-table-column
-            fixed="right"
-            label="题目编号"
-            width="180">
-            <template slot-scope="scope">
-              <span @click="Jump(scope.row.id)" class="button">{{scope.row.id}}</span>
-            </template>
-          </el-table-column>
-        </el-table>
+      <div class="up">
+        <span>回答</span>
+      </div>
+      <div class="input">
+        <el-input
+          type="textarea"
+          placeholder="请输入回答"
+          :autosize="{ minRows: 16}"
+          v-model="answer"
+          maxlength="800"
+          show-word-limit
+        >
+        </el-input>
+      </div>
+      <div class="button">
+        <button @click="submit(answer)">submit</button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+  import {getQuestion,answerQuestion} from '../../api/subject.js'
 export default {
   data () {
     return {
-      tableData1: [
-        {
-          date: '2016-05-03',
-          id: '我乱写',
-          source: '《上海》',
-          stem:'abababbababababab'
-        },
-        {
-          date: '2016-05-03',
-          id: '我才不乱想',
-          source: '《上海？》',
-          stem:'abababbababababab'
-        },
-        {
-          date: '2016-05-03',
-          id: '我乱写',
-          source: '上海',
-          stem:'abababbababababab'
-        },
-        {
-          date: '2016-05-03',
-          id: '我乱写',
-          source: '上海',
-          stem:'abababbababababab'
-         },
-         {
-           date: '2016-05-03',
-           id: '我乱写',
-           source: '上海',
-           stem:'abababbababababab'
-          },
-          {
-            date: '2016-05-03',
-            id: '我乱写',
-            source: '上海',
-            stem:'abababbababababab'
-          },
-          {
-            date: '2016-05-03',
-            id: '我乱写',
-            source: '上海',
-            stem:'abababbababababab'
-          }],
-      tableData2: [
-        {
-          date: '2016-05-03',
-          id: '我乱写',
-          source: '上海',
-          stem:'abababbababababab'
-        },
-        {
-          date: '2016-05-03',
-          id: '我乱写',
-          source: '上海',
-          stem:'abababbababababab'
-        },
-        {
-          date: '2016-05-03',
-          id: '我乱写',
-          source: '上海',
-          stem:'abababbababababab'
-        },
-        {
-          date: '2016-05-03',
-          id: '我乱写',
-          source: '上海',
-          stem:'abababbababababab'
-         },
-         {
-           date: '2016-05-03',
-           id: '我乱写',
-           source: '上海',
-           stem:'abababbababababab'
-          },
-          {
-            date: '2016-05-03',
-            id: '我乱写',
-            source: '上海',
-            stem:'abababbababababab'
-          },
-          {
-            date: '2016-05-03',
-            id: '我乱写',
-            source: '上海',
-            stem:'abababbababababab'
-          }]
+      id:'',
+      answer:'',
+      stem:'黑虎阿福怎么坐飞机'
     }
   },
   methods: {
-    Jump(data){
-      console.log(data)
+    submit(answer){
+      console.log(answer)
+      answerQuestion(
+        this.id,
+        this.$store.getters.user.user_id,
+        {answer_content:answer}
+      ).then(r=>{
+        if(r.header.code === 0){
+          this.$message(r.header.message)
+          console.log('回答成功')
+        }
+        else{
+          this.$message.error(r.header.message)
+          return
+        }
+      }).catch((err)=>{
+        console.log(err)
+      })
     }
   },
   mounted () {
   },
   created () {
-
+    this.id = this.$route.query.id;
+    getQuestion(this.id).then(r=>{
+      if(r.header.code === 0){
+        this.stem=r.data.question_stem
+      }
+      else{
+        this.$message.error(r.header.message)
+        return
+      }
+    }).catch((err)=>{
+        console.log(err)
+      })
   }
 }
 </script>
 
 <style scoped lang="scss">
 .container{
+  width: 100%;
+  // height: calc(100vh - 80px);
   .top{
-    margin: 10px;
+    background: rgba(255,255,255,0.5);
+    display: flex;
+    justify-content: center;
     span{
       display: inline-block;
-      font-size: 20px;
-      letter-spacing: 1px;
-      font-weight: 600;
-      padding: 12px;
-      margin: 10px;
-      background:#ffaa92;
-      border-radius: 10px;
-      color: #ffffff;
+      // background-color: #9294BD;
+      font-weight: 700;
+      padding: 10px 0 0 5px;
+      color:#a2a4bd;
     }
-    .button{
-      font-size: 16px;
+    .stem{
+      // background: rgba(255,255,255,0.5);
+      // border-radius: 10px;
+      width: 90%;
       padding: 10px;
-      margin:0;
-    }
-    .button:hover{
-      cursor: pointer;
+      margin: 30px;
+      font-size: 18px;
     }
   }
   .bottom{
+    background-color: rgba(255,255,255,0.3);
     margin: 10px;
-    span{
-      display: inline-block;
-      font-size: 20px;
-      letter-spacing: 1px;
-      font-weight: 600;
-      padding: 12px;
-      margin: 10px;
-      background:#aaaaff;
-      border-radius: 10px;
-      color: #ffffff;
+    border-radius: 10px;
+    .up{
+      width: 80%;
+      margin: 0 auto;
+      span{
+        display: inline-block;
+        padding: 10px;
+        margin: 10px;
+        background:linear-gradient(90deg,#aaaaff,#a2c3ff) ;
+        border-radius: 10px;
+        font-weight: 600;
+        color: #fff;
+        letter-spacing: 4px;
+        // border-bottom: #aaaaff dotted 4px;
+      }
+    }
+    .input{
+      width: 80%;
+      margin: 0 auto;
     }
     .button{
-      font-size: 16px;
-      padding: 10px;
-      margin:0;
-    }
-    .button:hover{
-      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      button{
+        width:20%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        outline: none;
+        border: none;
+        background: #9294BD;
+        border-radius: 8px;
+        padding: 13px;
+        font-size: 18px;
+        letter-spacing: 2px;
+        color: #fff;
+        transition: 2s;
+      }
+      button:hover{
+        background: #BAB1D4;
+      }
     }
   }
 }

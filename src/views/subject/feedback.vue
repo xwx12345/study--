@@ -1,16 +1,15 @@
 <template>
   <div class="container">
-    <div class="box">
-      <img  src="../../../public/feedback.png"/>
-      <div class="write">
-        写东西
-      </div>
-    </div>
+    <feedback></feedback>
   </div>
 </template>
 
 <script>
+import feedback from "../home/user/feedback.vue"
 export default {
+  components:{
+    feedback
+  },
   data () {
     return {
 
@@ -29,27 +28,6 @@ export default {
 
 <style scoped lang="scss">
 .container{
-  display: flex;
-  justify-content: center;
-  .box{
-    position: relative;
-    margin-top: 10px;
-    margin-left: 10px;
-    width: 700px;
-    height: 700px;
-    img{
-      width: 100%;
-      height: 100%;
-    }
-    .write{
-      position: absolute;
-      top: 100px;
-      left: 50%;
-      margin-left: -250px;
-      width: 500px;
-      height: 500px;
-      background: rgba(255,255,255,0.8);
-    }
-  }
+  width: 100%;
 }
 </style>
