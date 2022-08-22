@@ -29,3 +29,27 @@ export function Test(){
         method:'POST'
     })
 }
+
+export function getInfo(data){
+    return request({
+        url:'/Personal/GetPersonalInformation',
+        method:'GET',
+        params:{
+            user_id:data
+        }
+    })
+}
+
+export function saveInfo(data,id){
+    let param = new URLSearchParams(data);
+    console.log('paras', param);
+    console.log('data', data);
+    return request({
+        url:'/Personal/SetPersonalInformation',
+        method:'POST',
+        params:{
+            user_id:id
+        },
+        data:param
+    })
+}

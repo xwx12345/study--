@@ -1,10 +1,4 @@
 <template>
-
- 
-    
-    
-     
-
   <div class="container">
     <div class="picture">
       <img src="../../../../public/userphoto.png" width="200px" height="200px">
@@ -18,6 +12,9 @@
           <span>{{userinfo.tel}}</span>
         </div>
         <div class="form">
+          <span>用户名:</span>
+          <input v-model="userinfo.username"/>
+          <br>
           <span>学校:</span>
           <input v-model="userinfo.school"/>
           <br />
@@ -34,14 +31,16 @@
 </template>
 
 <script>
+import { getInfo } from '@/api/user';
+import {saveInfo} from'@/api/user';
 export default {
   data () {
     return {
       userinfo:{
-        username:'我是用户名',
-        major:'我是专业',
-        tel:'我是电话',
-        school:'我是学校'
+        username:'',
+        major:'',
+        tel:'',
+        school:''
       }
     }
   },
@@ -49,12 +48,45 @@ export default {
     save(userinfo){
       console.log(userinfo.major)
       console.log(userinfo.school)
+      saveInfo({
+        major_id:userinfo.major,
+        school:userinfo.school,
+        user_name:userinfo.username
+      },this.$store.getters.user.user_id).then((r)=>{
+        if(r.header.code === -1){
+          this.$message.error(r.header.message)
+          return
+        }
+        else{
+          this.$message('您已成功保存！')
+
+        }
+      }).catch((err)=>{
+      console.log(err)
+    })
     }
   },
   mounted () {
   },
   created () {
-
+    
+    getInfo(this.$store.getters.user.user_id).then(r=>{
+       if(r.header.code === -1){
+          this.$message.error(r.header.message)
+          return
+        }
+        else{
+          console.log(r);
+          this.userinfo.username=r.personalInformation.user_name;
+          this.userinfo.school=r.personalInformation.school;
+          this.userinfo.major=r.personalInformation.major_name;
+          this.userinfo.tel=r.personalInformation.phone_number;
+        }
+    }).catch((err)=>{
+      console.log(err)
+    })
+    
+    
   }
 }
 </script>
