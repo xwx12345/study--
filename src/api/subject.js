@@ -25,7 +25,7 @@ export function answerQuestion(question,expert,answer) {
         method: 'POST',
         params:{
           question_id:question,
-          expert_id:expert,
+          expert_id:expert
         },
         data:param
     })

@@ -70,8 +70,8 @@ export default {
       ],
       item_selected: [],
       section: {
-        main_info: '我是主文本',
-        sub_info: '我是副文本',
+        main_info: '线上学习',
+        sub_info: '立即体验！',
         img_info: '..//..//..//..//public//test2.png'
       },
       items: [

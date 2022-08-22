@@ -10,7 +10,7 @@
           <h1>{{main.title}}</h1>
           <span>
             {{main.info}}
-            <router-link to="/">..More</router-link>
+            <router-link to="/recommend">..More</router-link>
           </span>
         </div>
       </div>
@@ -18,7 +18,7 @@
         <h1>{{sub.title}}</h1>
         <span>
         {{sub.info}}
-        <router-link to="/">..More</router-link>
+        <router-link to="/recommend">..More</router-link>
         </span>
       </div>
     </div>
@@ -34,7 +34,7 @@
           <div class="word">
             <span>
               {{item.text}}<br />
-              <router-link to="/">..More</router-link>
+              <router-link to="/recommend">..More</router-link>
             </span>
           </div>
         </div>

@@ -32,6 +32,11 @@ const routes = [
        path: '/bookDetails',
        name: 'bookDetails',
        component: resolve => import('@/views/home/book_details')
+     },
+     {
+       path: '/recommend',
+       name: 'recommend',
+       component: resolve => import('@/views/home/recommend')
      }
      ]
   },

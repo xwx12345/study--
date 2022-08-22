@@ -1,15 +1,11 @@
 <template>
-  <div class="container">
-    <collection></collection>
+  <div class="pc-container">
+    搞给化化玩
   </div>
 </template>
 
 <script>
-import collection from '../home/user/collection/collection.vue'
 export default {
-  components: {
-    collection,
-  },
   data () {
     return {
 
@@ -27,7 +23,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.container{
-  width: 100%;
-}
+
 </style>
