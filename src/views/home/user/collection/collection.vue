@@ -6,11 +6,11 @@
         <button @click="search()">
           <i class="el-icon-search"></i>
         </button>
-        </el-input>
       </div>
     </div>
     <el-table ref="filterTable" :data="tableData" style="width: 100%" max-height="450">
-      <el-table-column fixed prop="tag" label="标签" width="75"
+      <el-table-column
+        fixed prop="tag" label="标签" width="75"
         :filters="[{ text: '书籍', value: '书籍' }, { text: '课程', value: '课程' }, { text: '题目', value: '题目' }]"
         :filter-method="filterTag" filter-placement="bottom-end">
         <template slot-scope="scope">
@@ -18,9 +18,16 @@
             disable-transitions>{{ scope.row.tag }}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column prop="title" label="收藏内容" width="1200">
+      <el-table-column
+        fixed prop="searched" label="是否被搜索" width="200"
+        :filters="[{ text: '√', value: '√' }, { text: '?', value: '?' }]"
+        :filter-method="isSearched" filter-placement="bottom-end">
       </el-table-column>
-      <el-table-column fixed="right" label="操作" width="150">
+      <el-table-column 
+        prop="title" label="收藏内容" width="1200">
+      </el-table-column>
+      <el-table-column 
+        fixed="right" label="操作" width="150">
         <template slot-scope="scope">
           <el-button size="mini" @click="handleClick(scope.$index, scope.row)">查看</el-button>
           <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
@@ -49,6 +56,12 @@ import {
 } from '../../../../api/subject.js'
 export default {
   methods: {
+    isSearched(value, row) {
+      return row.searched === value;
+    },
+    displayAll() {
+
+    },
     handleClick(index, row) {
       console.log(index, row);
     },
@@ -93,6 +106,13 @@ export default {
       //     }
       //   })
       // })
+      this.tableData.forEach((row) => {
+        if (row.title.replace(/\ +/g, "").indexOf(this.searchContent) != -1) {
+          row.searched = '√';
+        }else {
+          row.searched = '?';
+        }
+      })
     }
   },
   created() {
@@ -106,6 +126,7 @@ export default {
                 tag: "书籍",
                 title: br.data.book_name,
                 id: br.data.isbn,
+                searched: '?'
               })
             })
           }
@@ -121,6 +142,7 @@ export default {
                 tag: "课程",
                 title: cr.data.course_name,
                 id: cr.data.course_id,
+                searched: '?'
               })
             })
           }
@@ -136,6 +158,7 @@ export default {
                 tag: "题目",
                 title: qr.data.question_stem,
                 id: qr.data.question_id,
+                searched: '?'
               })
             })
           }
