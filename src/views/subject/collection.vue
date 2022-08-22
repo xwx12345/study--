@@ -1,11 +1,15 @@
 <template>
-  <div class="pc-container">
-    收藏夹
+  <div class="container">
+    <collection></collection>
   </div>
 </template>
 
 <script>
+import collection from '../home/user/collection/collection.vue'
 export default {
+  components: {
+    collection,
+  },
   data () {
     return {
 

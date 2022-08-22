@@ -1,74 +1,178 @@
 <template>
-<div>
-  <div class="container">
-    <div class="search">
-      <input type="text" placeholder=" 搜索关键词" v-model="searchContent" />
-      <button @click="search()">
-        <i class="el-icon-search"></i>
-      </button>
-      </el-input>
+  <div>
+    <div class="container">
+      <div class="search">
+        <input type="text" placeholder=" 搜索关键词" v-model="searchContent" />
+        <button @click="search()">
+          <i class="el-icon-search"></i>
+        </button>
+      </div>
     </div>
+    <el-table ref="filterTable" :data="tableData" style="width: 100%" max-height="450">
+      <el-table-column
+        fixed prop="tag" label="标签" width="75"
+        :filters="[{ text: '书籍', value: '书籍' }, { text: '课程', value: '课程' }, { text: '题目', value: '题目' }]"
+        :filter-method="filterTag" filter-placement="bottom-end">
+        <template slot-scope="scope">
+          <el-tag :type="scope.row.tag === '书籍' ? 'primary' : (scope.row.tag === '课程' ? 'success' : 'warning')"
+            disable-transitions>{{ scope.row.tag }}</el-tag>
+        </template>
+      </el-table-column>
+      <el-table-column
+        fixed prop="searched" label="是否被搜索" width="200"
+        :filters="[{ text: '√', value: '√' }, { text: '?', value: '?' }]"
+        :filter-method="isSearched" filter-placement="bottom-end">
+      </el-table-column>
+      <el-table-column 
+        prop="title" label="收藏内容" width="1200">
+      </el-table-column>
+      <el-table-column 
+        fixed="right" label="操作" width="150">
+        <template slot-scope="scope">
+          <el-button size="mini" @click="handleClick(scope.$index, scope.row)">查看</el-button>
+          <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+        </template>
+      </el-table-column>
+    </el-table>
   </div>
-  <el-table
-    ref="filterTable"
-    :data="tableData"
-    style="width: 100%"
-    max-height="460">
-    <el-table-column
-      fixed
-      prop="tag"
-      label="标签"
-      width="75"
-      :filters="[{ text: '书籍', value: '书籍' }, { text: '课程', value: '课程' }, { text: '题目', value: '题目' }]"
-      :filter-method="filterTag"
-      filter-placement="bottom-end">
-      <template slot-scope="scope">
-        <el-tag
-          :type="scope.row.tag === '书籍' ? 'primary' : (scope.row.tag === '课程' ? 'success' : 'warning')"
-          disable-transitions>{{scope.row.tag}}</el-tag>
-      </template>
-    </el-table-column>
-    <el-table-column
-      prop="title"
-      label="收藏内容"
-      width="1200">
-    </el-table-column>
-    <el-table-column
-      fixed="right"
-      label="操作"
-      width="150">
-      <template slot-scope="scope">
-        <el-button
-          size="mini"
-          @click="handleClick(scope.$index, scope.row)">查看</el-button>
-        <el-button
-          size="mini"
-          type="danger"
-          @click="handleDelete(scope.$index, scope.row)">删除</el-button>
-      </template>
-    </el-table-column>
-  </el-table>
-</div>
 </template>
 
 <script>
+import { GetBook } from '@/api/query';
 import Header from '@/components/header.vue';
+import {
+  getCollectionBook, 
+  getCollectionCourse, 
+  getCollectionQuestion, 
+  getBook, 
+  getCourse, 
+  getQuestion, 
+  deCollectBook, 
+  deCollectCourse, 
+  deCollectQuestion, 
+  queryCollectionBook, 
+  queryCollectionCourse, 
+  queryCollectionQuestion
+} from '../../../../api/subject.js'
 export default {
-    methods: {
-      handleClick(index, row) {
-        console.log(index, row);
-      },
-      handleDelete(index, row) {
-        console.log(index, row);
-      },
-      filterTag(value, row) {
-        return row.tag === value;
-      }
+  methods: {
+    isSearched(value, row) {
+      return row.searched === value;
     },
+    displayAll() {
 
-    data() {
-      return {
-        tableData: [{
+    },
+    handleClick(index, row) {
+      console.log(index, row);
+    },
+    handleDelete(index, row) {
+      var u_id = this.$store.getters.user.user_id;
+      if (row.tag === '书籍') {
+        // console.log(row.id);
+        deCollectBook(u_id, row.id).then((r) => {
+          if (r.code === 0) {
+            this.$message('删除成功！');
+            this.tableData.splice(index, 1);
+          }else this.$message('删除失败！');
+        })
+      }else if (row.tag === '课程') {
+        deCollectCourse(u_id, row.id).then((r) => {
+          if (r.code === 0) {
+            this.$message('删除成功！');
+            this.tableData.splice(index, 1);
+          }else this.$message('删除失败！');
+        })
+      }else {
+        deCollectQuestion(u_id, row.id).then((r) => {
+          if (r.code === 0) {
+            this.$message('删除成功！');
+            this.tableData.splice(index, 1);
+          }else this.$message('删除失败！');
+        })
+      }
+      
+    },
+    filterTag(value, row) {
+      return row.tag === value;
+    },
+    search() {
+      // var u_id = this.$store.getters.user.user_id;
+      // queryCollectionBook(u_id, this.searchContent).then((r) => {
+      //   r.data.idList.forEach((item, index) => {
+      //     if (item) {
+      //       getBook(item).then((br) => {
+              
+      //       })
+      //     }
+      //   })
+      // })
+      this.tableData.forEach((row) => {
+        if (row.title.replace(/\ +/g, "").indexOf(this.searchContent) != -1) {
+          row.searched = '√';
+        }else {
+          row.searched = '?';
+        }
+      })
+    }
+  },
+  created() {
+    if (this.$store.getters.user) {
+      var u_id = this.$store.getters.user.user_id;
+      getCollectionBook(u_id).then((r) => {
+        r.data.idArray.forEach((item, index) => {
+          if (item) {
+            getBook(item).then((br) => {
+              this.tableData.push({
+                tag: "书籍",
+                title: br.data.book_name,
+                id: br.data.isbn,
+                searched: '?'
+              })
+            })
+          }
+        })
+      });
+      getCollectionCourse(u_id).then((r) => {
+        //console.log(r.data);
+        r.data.idArray.forEach((item, index) => {
+          //console.log(item, index);
+          if (item) {
+            getCourse(item).then((cr) => {
+              this.tableData.push({
+                tag: "课程",
+                title: cr.data.course_name,
+                id: cr.data.course_id,
+                searched: '?'
+              })
+            })
+          }
+        })
+      });
+      getCollectionQuestion(u_id).then((r) => {
+        r.data.idArray.forEach((item, index) => {
+          //console.log(item, index);
+          if (item) {
+            getQuestion(item).then((qr) => {
+              //console.log(qr.data);
+              this.tableData.push({
+                tag: "题目",
+                title: qr.data.question_stem,
+                id: qr.data.question_id,
+                searched: '?'
+              })
+            })
+          }
+        })
+      })
+    } else {
+      console.log("龙卷风摧毁停车场");
+    }
+  },
+  data() {
+    return {
+      searchContent: "",
+      tableData: [
+        /*  {
           tag: '书籍',
           title: '我太难了'
         }, {
@@ -101,10 +205,11 @@ export default {
         }, {
           tag: '书籍',
           title: '天线宝宝'
-        }]
-      }
+        }*/
+      ]
     }
   }
+}
 </script>
 
 <style scoped lang="scss">
@@ -115,7 +220,7 @@ export default {
 
   .search {
     margin: auto 10px;
-    
+
     input {
       background-color: #ffffff;
       color: #676767;
