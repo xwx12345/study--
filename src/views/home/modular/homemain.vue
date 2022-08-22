@@ -24,17 +24,19 @@
     </div>
     <div class="right">
       <div class="right_top">
-        <span>我也是标题</span>
+        <span><i class="el-icon-s-opportunity"></i>新鲜推送</span>
       </div>
       <div class="right_bottom">
         <div v-for="item in info_list" :key="item.id" class="card">
           <div class="picture">
             <img :src="item.img_info" />
           </div>
-          <span>
-          {{item.text}}<br />
-          <router-link to="/">..More</router-link>
-          </span>
+          <div class="word">
+            <span>
+              {{item.text}}<br />
+              <router-link to="/">..More</router-link>
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -51,29 +53,34 @@ export default {
         info:'随便说点啥随便说点叭叭叭叭叭叭baba啊八八八八阿布阿八八八八八八八阿八八八八八八八吧嗷嗷叭叭叭叭叭叭吧'
       },
       sub:{
-        title:'标题',
-        info:'1231414我是乱写的后面随便按阿达v八点半v骄傲v啊是不是卡港口局啊v的vJava，的可靠的v阿达v绿卡女啊，的v啊的飞机奥巴马是v那'
+        title:'雅思备考需要准备什么',
+        info:'避开换题月1、5、9月考试。因为每个季度的口语都是有题库的，而1、5、9月将会更新本季度的一部分考题。决定好考期后一定要尽早报名！越早越好！因为报名后会给自己带来紧迫感，自控力不高的同学如果一直拖着不报名就很可能也一直拖着不复习建议在备考前摸清自己的水平，才能合理的进行备考规划。如果对自己没有一个清晰的认知，最好还是找一个专业的老师，针对你的自身情况进行辅导和制定学习计划。如果是第一次考试，建议备考时间在40-50天，每天8小时左右的备考时长，是一个比较轻松愉悦的备考期。'
       },
       info_list:[
         {
           id:1,
           img_info:'..//..//..//..//public//test1.png',
-          text:'我是1'
+          text:'数据结构算法-自步调课程'
         },
         {
           id:2,
           img_info:'..//..//..//..//public//test2.png',
-          text:'我是2'
+          text:'完成面试准备-自我步调课程'
         },
         {
           id:3,
           img_info:'',
-          text:'我是3'
+          text:'练习问题，POTD连胜，每周比赛'
         },
         {
           id:4,
           img_info:'',
           text:'我是4'
+        },
+        {
+          id:5,
+          img_info:'',
+          text:'4个太丑了所以我来了'
         }]
     }
   },
@@ -147,15 +154,21 @@ export default {
       box-shadow:0px 6px 5px rgba(0,0,0,0.1);
       h1{
         font-size: 28px;
+        color: #52527b;
       }
       span{
         font-size: 16px;
         letter-spacing: 1px;
         color: #4d7474;
+        line-height: 24px;
         a{
           text-decoration: none;
           color: #B8A8DA;
           font-weight: 600;
+          transition: 1s;
+        }
+        a:hover{
+          color: #ffb6a3;
         }
       }
     }
@@ -164,6 +177,8 @@ export default {
     width: 30%;
     // background: #ffffff;
     margin: 8px;
+    display: flex;
+    flex-direction: column;
     .right_top{
       background: #ffffff;
       border-radius: 18px;
@@ -178,15 +193,20 @@ export default {
       }
     }
     .right_bottom{
-      // background: #ffffff;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
       .card{
         background: #ffffff;
-        margin:15px;
+        // margin:15px;
+        margin-left: 15px;
         padding: 10px;
         display: flex;
         border-radius: 10px;
         box-shadow:0px 0px 10px rgba(170,170,255,0.3);
         .picture{
+          flex-shrink:0;
           height: 100px;
           width: 100px;
           img{
@@ -194,21 +214,23 @@ export default {
             width: 100%;
           }
         }
-        span{
+        .word{
           margin: 10px;
           margin-left: 20px;
-          letter-spacing: 1px;
-          font-size: 16px;
-          font-weight: 700;
-          color: #4d7474;
-          a{
-            text-decoration: none;
-            color: #B8A8DA;
-            font-weight: 600;
-            transition: 1s;
-          }
-          a:hover{
-            color: #ffb6a3;
+          span{
+            letter-spacing: 1px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #4d7474;
+            a{
+              text-decoration: none;
+              color: #B8A8DA;
+              font-weight: 600;
+              transition: 1s;
+            }
+            a:hover{
+              color: #ffb6a3;
+            }
           }
         }
       }
