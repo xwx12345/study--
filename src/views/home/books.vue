@@ -3,7 +3,7 @@
   <el-header><chooseMajor></chooseMajor></el-header>
   <el-main class="pc-container">
     <div class="o-header">
-      <!--<router-link to="/bookDetails">对不起我们要试试这个跳转</router-link>-->
+      <router-link to="/bookDetails">对不起我们要试试这个跳转</router-link>
     </div>
     <div class="books">
       <div class="binfo">
@@ -26,12 +26,12 @@
       </div>
     </div>
     <div class="o-footer"></div>
-
+    
  
   
 
-  </el-main>
-</el-container>
+    </el-main>
+  </el-container>
 
 </template>
 

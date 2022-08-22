@@ -1,30 +1,10 @@
 <template>
-<<<<<<< HEAD
-  <div class="pc-container">
-    <img src="..//..//..//..//public//userphoto.png" width="200px" height="200px">
-    
-    <el-form ref="form" :model="form" label-width="80px">
-      <el-form-item label="用户名">
-        <span>{{userinfo.username}}</span>
-      </el-form-item>
-      <el-form-item label="电话">
-        <span>{{userinfo.tel}}</span>
-      </el-form-item>
-      <el-form-item label="学校">
-        <el-input v-model="userinfo.school" ></el-input>
-      </el-form-item>
-      <el-form-item label="专业">
-        <el-input v-model="userinfo.major" ></el-input> 
-      </el-form-item>
-      <el-form-item>  
-        <el-button type="primary" @click="">保存</el-button>  
-      </el-form-item>
-    </el-form>
-  
+
+ 
     
     
      
-=======
+
   <div class="container">
     <div class="picture">
       <img src="../../../../public/userphoto.png" width="200px" height="200px">
@@ -47,9 +27,9 @@
         <div class="button">
           <button @click="save(userinfo)" >保存</button>
         </div>
-      </form>
+      
     </div>
->>>>>>> a07b3d3e1d85222e48ac874ed238926e15e66128
+
   </div>
 </template>
 
