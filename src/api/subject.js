@@ -146,3 +146,14 @@ export function queryCollectionQuestion(uid, text) {
         }
     })
 }
+
+export function CollectBook(uid,cisbn){
+    return request({
+        url:'Collection/CollectBook',
+        method:'POST',
+        params:{
+            user_id:uid,
+            isbn:cisbn
+        }
+    })
+}

@@ -12,10 +12,10 @@
           <p>出版社：{{details.publisher}}</p>
           <p>出版年份：{{details.pub_year}}</p>
           <p>ISBN：{{details.isbn}}</p>
-          <el-button icon="el-icon-star-off" circle></el-button>
+          <el-button icon="el-icon-star-off" circle @click="collectbook(details.isbn)"></el-button>
         </div>
         <div class="outline">
-          简介：............
+          {{details.outline}}
         </div>
       </div>
       <div class="related">
@@ -34,6 +34,8 @@
 </template>
 
 <script>
+import { getBook } from "@/api/subject";
+import{CollectBook}from "@/api/subject";
 import book from "../../components/book.vue";
 export default {
   components:{
@@ -43,23 +45,52 @@ export default {
     return {
        details: 
         {
-          isbn: "001",
-          bname: "高等数学",
-          author: "鼠来宝",
-          publisher: "同济大学出版社",
-          pub_year: 2001,
-          img_url: "https://s3.bmp.ovh/imgs/2022/08/17/a45d18cbf6e41773.jpeg",
+          isbn: "",
+          bname: "",
+          author: "",
+          publisher: "",
+          pub_year: '',
+          img_url: "",
+          outline:'',
         },
       
     }
   },
   methods: {
-
+    collectbook(data) {
+      CollectBook(this.$store.getters.user.user_id,data).then((r)=>{
+        if(r.code===0)
+        {
+          this.$message(r.message)
+        }
+        else{
+          
+        }
+      }).catch((err)=>{
+        console.log(err)
+      })
+    }
   },
   mounted () {
   },
   created () {
-
+    this.details.isbn = this.$route.query.isbn;
+    getBook(this.details.isbn).then((r)=>{
+      if(r.header.code===0){
+        this.details.bname=r.data.book_name;
+        this.details.author=r.data.author;
+        this.details.publisher=r.data.publisher;
+        this.details.pub_year=r.data.publish_time;
+        this.details.img_url=r.data.pic_url;
+        this.details.outline=r.data.comprehension;
+      }
+      else{
+        this.$message.error(r.header.message)
+        return
+      }
+    }).catch((err)=>{
+        console.log(err)
+      })
   }
 }
 </script>

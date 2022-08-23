@@ -3,7 +3,7 @@
   <el-header><chooseMajor></chooseMajor></el-header>
   <el-main class="pc-container">
     <div class="o-header">
-      <router-link to="/bookDetails">对不起我们要试试这个跳转</router-link>
+      <!--<router-link to="/bookDetails">对不起我们要试试这个跳转</router-link>-->
     </div>
     <div class="books">
       <div class="binfo">
@@ -21,6 +21,7 @@
               :publisher="item.publisher"
               :publish_year="item.pub_year"
             ></book>
+            <span @click="Jump(item.isbn)" class="button">{{item.isbn}}</span>
           </el-col>
         </el-row>
       </div>
@@ -109,6 +110,12 @@ export default {
     toggleCollapse() {
       this.isCollapse = !this.isCollapse;
     },
+    Jump(data){
+      this.$router.push({
+        path: "/bookDetails",
+        query: { isbn: data }
+      })
+    }
   },
   mounted() {},
   watch: {
