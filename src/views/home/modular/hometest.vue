@@ -22,7 +22,7 @@
           <span class="main">{{ section.main_info }}</span>
           <br />
           <span class="sub">{{ section.sub_info }}</span>
-          <div class="button">点击查看</div>
+          <div class="button" @click="Jump()">点击查看</div>
         </div>
         <div class="small_cards">
           <el-row>
@@ -147,8 +147,8 @@ export default {
     }
   },
   methods: {
-    jump () {
-      console.log('123')
+    Jump () {
+      this.$router.push('/login')
     },
     changeValue (title) {
       this.activeIndex = title.id
