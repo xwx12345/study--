@@ -10,6 +10,7 @@
           class="col-item"
           v-for="(item, index) in BooksList"
           :key="item.isbn"
+          @click="JumpBook(item.isbn)"
         >
           <book
             :img_url="item.img_url"
@@ -139,7 +140,14 @@ export default {
       QuestionsList: [],
     };
   },
-  methods: {},
+  methods: {
+    JumpBook(data) {
+      this.$router.push({
+        path: "/bookDetails",
+        query: { isbn: data },
+      });
+    },
+  },
   mounted() {},
   watch: {
     $route(to, from) {
@@ -173,38 +181,44 @@ export default {
           });
       })
     );
-    TextSearchCourses(this.content).then((r) =>
-      r.data.idList.forEach((item, index) => {
-        console.log(item, index);
-        GetCourse(item).then((cr) => {
-          this.CoursesList.push({
-            cname: cr.data.course_name,
-            img_url: cr.data.pic_url,
+    TextSearchCourses(this.content)
+      .then((r) =>
+        r.data.idList.forEach((item, index) => {
+          console.log(item, index);
+          GetCourse(item).then((cr) => {
+            this.CoursesList.push({
+              id:item,
+              cname: cr.data.course_name,
+              img_url: cr.data.pic_url,
+            });
           });
-        });
-      })
-    ).catch((err)=>{
-      console.log(err);
-      location.reload();
-    });
+        })
+      )
+      .catch((err) => {
+        console.log(err);
+        location.reload();
+      });
     TextSearchQuestions(this.content).then((r) =>
       r.data.idList.forEach((item, index) => {
         console.log(item, index);
-        GetQuestion(item).then((qr) => {
-          this.QuestionsList.push({
-            qtext: qr.data.question_stem,
-            atext: "现在还没有回答~",
-          });
-          if (qr.data.answer_id_list[0]) {
-            GetAnswer(qr.data.answer_id_list[0]).then((ar) => {
-              this.QuestionsList[index].atext = ar.data.answer_content;
+        GetQuestion(item)
+          .then((qr) => {
+            this.QuestionsList.push({
+              id:item,
+              qtext: qr.data.question_stem,
+              atext: "现在还没有回答~",
             });
-          }
-          console.log(this.QuestionsList[0]);
-        }).catch((err)=>{
-          console.log(err);
-          location.reload();
-        });
+            if (qr.data.answer_id_list[0]) {
+              GetAnswer(qr.data.answer_id_list[0]).then((ar) => {
+                this.QuestionsList[index].atext = ar.data.answer_content;
+              });
+            }
+            console.log(this.QuestionsList[0]);
+          })
+          .catch((err) => {
+            console.log(err);
+            location.reload();
+          });
       })
     );
   },
