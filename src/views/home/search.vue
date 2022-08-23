@@ -177,14 +177,16 @@ export default {
       r.data.idList.forEach((item, index) => {
         console.log(item, index);
         GetCourse(item).then((cr) => {
-          console.log(cr.data.pic_url)
           this.CoursesList.push({
             cname: cr.data.course_name,
             img_url: cr.data.pic_url,
           });
         });
       })
-    );
+    ).catch((err)=>{
+      console.log(err);
+      location.reload();
+    });
     TextSearchQuestions(this.content).then((r) =>
       r.data.idList.forEach((item, index) => {
         console.log(item, index);
@@ -194,11 +196,14 @@ export default {
             atext: "现在还没有回答~",
           });
           if (qr.data.answer_id_list[0]) {
-            GetAnswer(item.data.answer_id_list[0]).then((ar) => {
+            GetAnswer(qr.data.answer_id_list[0]).then((ar) => {
               this.QuestionsList[index].atext = ar.data.answer_content;
             });
           }
           console.log(this.QuestionsList[0]);
+        }).catch((err)=>{
+          console.log(err);
+          location.reload();
         });
       })
     );
