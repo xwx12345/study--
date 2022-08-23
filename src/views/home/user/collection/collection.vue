@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="container">
+      <div><el-button class="all" @click="displayAll()">全部显示</el-button></div>
       <div class="search">
         <input type="text" placeholder=" 搜索关键词" v-model="searchContent" />
         <button @click="search()">
@@ -18,11 +19,11 @@
             disable-transitions>{{ scope.row.tag }}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column
+      <!-- <el-table-column
         fixed prop="searched" label="是否被搜索" width="200"
         :filters="[{ text: '√', value: '√' }, { text: '?', value: '?' }]"
         :filter-method="isSearched" filter-placement="bottom-end">
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column 
         prop="title" label="收藏内容" width="1200">
       </el-table-column>
@@ -38,7 +39,6 @@
 </template>
 
 <script>
-import { GetBook } from '@/api/query';
 import Header from '@/components/header.vue';
 import {
   getCollectionBook, 
@@ -50,9 +50,6 @@ import {
   deCollectBook, 
   deCollectCourse, 
   deCollectQuestion, 
-  queryCollectionBook, 
-  queryCollectionCourse, 
-  queryCollectionQuestion
 } from '../../../../api/subject.js'
 export default {
   methods: {
@@ -60,10 +57,26 @@ export default {
       return row.searched === value;
     },
     displayAll() {
-
+      this.searchContent = "";
+      this.tableData = this.backup;
     },
     handleClick(index, row) {
-      console.log(index, row);
+      if (row.tag === '书籍') {
+        this.$router.push({
+          path: '/bookDetails',
+          query: { isbn: row.id }
+        })
+      }else if (row.tag === '课程') {
+        this.$router.push({
+          path: '/courseDetails',
+          query: { cid: row.id }
+        })
+      }else {
+        this.$router.push({
+          path: '/questionDetails',
+          query: { qid: row.id }
+        })
+      }
     },
     handleDelete(index, row) {
       var u_id = this.$store.getters.user.user_id;
@@ -96,23 +109,15 @@ export default {
       return row.tag === value;
     },
     search() {
-      // var u_id = this.$store.getters.user.user_id;
-      // queryCollectionBook(u_id, this.searchContent).then((r) => {
-      //   r.data.idList.forEach((item, index) => {
-      //     if (item) {
-      //       getBook(item).then((br) => {
-              
-      //       })
-      //     }
-      //   })
-      // })
+      this.tableData = this.backup;
       this.tableData.forEach((row) => {
         if (row.title.replace(/\ +/g, "").indexOf(this.searchContent) != -1) {
-          row.searched = '√';
+          row.searched = 1;
         }else {
-          row.searched = '?';
+          row.searched = 0;
         }
       })
+      this.tableData = this.tableData.filter(v => v.searched !== 0)
     }
   },
   created() {
@@ -126,7 +131,7 @@ export default {
                 tag: "书籍",
                 title: br.data.book_name,
                 id: br.data.isbn,
-                searched: '?'
+                searched: 0
               })
             })
           }
@@ -142,7 +147,7 @@ export default {
                 tag: "课程",
                 title: cr.data.course_name,
                 id: cr.data.course_id,
-                searched: '?'
+                searched: 0
               })
             })
           }
@@ -158,19 +163,21 @@ export default {
                 tag: "题目",
                 title: qr.data.question_stem,
                 id: qr.data.question_id,
-                searched: '?'
+                searched: 0
               })
             })
           }
         })
-      })
+      });
+      this.backup = this.tableData;
     } else {
-      console.log("龙卷风摧毁停车场");
+      console.log("您尚未登录！");
     }
   },
   data() {
     return {
       searchContent: "",
+      backup: [],
       tableData: [
         /*  {
           tag: '书籍',
@@ -216,7 +223,11 @@ export default {
 .container {
   background-color: #e4e0ff;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  
+  .all {
+    margin: 8px 10px;
+  }
 
   .search {
     margin: auto 10px;

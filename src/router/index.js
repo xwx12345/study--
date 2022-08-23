@@ -74,24 +74,7 @@ const routes = [
       {
         path: '/usercenter/collection',
         name: 'collection',
-        component: resolve => import('@/views/home/user/collection/collection'),
-        children: [
-         {
-           path: '/usercenter/collection/collected_books',
-           name: 'collected_books',
-           component: resolve => import('@/views/home/user/collection/collected_books')
-         },
-         {
-           path: '/usercenter/collection/collected_courses',
-           name: 'collected_courses',
-           component: resolve => import('@/views/home/user/collection/collected_courses')
-         },
-         {
-           path: '/usercenter/collection/collected_questions',
-           name: 'collected_questions',
-           component: resolve => import('@/views/home/user/collection/collected_questions')
-         }
-        ]
+        component: resolve => import('@/views/home/user/collection/collection')
       },
       {
         path: '/usercenter/feedback',
