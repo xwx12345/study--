@@ -157,3 +157,14 @@ export function CollectBook(uid,cisbn){
         }
     })
 }
+
+export function CollectCourse(uid,cid){
+    return request({
+        url:'Collection/CollectCourse',
+        method:'POST',
+        params:{
+            user_id:uid,
+            course_id:cid
+        }
+    })
+}

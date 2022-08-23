@@ -7,17 +7,15 @@
         <div class="image">
           <img :src="courses.img_url" width="90%" >
         </div>
-        <el-button icon="el-icon-star-off" circle></el-button>
+        <el-button icon="el-icon-star-off" circle @click="collectcourse(courses.cid)"></el-button>
         <div class="outline">
-          简介：............
+          {{courses.outline}}
         </div>
       </div>
       <div class="related">
         <h3>相关书籍与题目</h3>
         <p>书籍</p>
-          <img :src="details.img_url" width="40%" float="left">
-          <img :src="details.img_url" width="40%" float="left">
-          <img :src="details.img_url" width="40%" float="left">
+          <img src="" alt="">
         <p>题目</p>
         <p>题目1</p>
         <p>题目2</p>
@@ -29,7 +27,7 @@
 
 <script>
 import { getCourse } from '@/api/subject';
-
+import {CollectCourse} from '@api/subject';
 
 export default {
   components:{
@@ -38,7 +36,7 @@ export default {
   data () {
     return {
       courses:{
-        course_id:'',
+        cid:'',
         outline:'',
         cname:'',
         img_url:'',
@@ -47,13 +45,37 @@ export default {
     }
   },
   methods: {
-
+    collectcourse(data){
+      CollectCourse(this.$store.getters.user.user_id,data).then((r)=>{
+        if(r.code===0)
+        {
+          this.$message(r.message)
+        }
+        else{
+          
+        }
+      }).catch((err)=>{
+        console.log(err)
+      })
+    }
   },
   mounted () {
   },
   created () {
-    this.courses.cname=this.$route.query.cname;
-    getCourse()
+    this.courses.cid=this.$route.query.cid;
+    getCourse(this.courses.cid).then((r)=>{
+      if(r.headers.code===0){
+        this.courses.cname=r.data.course_name;
+        this.courses.outline=r.data.comprehension;
+        this.courses.img_url=r.data.pic_url;
+      }
+      else{
+        this.$message.error(r.header.message)
+        return
+      }
+    }).catch((err)=>{
+        console.log(err)
+      })
   }
   
 }
