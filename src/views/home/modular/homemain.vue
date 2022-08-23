@@ -59,28 +59,28 @@ export default {
       info_list:[
         {
           id:1,
-          img_info:'..//..//..//..//public//test1.png',
-          text:'热门课程||高等数学基本知识点大全'
-        },
-        {
-          id:2,
-          img_info:'..//..//..//..//public//test2.png',
-          text:'课外拓展||面试中脱颖而出，面试常用小技巧'
-        },
-        {
-          id:3,
-          img_info:'',
-          text:'专业课解析||24张图帮你彻底了解九大常见数据结构'
-        },
-        {
-          id:4,
           img_info:'..//..//..//..//public//poster.png',
           text:'今日话题||今天你学习快乐吗'
         },
         {
-          id:5,
-          img_info:'',
+          id:2,
+          img_info:'..//..//..//..//public//home_p2.png',
+          text:'专业课解析||24张图帮你彻底了解九大常见数据结构'
+        },
+        {
+          id:3,
+          img_info:'..//..//..//..//public//home_p3.png',
+          text:'热门课程||高等数学基本知识点大全'
+        },
+        {
+          id:4,
+          img_info:'..//..//..//..//public//home_p4.png',
           text:'考研专题||复习过程中常见的十大弊病及方案'
+        },
+        {
+          id:5,
+          img_info:'..//..//..//..//public//home_p5.png',
+          text:'课外拓展||面试中脱颖而出，面试常用小技巧'
         }]
     }
   },
