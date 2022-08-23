@@ -39,6 +39,11 @@ const routes = [
        component: resolve => import('@/views/home/course_details')
      },
      {
+       path: '/questionDetails',
+       name: 'questionDetails',
+       component: resolve => import('@/views/home/question_details')
+     },
+     {
        path: '/recommend',
        name: 'recommend',
        component: resolve => import('@/views/home/recommend')
