@@ -109,6 +109,7 @@ export default {
       return row.tag === value;
     },
     search() {
+      this.tableData = this.backup;
       this.tableData.forEach((row) => {
         if (row.title.replace(/\ +/g, "").indexOf(this.searchContent) != -1) {
           row.searched = 1;
