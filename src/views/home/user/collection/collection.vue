@@ -39,7 +39,6 @@
 </template>
 
 <script>
-import { GetBook } from '@/api/query';
 import Header from '@/components/header.vue';
 import {
   getCollectionBook, 
@@ -62,7 +61,22 @@ export default {
       this.tableData = this.backup;
     },
     handleClick(index, row) {
-      console.log(index, row);
+      if (row.tag === '书籍') {
+        this.$router.push({
+          path: '/bookDetails',
+          query: { isbn: row.id }
+        })
+      }else if (row.tag === '课程') {
+        this.$router.push({
+          path: '/courseDetails',
+          query: { cid: row.id }
+        })
+      }else {
+        this.$router.push({
+          path: '/questionDetails',
+          query: { qid: row.id }
+        })
+      }
     },
     handleDelete(index, row) {
       var u_id = this.$store.getters.user.user_id;
