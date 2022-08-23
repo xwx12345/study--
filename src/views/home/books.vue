@@ -14,6 +14,7 @@
             v-for="(item, index) in BooksList"
             :key="item.isbn"
           >
+            <div @click="Jump(item.isbn)">
             <book
               :img_url="item.img_url"
               :bname="item.bname"
@@ -21,7 +22,8 @@
               :publisher="item.publisher"
               :publish_year="item.pub_year"
             ></book>
-            <span @click="Jump(item.isbn)" class="button">{{item.isbn}}</span>
+            </div>
+            <!-- <span @click="Jump(item.isbn)" class="button">{{item.isbn}}</span> -->
           </el-col>
         </el-row>
       </div>
@@ -46,22 +48,7 @@ export default {
 },
   data() {
     return {
-      isCollapse: true,
       content: "1",
-      menuList: [
-        {
-          id: 1,
-          authName: "Xjx"
-        },
-        {
-          id: 2,
-          authName: "Xjx"
-        }
-      ],
-      iconsObj: {
-        1 : 'el-icon-user',
-        2 : 'el-icon-user-solid',
-      },
       BooksList: [
         {
           isbn: "001",
@@ -110,9 +97,9 @@ export default {
     toggleCollapse() {
       this.isCollapse = !this.isCollapse;
     },
-    Jump(data){
+    Jump(data) {
       this.$router.push({
-        path: "/bookDetails",
+        path: '/bookDetails',
         query: { isbn: data }
       })
     }

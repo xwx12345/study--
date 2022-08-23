@@ -48,6 +48,7 @@ export default {
   // margin-top: 15px;
   // margin-bottom: 15px;
   font-size: 15px;
+  cursor: pointer;
   .cover {
     margin: auto 10px;
     padding: 0;

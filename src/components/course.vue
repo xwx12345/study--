@@ -35,6 +35,7 @@ export default {
   margin: 10px;
   // margin-top: 15px;
   // margin-bottom: 15px;
+  cursor: pointer;
   .cover {
     border: 0;
     border-top-left-radius: 15px;
