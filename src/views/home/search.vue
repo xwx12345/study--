@@ -27,7 +27,12 @@
         <p>课程</p>
       </div>
       <div class="info">
-        <div class="col-item" v-for="(item, index) in CoursesList" :key="index">
+        <div
+          class="col-item"
+          v-for="(item, index) in CoursesList"
+          :key="index"
+          @click="JumpCourse(item.id)"
+        >
           <course :cname="item.cname" :img_url="item.img_url"> </course>
         </div>
       </div>
@@ -147,6 +152,12 @@ export default {
         query: { isbn: data },
       });
     },
+    JumpCourse(data) {
+      this.$router.push({
+        path: "/courseDetails",
+        query: { cid: data },
+      });
+    },
   },
   mounted() {},
   watch: {
@@ -187,7 +198,7 @@ export default {
           console.log(item, index);
           GetCourse(item).then((cr) => {
             this.CoursesList.push({
-              id:item,
+              id: item,
               cname: cr.data.course_name,
               img_url: cr.data.pic_url,
             });
@@ -204,7 +215,7 @@ export default {
         GetQuestion(item)
           .then((qr) => {
             this.QuestionsList.push({
-              id:item,
+              id: item,
               qtext: qr.data.question_stem,
               atext: "现在还没有回答~",
             });
