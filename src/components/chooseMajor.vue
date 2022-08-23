@@ -1,55 +1,12 @@
 <template>
 <div>
-<el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-  <el-menu-item index="1">全部学科</el-menu-item>
-  <el-submenu index="2">
-    <template slot="title">理学</template>
-    <el-menu-item index="2-1">数学</el-menu-item>
-    <el-menu-item index="2-2">物理</el-menu-item>
-    <el-menu-item index="2-3">化学</el-menu-item>
-    <el-menu-item index="2-4">生物</el-menu-item>
-  </el-submenu>
-  <el-submenu index="3">
-    <template slot="title">工学</template>
-    <el-menu-item index="3-1">机械工程</el-menu-item>
-    <el-menu-item index="3-2">土木工程</el-menu-item>
-    <el-menu-item index="3-3">材料工程</el-menu-item>
-    <el-menu-item index="3-4">软件工程</el-menu-item>
-    <el-submenu index="3-5">
-      <template slot="title">车辆工程</template>
-      <el-menu-item index="3-5-1">智能汽车工程</el-menu-item>
-      <el-menu-item index="3-5-2">新能源汽车工程</el-menu-item>
-      <el-menu-item index="3-5-3">轨道交通工程</el-menu-item>
-    </el-submenu>
-  </el-submenu>
-  <el-submenu index="4">
-    <template slot="title">文学</template>
-    <el-menu-item index="4-1">社会科学</el-menu-item>
-    <el-menu-item index="4-2">心理学</el-menu-item>
-    <el-menu-item index="4-3">哲学</el-menu-item>
-    <el-menu-item index="4-4">法学</el-menu-item>
-    <el-menu-item index="4-5">汉语言文学</el-menu-item>
-    <el-submenu index="4-6">
-      <template slot="title">外语</template>
-      <el-menu-item index="4-6-1">英语</el-menu-item>
-      <el-menu-item index="4-6-2">法语</el-menu-item>
-      <el-menu-item index="4-6-3">德语</el-menu-item>
-    </el-submenu>
-  </el-submenu>
-  <el-submenu index="5">
-    <template slot="title">艺术</template>
-    <el-menu-item index="5-1">设计学</el-menu-item>
-    <el-menu-item index="5-2">美术学</el-menu-item>
-    <el-menu-item index="5-3">戏剧与影视学</el-menu-item>
-    <el-menu-item index="5-4">音乐与舞蹈学</el-menu-item>
-  </el-submenu>
-  <el-menu-item index="6">凑数学科</el-menu-item>
-  <el-menu-item index="7">凑数学科</el-menu-item>
-  <el-menu-item index="8">凑数学科</el-menu-item>
-  <el-menu-item index="9">凑数学科</el-menu-item>
-  <el-menu-item index="10">凑数学科</el-menu-item>
-  <el-menu-item index="11">凑数学科</el-menu-item>
-  <el-menu-item index="12">其他学科</el-menu-item>
+<el-menu :default-active="activeIndex" class="major" mode="horizontal" @select="handleSelect">
+  <el-menu-item :index="0">全部学科</el-menu-item>
+  <el-menu-item :index="item.major_id" v-for="item in menuList" :key="item.major_id">
+    <template #title>
+      <span>{{item.major_name}}</span>
+    </template>
+  </el-menu-item>
 </el-menu>
 <div class="line"></div>
 </div>
@@ -59,7 +16,57 @@
   export default {
     data() {
       return {
-        activeIndex: '1'
+        activeIndex: '1',
+        menuList: [
+          {
+            major_id: 1,
+            major_name: '软件工程',
+          },
+          {
+            major_id: 2,
+            major_name: '车辆工程',
+          },
+          {
+            major_id: 3,
+            major_name: '交通工程',
+          },
+          {
+            major_id: 4,
+            major_name: '材料工程',
+          },
+          {
+            major_id: 5,
+            major_name: '土木工程',
+          },
+          {
+            major_id: 6,
+            major_name: '测绘工程',
+          },
+          {
+            major_id: 7,
+            major_name: '数学',
+          },
+          {
+            major_id: 8,
+            major_name: '物理',
+          },
+          {
+            major_id: 9,
+            major_name: '生物医药',
+          },
+          {
+            major_id: 10,
+            major_name: '金融',
+          },
+          {
+            major_id: 11,
+            major_name: '法学',
+          },
+          {
+            major_id: 12,
+            major_name: '其他学科',
+          }
+        ]
       };
     },
     methods: {
@@ -71,4 +78,8 @@
 </script>
 
 <style>
+.major {
+  display: flex;
+  justify-content: center;
+}
 </style>
