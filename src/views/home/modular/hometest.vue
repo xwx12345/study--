@@ -61,12 +61,12 @@ export default {
     return {
       activeIndex: '1',
       titles: [
-        { name: '界面1', id: '1' },
-        { name: '界面2', id: '2' },
-        { name: '界面3', id: '3' },
-        { name: '界面4', id: '4' },
-        { name: '界面5', id: '5' },
-        { name: '界面6', id: '6' }
+        { name: '基本功能', id: '1' },
+        { name: '最新资讯', id: '2' },
+        // { name: '界面3', id: '3' },
+        // { name: '界面4', id: '4' },
+        // { name: '界面5', id: '5' },
+        // { name: '界面6', id: '6' }
       ],
       item_selected: [],
       section: {
@@ -77,55 +77,71 @@ export default {
       items: [
         [
           { id: 1,
-            main_info: '主文本1',
-            sub_info: '副文本1',
+            main_info: '文本搜题',
+            sub_info: '难题在线搜索，查询详细解析及相关题型推荐',
             img_info: '..//..//..//..//public//feedback.png'
           },
           { id: 2,
-            main_info: '主文本a',
-            sub_info: '副文本a',
+            main_info: '名师答题',
+            sub_info: '设有专家模块，在线答疑',
             img_info: '..//..//..//..//public//poster.png'
-            },
-          { id: 3, main_info: '主文本1', sub_info: '副文本1' },
-          { id: 4, main_info: '主文本1', sub_info: '副文本1' },
-          { id: 5, main_info: '主文本1', sub_info: '副文本1' },
-          { id: 6, main_info: '主文本1', sub_info: '副文本1' }
+          },
+          { id: 3,
+            main_info: '管理员审核',
+            sub_info: '对优质内容进行审核并且推送',
+            img_info: '..//..//..//..//public//poster.png'
+          },
+          { id: 4,
+            main_info: '收藏夹模块',
+            sub_info: '难题错题一键收藏，需要时导出',
+            img_info: '..//..//..//..//public//poster.png'
+          },
+          { id: 5,
+            main_info: '书籍模块',
+            sub_info: '带你体验投身书海的美妙',
+            img_info: '..//..//..//..//public//poster.png'
+          },
+          { id: 6,
+            main_info: '课程分类',
+            sub_info: '快速了解专业课程相关知识',
+            img_info: '..//..//..//..//public//poster.png'
+          }
         ],
         [
           { id: 1,
-            main_info: '主文本1',
-            sub_info: '副文本1',
-            img_info: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png'
+            main_info: '最新课程',
+            sub_info: '乌鸦坐飞机',
+            img_info: '..//..//..//..//public//wuya.png'
           },
           {
             id: 2,
-            main_info: '主文本2',
-            sub_info: '副文本2',
+            main_info: '经典回顾',
+            sub_info: '脑袋砸核桃',
             img_info: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png'
           },
           {
             id: 3,
-            main_info: '主文本3',
-            sub_info: '副文本3',
+            main_info: '黑虎阿福专题',
+            sub_info: '全新舞步更新',
             img_info: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png'
           },
           {
             id: 4,
-            main_info: '主文本4',
-            sub_info: '副文本4',
+            main_info: '全是数学',
+            sub_info: '中等高等低等超高等一网打尽',
             img_info: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png'
           },
           {
             id: 5,
-            main_info: '主文本5',
-            sub_info: '副文本5',
+            main_info: '数学大学名师',
+            sub_info: '小卡比教你学数学',
             img_info: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png'
           },
           {
             id: 6,
-            main_info: '主文本6',
-            sub_info: '副文本6',
-            img_info: ''
+            main_info: '管理员真棒',
+            sub_info: '每天处理的反馈内容竟然是这些',
+            img_info: '..//..//..//..//public//feedback.png'
           }
         ]]
     }

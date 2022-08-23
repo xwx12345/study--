@@ -6,7 +6,7 @@
           <img :src="main.img"/>
         </div>
         <div class="info">
-          <span>welcome</span>
+          <span>WELCOME</span>
           <h1>{{main.title}}</h1>
           <span>
             {{main.info}}
@@ -49,8 +49,8 @@ export default {
     return {
       main:{
         img:'..//..//..//..//public//poster.png',
-        title:'title',
-        info:'随便说点啥随便说点叭叭叭叭叭叭baba啊八八八八阿布阿八八八八八八八阿八八八八八八八吧嗷嗷叭叭叭叭叭叭吧'
+        title:'SOS平台',
+        info:'SOS是一款面向全国大学生的移动学习平台，大学生可以通过文本搜索迅速得到题目的详细解析、具体考点。同时，我们收录包含大学基础课程、专业课程在内的多门课程，更涵盖考研题库，帮助大学生高效学习。'
       },
       sub:{
         title:'雅思备考需要准备什么',
@@ -60,27 +60,27 @@ export default {
         {
           id:1,
           img_info:'..//..//..//..//public//test1.png',
-          text:'数据结构算法-自步调课程'
+          text:'热门课程||高等数学基本知识点大全'
         },
         {
           id:2,
           img_info:'..//..//..//..//public//test2.png',
-          text:'完成面试准备-自我步调课程'
+          text:'课外拓展||面试中脱颖而出，面试常用小技巧'
         },
         {
           id:3,
           img_info:'',
-          text:'练习问题，POTD连胜，每周比赛'
+          text:'专业课解析||24张图帮你彻底了解九大常见数据结构'
         },
         {
           id:4,
-          img_info:'',
-          text:'我是4'
+          img_info:'..//..//..//..//public//poster.png',
+          text:'今日话题||今天你学习快乐吗'
         },
         {
           id:5,
           img_info:'',
-          text:'4个太丑了所以我来了'
+          text:'考研专题||复习过程中常见的十大弊病及方案'
         }]
     }
   },
@@ -120,7 +120,7 @@ export default {
         height: 500px;
         display: flex;
         padding-left: 15px;
-        padding-right: 30px;
+        padding-right: 25px;
         flex-direction: column;
         background: #ffffff;
         span{
