@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import { getCourse } from '@/api/subject';
+
 
 export default {
   components:{
@@ -35,11 +37,12 @@ export default {
   },
   data () {
     return {
-      courses:
-      {
-          cname: "乌鸦坐飞机",
-          img_url: "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fgss0.baidu.com%2F-Po3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2F35a85edf8db1cb1312bb31d7d154564e93584b27.jpg&refer=http%3A%2F%2Fgss0.baidu.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1663562313&t=79b4eef8d2b9d16d5d6f3a07c006629c",
-        },
+      courses:{
+        course_id:'',
+        outline:'',
+        cname:'',
+        img_url:'',
+      },
       
     }
   },
@@ -49,8 +52,10 @@ export default {
   mounted () {
   },
   created () {
-
+    this.courses.cname=this.$route.query.cname;
+    getCourse()
   }
+  
 }
 </script>
 

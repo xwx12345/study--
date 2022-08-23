@@ -16,6 +16,7 @@
               :img_url="item.img_url"
               :cname="item.cname"
             ></course>
+             <span @click="Jump(item.cid)" class="button">{{item.cid}}</span>
           </el-col>
         </el-row>
       </div>
@@ -60,7 +61,14 @@ export default {
       ],
     };
   },
-  methods: {},
+  methods: {
+    Jump(data){
+      this.$router.push({
+        path: "/courseDetails",
+        query: { cid: data }
+      })
+    }
+  },
   mounted() {},
   watch: {
     $route(to, from) {
