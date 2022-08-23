@@ -9,7 +9,7 @@
         </div>
         <el-button icon="el-icon-star-off" circle @click="collectcourse(courses.cid)"></el-button>
         <div class="outline">
-          {{courses.outline}}
+          简介...<br>{{courses.outline}}
         </div>
       </div>
       <div class="related">
@@ -27,7 +27,7 @@
 
 <script>
 import { getCourse } from '@/api/subject';
-import {CollectCourse} from '@api/subject';
+import {CollectCourse} from '@/api/subject';
 
 export default {
   components:{
@@ -52,7 +52,7 @@ export default {
           this.$message(r.message)
         }
         else{
-          
+          this.$message(r.message)
         }
       }).catch((err)=>{
         console.log(err)
@@ -64,7 +64,7 @@ export default {
   created () {
     this.courses.cid=this.$route.query.cid;
     getCourse(this.courses.cid).then((r)=>{
-      if(r.headers.code===0){
+      if(r.header.code===0){
         this.courses.cname=r.data.course_name;
         this.courses.outline=r.data.comprehension;
         this.courses.img_url=r.data.pic_url;

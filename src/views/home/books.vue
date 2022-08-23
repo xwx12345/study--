@@ -88,7 +88,7 @@ export default {
           img_url: "https://s3.bmp.ovh/imgs/2022/08/17/a45d18cbf6e41773.jpeg",
         },
         {
-          isbn: "004",
+          isbn: "4",
           bname: "没有数学",
           author: "马里奥",
           publisher: "同济大学出版社",
