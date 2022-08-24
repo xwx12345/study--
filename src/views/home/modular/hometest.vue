@@ -84,27 +84,27 @@ export default {
           { id: 2,
             main_info: '名师答题',
             sub_info: '设有专家模块，在线答疑',
-            img_info: '..//..//..//..//public//poster.png'
+            img_info: '..//..//..//..//public//component1.png'
           },
           { id: 3,
             main_info: '管理员审核',
             sub_info: '对优质内容进行审核并且推送',
-            img_info: '..//..//..//..//public//poster.png'
+            img_info: '..//..//..//..//public//component2.png'
           },
           { id: 4,
             main_info: '收藏夹模块',
             sub_info: '难题错题一键收藏，需要时导出',
-            img_info: '..//..//..//..//public//poster.png'
+            img_info: '..//..//..//..//public//component3.png'
           },
           { id: 5,
             main_info: '书籍模块',
             sub_info: '带你体验投身书海的美妙',
-            img_info: '..//..//..//..//public//poster.png'
+            img_info: '..//..//..//..//public//component4.png'
           },
           { id: 6,
             main_info: '课程分类',
             sub_info: '快速了解专业课程相关知识',
-            img_info: '..//..//..//..//public//poster.png'
+            img_info: '..//..//..//..//public//component5.png'
           }
         ],
         [
@@ -117,7 +117,7 @@ export default {
             id: 2,
             main_info: '经典回顾',
             sub_info: '脑袋砸核桃',
-            img_info: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png'
+            img_info: '..//..//..//..//public//component6.png'
           },
           {
             id: 3,

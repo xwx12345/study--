@@ -48,7 +48,7 @@ export default {
   data () {
     return {
       main:{
-        img:'..//..//..//..//public//poster.png',
+        img:'..//..//..//..//public//home_main.png',
         title:'SOS平台',
         info:'SOS是一款面向全国大学生的移动学习平台，大学生可以通过文本搜索迅速得到题目的详细解析、具体考点。同时，我们收录包含大学基础课程、专业课程在内的多门课程，更涵盖考研题库，帮助大学生高效学习。'
       },
