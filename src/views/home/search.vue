@@ -40,7 +40,10 @@
     <div class="bigbox">
       <div class="btext">
         <p>题目</p>
-        <div class="qinfo" v-for="(item, index) in QuestionsList" :key="index">
+        <div class="qinfo" 
+             v-for="(item, index) in QuestionsList" 
+             :key="index"
+             @click="JumpQuestion(item.id)">
           <question
             :qcontent="item.qtext"
             :keyword="content"
@@ -158,6 +161,13 @@ export default {
         query: { cid: data },
       });
     },
+    //我把题目详情加上啦
+    JumpQuestion(data){
+      this.$router.push({
+        path: "/questionDetails",
+        query: { qid: data },
+      })
+    }
   },
   mounted() {},
   watch: {
