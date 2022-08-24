@@ -14,11 +14,12 @@
         <span>答案</span>
       </div>
       <el-main >
-        <span class="answer" v-if="answerList.length==0">
+        <span class="answer" v-if="answer.length==0">
         暂无回答
         </span>
-        <span class="answer" v-for="item in answerList">
-        {{item}}
+        <span v-else v-for="item in answer">
+          <span>{{item}}</span>
+          <el-divider></el-divider>
         </span>
       </el-main>
     </div>
@@ -26,7 +27,7 @@
 </template>
 
 <script>
-import { getQuestion,CollectQuestion } from '@/api/subject';
+import { getQuestion,CollectQuestion,getAnswer} from '@/api/subject';
 
 export default {
   data () {
@@ -36,6 +37,7 @@ export default {
       answerList:[],
       post_time:'',
       img_url:'',
+      answer:[],
     }
   },
   methods: {
@@ -47,8 +49,11 @@ export default {
         else{
           this.$message.error(r.message)
         }
+      }).catch((err)=>{
+        console.log(err)
       })
-    }
+    },
+   
   },
   mounted () {
   },
@@ -60,6 +65,18 @@ export default {
         this.answerList=r.data.answer_id_list;
         this.post_time=r.data.post_time;
         this.img_url=r.data.pic_url;
+        for(var i=0;i<this.answerList.length;i++){
+          getAnswer(this.answerList[i]).then((r)=>{
+            if(r.header.code===0){
+              this.answer.push(r.data.answer_content);
+              }
+              else{
+                this.$message.error(r.header.message)
+              }
+          }).catch((err)=>{
+            console.log(err)
+          })
+        }
       }
       else{
         this.$message.error(r.header.message);
@@ -67,6 +84,7 @@ export default {
     }).catch((err)=>{
         console.log(err)
       })
+    
   }
 }
 </script>

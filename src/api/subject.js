@@ -178,3 +178,12 @@ export function CollectQuestion(uid,qid){
         }
     })
 }
+export function getAnswer(aid){
+    return request({
+        url:'Query/GetAnswer',
+        method:'GET',
+        params:{
+            answer_id:aid
+        }
+    })
+}
