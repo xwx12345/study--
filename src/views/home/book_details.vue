@@ -20,7 +20,7 @@
         <el-button icon="el-icon-star-off" circle @click="collectbook(details.isbn)"></el-button>
       </div>
       <div class="outline">
-        <span>内容简介：</span>
+        <span>内容简介:</span>
         <br />
         {{details.outline}}
       </div>
@@ -133,7 +133,7 @@ export default {
       height: 50%;
       // background: #ffffff;
       .image{
-        // background: #000;
+        // background: #ffffff;
         padding: 10px;
         width:40%;
         display: flex;
@@ -143,6 +143,7 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
+        // background: #ffffff;
         margin: 5px;
         padding-left: 10px;
         width:60%;
@@ -165,11 +166,13 @@ export default {
     .outline{
       padding: 20px;
       font-size: 18px;
+      margin-left:10px;
       span{
         color:#8383c5;
         font-size: 26px;
         font-weight: 600;
         line-height: 49px;
+        margin-left: -10px;
       }
     }
   }
