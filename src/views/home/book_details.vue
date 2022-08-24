@@ -1,9 +1,10 @@
 <template>
-  <el-container>
-    <el-main class="container">
-      <div class="header"></div>
-      <div class="detail">
-        <h1>{{details.bname}}</h1>
+  <div class="container">
+    <div class="detail">
+      <div class="title">
+        <span>{{details.bname}}</span>
+      </div>
+      <div class="middle">
         <div class="image">
           <img :src="details.img_url" width="90%" >
         </div>
@@ -12,25 +13,37 @@
           <p>出版社：{{details.publisher}}</p>
           <p>出版年份：{{details.pub_year}}</p>
           <p>ISBN：{{details.isbn}}</p>
-          <el-button icon="el-icon-star-off" circle @click="collectbook(details.isbn)"></el-button>
-        </div>
-        <div class="outline">
-          {{details.outline}}
         </div>
       </div>
-      <div class="related">
-        <h3>相关课程与题目</h3>
+      <div class="button">
+        <span>收藏 :</span>
+        <el-button icon="el-icon-star-off" circle @click="collectbook(details.isbn)"></el-button>
+      </div>
+      <div class="outline">
+        <span>内容简介：</span>
+        <br />
+        {{details.outline}}
+      </div>
+    </div>
+    <div class="related">
+      <div class="top">
+        <span><i class="el-icon-s-grid"></i>相关课程与题目</span>
+      </div>
+      <div class="courses">
         <p>课程</p>
-          <img :src="details.img_url" width="40%" float="left">
-          <img :src="details.img_url" width="40%" float="left">
-          <img :src="details.img_url" width="40%" float="left">
-        <p>题目</p>
-        <p>题目1</p>
-        <p>题目2</p>
+        <img :src="details.img_url" width="40%" float="left">
+        <img :src="details.img_url" width="40%" float="left">
+        <img :src="details.img_url" width="40%" float="left">
       </div>
-      <div class="footer"></div>
-    </el-main>
-  </el-container>
+      <div class="questions">
+        <p>题目</p>
+        <ul>
+          <li>题目1</li>
+          <li>题目2</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -43,7 +56,7 @@ export default {
   },
   data () {
     return {
-       details: 
+       details:
         {
           isbn: "",
           bname: "",
@@ -53,7 +66,7 @@ export default {
           img_url: "",
           outline:'',
         },
-      
+
     }
   },
   methods: {
@@ -64,7 +77,7 @@ export default {
           this.$message(r.message)
         }
         else{
-          
+
         }
       }).catch((err)=>{
         console.log(err)
@@ -97,38 +110,92 @@ export default {
 
 <style scoped lang="scss">
 .container{
-  .header{
-    height:2px;
-  }
+  background: linear-gradient(120deg,#e8efff,#F3E8F0,#F4EAEA);
+  width: 100%;
+  display: flex;
+  justify-content: center;
   .detail{
     width:60%;
     margin: 10px ;
-    background:rgb(238, 237, 246);
+    background:rgba(255, 255, 255,0.6);
     border-radius: 14px;
-    float:left;
-    .image{
-      float:left;
-      width:50%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    .title{
+      margin: 25px 0 0 35px;
+      font-size: 35px;
+      font-weight: 600;
     }
-    .info{
-      float:left;
-      width:50%;
+    .middle{
+      display: flex;
+      margin: 10px;
+      height: 50%;
+      // background: #ffffff;
+      .image{
+        // background: #000;
+        padding: 10px;
+        width:40%;
+        display: flex;
+        justify-content: center;
+      }
+      .info{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin: 5px;
+        padding-left: 10px;
+        width:60%;
+        font-size: 18px;
+      }
+    }
+    .button{
+      padding-left: 20px;
+      span{
+        display: inline-block;
+        padding: 10px;
+        border-radius: 10px;
+        margin-right: 5px;
+        font-size: 22px;
+        font-weight: 600;
+        color:#ffffff;
+        background: #CBB7D0;
+      }
     }
     .outline{
-      width:100%;
-      display:flex;
+      padding: 20px;
+      font-size: 18px;
+      span{
+        color:#8383c5;
+        font-size: 26px;
+        font-weight: 600;
+        line-height: 49px;
+      }
     }
   }
   .related{
     width:30%;
     margin: 10px;
-    background: rgb(238, 237, 246);
+    background:rgba(255, 255, 255,0.6);
     border-radius: 14px;
-    float:left;
-    
-  }
-  .footer{
-    height:2px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    .top{
+      // background: #aaaaff;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 24px;
+      font-weight: 600;
+      color: #8383c5;
+    }
+    .courses,.questions{
+      margin-left: 20px;
+      p{
+        font-size: 20px;
+        color: #706A8C;
+      }
+    }
   }
 }
 </style>
