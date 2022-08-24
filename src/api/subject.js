@@ -168,3 +168,13 @@ export function CollectCourse(uid,cid){
         }
     })
 }
+export function CollectQuestion(uid,qid){
+    return request({
+        url:'Collection/CollectQuestion',
+        method:'POST',
+        params:{
+            user_id:uid,
+            question_id:qid
+        }
+    })
+}

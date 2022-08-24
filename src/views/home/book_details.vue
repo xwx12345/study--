@@ -64,7 +64,7 @@ export default {
           this.$message(r.message)
         }
         else{
-          
+          this.$message.error(r.message)
         }
       }).catch((err)=>{
         console.log(err)

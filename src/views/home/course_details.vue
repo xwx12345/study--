@@ -52,7 +52,7 @@ export default {
           this.$message(r.message)
         }
         else{
-          this.$message(r.message)
+          this.$message.error(r.message)
         }
       }).catch((err)=>{
         console.log(err)
