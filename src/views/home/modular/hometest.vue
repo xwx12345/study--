@@ -123,25 +123,25 @@ export default {
             id: 3,
             main_info: '黑虎阿福专题',
             sub_info: '全新舞步更新',
-            img_info: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png'
+            img_info: '..//..//..//..//public//component7.png'
           },
           {
             id: 4,
             main_info: '全是数学',
             sub_info: '中等高等低等超高等一网打尽',
-            img_info: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png'
+            img_info: '..//..//..//..//public//component8.png'
           },
           {
             id: 5,
             main_info: '数学大学名师',
             sub_info: '小卡比教你学数学',
-            img_info: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png'
+            img_info: '..//..//..//..//public//component9.png'
           },
           {
             id: 6,
             main_info: '管理员真棒',
             sub_info: '每天处理的反馈内容竟然是这些',
-            img_info: '..//..//..//..//public//feedback.png'
+            img_info: '..//..//..//..//public//component10.png'
           }
         ]]
     }
