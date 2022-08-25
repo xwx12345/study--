@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="modular_title">
-      <span style="font-size: 18px;color: #333333;">我的测试模块</span>
+      <span style="font-size: 18px;color: #333333;">首页推送</span>
       <div class="main_nav">
         <ul>
           <li
@@ -22,7 +22,7 @@
           <span class="main">{{ section.main_info }}</span>
           <br />
           <span class="sub">{{ section.sub_info }}</span>
-          <div class="button" @click="Jump()">点击查看</div>
+          <div class="button" @click="jump()">点击查看</div>
         </div>
         <div class="small_cards">
           <el-row>
@@ -147,7 +147,7 @@ export default {
     }
   },
   methods: {
-    Jump () {
+    jump () {
       this.$router.push('/login')
     },
     changeValue (title) {
@@ -158,7 +158,6 @@ export default {
       this.activeIndex = title.id
       this.item_selected = this.items[this.activeIndex - '1']
     }
-
   },
   mounted () {
     this.item_selected = this.items[0]
