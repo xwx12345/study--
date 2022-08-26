@@ -12,7 +12,7 @@
           <p>作者：{{details.author}}</p>
           <p>出版社：{{details.publisher}}</p>
           <p>出版年份：{{details.pub_year}}</p>
-          <p>ISBN：{{details.isbn}}</p>
+          <p>ISBN:{{details.isbn}}</p>
         </div>
       </div>
       <div class="button">
@@ -93,7 +93,7 @@ export default {
         this.details.bname=r.data.book_name;
         this.details.author=r.data.author;
         this.details.publisher=r.data.publisher;
-        this.details.pub_year=r.data.publish_time;
+        this.details.pub_year=r.data.publish_time.slice(0, 4);
         this.details.img_url=r.data.pic_url;
         this.details.outline=r.data.comprehension;
       }
