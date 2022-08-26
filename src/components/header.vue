@@ -4,7 +4,7 @@
       <img src="../../public/logo.png" />
     </div>
     <div class="search">
-      <input type="text" placeholder=" 搜索关键词" v-model="searchContent" @keyup.enter="search()" />
+      <input type="text" placeholder="搜索关键词" v-model="searchContent" @keyup.enter="search()" />
       <button @click="search()">
         <i class="el-icon-search"></i>
       </button>
@@ -108,6 +108,7 @@ export default {
       color: #676767;
       border: 1px solid #ffffff;
       border-radius: 4px;
+      text-indent: 10px;
       height: 35px;
       width: 300px;
       font-size: 14px;

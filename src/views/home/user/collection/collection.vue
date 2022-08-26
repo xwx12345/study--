@@ -3,7 +3,7 @@
     <div class="container">
       <div><el-button class="all" @click="displayAll()">全部显示</el-button></div>
       <div class="search">
-        <input type="text" placeholder=" 搜索关键词" v-model="searchContent" />
+        <input type="text" placeholder="搜索关键词" v-model="searchContent" />
         <button @click="search()">
           <i class="el-icon-search"></i>
         </button>
@@ -24,10 +24,10 @@
         :filters="[{ text: '√', value: '√' }, { text: '?', value: '?' }]"
         :filter-method="isSearched" filter-placement="bottom-end">
       </el-table-column> -->
-      <el-table-column 
+      <el-table-column
         prop="title" label="收藏内容" width="1200">
       </el-table-column>
-      <el-table-column 
+      <el-table-column
         fixed="right" label="操作" width="150">
         <template slot-scope="scope">
           <el-button size="mini" @click="handleClick(scope.$index, scope.row)">查看</el-button>
@@ -41,15 +41,15 @@
 <script>
 import Header from '@/components/header.vue';
 import {
-  getCollectionBook, 
-  getCollectionCourse, 
-  getCollectionQuestion, 
-  getBook, 
-  getCourse, 
-  getQuestion, 
-  deCollectBook, 
-  deCollectCourse, 
-  deCollectQuestion, 
+  getCollectionBook,
+  getCollectionCourse,
+  getCollectionQuestion,
+  getBook,
+  getCourse,
+  getQuestion,
+  deCollectBook,
+  deCollectCourse,
+  deCollectQuestion,
 } from '../../../../api/subject.js'
 export default {
   methods: {
@@ -103,7 +103,7 @@ export default {
           }else this.$message('删除失败！');
         })
       }
-      
+
     },
     filterTag(value, row) {
       return row.tag === value;
@@ -224,7 +224,7 @@ export default {
   background-color: #e4e0ff;
   display: flex;
   justify-content: space-between;
-  
+
   .all {
     margin: 8px 10px;
   }
@@ -239,6 +239,7 @@ export default {
       border-radius: 4px;
       height: 35px;
       width: 300px;
+      text-indent: 10px;
       font-size: 14px;
       margin: 9px 0;
       letter-spacing: 1px;

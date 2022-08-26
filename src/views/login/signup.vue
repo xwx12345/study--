@@ -58,7 +58,6 @@ export default {
         }
         else{
           this.$message.error(r.header.message)
-          // this.$router.push('/')
           return
         }
       }).catch((err)=>{
@@ -115,6 +114,7 @@ export default {
         width: 60%;
         border: 1px solid #ffffff;
         border-radius: 4px;
+        text-indent: 10px;
         height: 28px;
         font-size: 16px;
         margin: 6px 0;

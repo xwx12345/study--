@@ -4,8 +4,8 @@
       <div class="picture"></div>
       <div class="input">
         <h1>欢迎登录</h1>
-        <input type="text" placeholder=" 手机号" v-model="phone_number"/>
-        <input type="password" placeholder=" 密码" v-model="password"/>
+        <input type="text" placeholder="手机号" v-model="phone_number"/>
+        <input type="password" placeholder="密码" v-model="password"/>
         <button @click="login()">登录</button>
         <router-link to="/signup">新用户注册</router-link>
       </div>
@@ -100,6 +100,7 @@ export default {
         width: 60%;
         border: 1px solid #ffffff;
         border-radius: 4px;
+        text-indent: 10px;
         height: 28px;
         font-size: 16px;
         margin: 6px 0;
