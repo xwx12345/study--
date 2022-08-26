@@ -1,14 +1,14 @@
 <template>
   <el-container class="container">
-    <el-header >
+    <div class="header">
       <div>
-      <el-button icon="el-icon-star-off" circle @click="collectquestion(id)"></el-button>
+        <el-button icon="el-icon-star-off" circle @click="collectquestion(id)"></el-button>
       </div>
       <div class="stem">
         <i class="el-icon-s-promotion"></i>
         {{stem}}
       </div>
-    </el-header>
+    </div>
     <div class="bottom">
       <div class="up">
         <span>答案</span>
@@ -53,7 +53,7 @@ export default {
         console.log(err)
       })
     },
-   
+
   },
   mounted () {
   },
@@ -84,7 +84,7 @@ export default {
     }).catch((err)=>{
         console.log(err)
       })
-    
+
   }
 }
 </script>
@@ -92,8 +92,10 @@ export default {
 <style scoped lang="scss">
 .container{
   width: 100%;
+  display: flex;
+  flex-direction: column;
   // height: calc(100vh - 80px);
-  .el-header{
+  .header{
     background-color: rgba(255,255,255,0.3);
     display: flex;
     justify-content: center;
