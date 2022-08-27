@@ -26,8 +26,8 @@
         </div>
         <div class="small_cards">
           <el-row>
-            <el-col :span="8" v-for="item in item_selected" :key="item.id" @click="jump" class="card_hover">
-                <div style="margin: 1px; background: white;">
+            <el-col :span="8" v-for="item in item_selected" :key="item.id" class="card_hover">
+                <div style="margin: 1px; background: white;" @click="jump()">
                   <div style="padding: 24px;">
                     <span>{{ item.main_info }}</span>
                     <br />
