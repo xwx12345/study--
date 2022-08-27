@@ -69,3 +69,30 @@ export function GetAnswer(data) {
         }
     })
 }
+
+export function getMajorInfo() {
+    return request({
+        url:'/Query/GetMajorInfo',
+        method:'GET'
+    })
+}
+
+export function getBookByMajor(data) {
+    return request({
+        url:'/Query/GetBookByMajor',
+        method:'GET',
+        params:{
+            major_name:data
+        }
+    })
+}
+
+export function getCourseByMajor(data) {
+    return request({
+        url:'/Query/GetCourseByMajor',
+        method:'GET',
+        params:{
+            major_name:data
+        }
+    })
+}
