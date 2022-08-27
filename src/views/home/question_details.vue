@@ -18,6 +18,10 @@
         {{ stem }}
       </div>
     </div>
+    <div class="middle" v-show="img_url!=null">
+      <img :src="img_url" />
+      我是图片
+    </div>
     <div class="bottom">
       <div class="up">
         <span>答案</span>
@@ -125,8 +129,15 @@ export default {
       font-size: 18px;
     }
   }
-  .bottom {
-    background-color: rgba(255, 255, 255, 0.3);
+  .middle{
+    background: rgba(255,255,255,0.5);
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    object-fit: contain;
+  }
+  .bottom{
+    background-color: rgba(255,255,255,0.3);
     margin: 10px;
     border-radius: 10px;
     .up {

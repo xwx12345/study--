@@ -10,6 +10,9 @@
         {{stem}}
       </div>
     </div>
+    <div class="middle" v-show="pic_url!=null">
+      <img :src="pic_url" />
+    </div>
     <div class="bottom">
       <div class="up">
         <span>回答</span>
@@ -21,8 +24,7 @@
           :autosize="{ minRows: 16}"
           v-model="answer"
           maxlength="800"
-          show-word-limit
-        >
+          show-word-limit>
         </el-input>
       </div>
       <div class="button">
@@ -39,7 +41,8 @@ export default {
     return {
       id:'',
       answer:'',
-      stem:'黑虎阿福怎么坐飞机'
+      stem:'黑虎阿福怎么坐飞机',
+      pic_url:''
     }
   },
   methods: {
@@ -50,12 +53,12 @@ export default {
         this.$store.getters.user.user_id,
         {answer_content:answer}
       ).then(r=>{
-        if(r.header.code === 0){
-          this.$message(r.header.message)
+        if(r.code === 0){
+          this.$message(r.message)
           console.log('回答成功')
         }
         else{
-          this.$message.error(r.header.message)
+          this.$message.error(r.message)
           return
         }
       }).catch((err)=>{
@@ -70,6 +73,7 @@ export default {
     getQuestion(this.id).then(r=>{
       if(r.header.code === 0){
         this.stem=r.data.question_stem
+        this.pic_url=r.data.pic_url
       }
       else{
         this.$message.error(r.header.message)
@@ -105,6 +109,13 @@ export default {
       margin: 30px;
       font-size: 18px;
     }
+  }
+  .middle{
+    background: rgba(255,255,255,0.5);
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    object-fit: contain;
   }
   .bottom{
     background-color: rgba(255,255,255,0.3);
