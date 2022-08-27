@@ -6,7 +6,7 @@
       </div>
       <div class="middle">
         <div class="image">
-          <img :src="courses.img_url" width="90%" >
+          <img :src="courses.img_url" >
         </div>
         <div class="info">
           <p>课程id:{{courses.cid}}</p>
@@ -127,6 +127,10 @@ export default {
         width:40%;
         display: flex;
         justify-content: center;
+        img{
+           object-fit: contain;
+           width:100%;
+        }
       }
       .info{
         display: flex;

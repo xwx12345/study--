@@ -6,7 +6,7 @@
       </div>
       <div class="middle">
         <div class="image">
-          <img :src="details.img_url" width="90%" >
+          <img :src="details.img_url" >
         </div>
         <div class="info">
           <p>作者：{{details.author}}</p>
@@ -135,9 +135,13 @@ export default {
       .image{
         // background: #ffffff;
         padding: 10px;
-        width:40%;
+        width: 40%;
         display: flex;
         justify-content: center;
+        img{
+           object-fit: contain;
+           width:100%;
+        }
       }
       .info{
         display: flex;
