@@ -1,18 +1,18 @@
 <template>
 <div>
-<el-menu :default-active="activeIndex" class="major" mode="horizontal" @select="handleSelect">
+<el-menu :default-active="activeIndex" class="major" mode="horizontal">
   <el-menu-item >全部学科</el-menu-item>
   <div class="left">
     <i v-if="currentTabIndex" class="el-icon-caret-left" @click="menuLeft">
     </i>
   </div>
-  <el-menu-item v-for="(item, index) in menuList" v-show="index >= currentTabIndex && currentTabIndex + 12 > index" :key="item.major_id">
+  <el-menu-item v-for="(item, index) in menuList" v-show="index >= currentTabIndex && currentTabIndex + 11 > index" :key="item.major_id" @click="handleClick(item.major_name)">
     <template #title>
       <span>{{item.major_name}}</span>
     </template>
   </el-menu-item>
   <div class="right">
-    <i v-if="major_count - currentTabIndex > 12" class="el-icon-caret-right" @click="menuRight">
+    <i v-if="major_count - currentTabIndex > 11" class="el-icon-caret-right" @click="menuRight">
     </i>
   </div>
 </el-menu>
@@ -81,8 +81,8 @@ export default {
     };
   },
   methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
+    handleClick(data) {
+      this.$emit('majorFilter', (data === '全部学科' ? '所有专业' : data));
     },
     menuLeft() {
       this.currentTabIndex--;
@@ -93,11 +93,13 @@ export default {
   },
   created() {
     getMajorInfo().then((r) => {
-      r.data.nameList.forEach((major) => {
-        this.major_count = this.major_count + 1;
-        this.menuList.push({
-          major_name: major
-        })
+      r.data.nameList.forEach((major, index) => {
+        if (r.data.idList[index]) {
+          this.major_count = this.major_count + 1;
+          this.menuList.push({
+            major_name: major
+          })
+        }
       });
     })
   }
