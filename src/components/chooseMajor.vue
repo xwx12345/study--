@@ -121,6 +121,7 @@ export default {
     justify-content: center;
     align-items: center;
     font-size: 20px;
+    cursor: pointer;
   }
 
   .right{
@@ -130,6 +131,7 @@ export default {
     justify-content: center;
     align-items: center;
     font-size: 20px;
+    cursor: pointer;
   }
 }
 </style>
