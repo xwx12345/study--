@@ -122,7 +122,7 @@ export default {
     height: 2px;
   }
   .courses {
-    width: 99%;
+    width: 100%;
     // padding: 20px;
     margin: 0 auto;
     background: rgb(238, 237, 246);

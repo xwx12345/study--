@@ -164,9 +164,6 @@ export default {
       .box {
         // background: #ffaa7f;
         // width: 100%;
-          .el-col {
-            
-          }
       }
     }
   }
