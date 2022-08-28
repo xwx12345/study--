@@ -94,9 +94,6 @@ export default {
     };
   },
   methods: {
-    toggleCollapse() {
-      this.isCollapse = !this.isCollapse;
-    },
     Jump(data) {
       this.$router.push({
         path: '/bookDetails',
@@ -104,8 +101,7 @@ export default {
       })
     },
     majorFilter(data) {
-      console.log(data)
-      this.BooksList = []
+      this.BooksList = [];
       getBookByMajor(data).then((r) => {
         r.data.idList.forEach((risbn) => {
           getBook(risbn).then((br) => {
