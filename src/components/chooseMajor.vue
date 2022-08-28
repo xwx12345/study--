@@ -1,7 +1,7 @@
 <template>
 <div>
 <el-menu :default-active="activeIndex" class="major" mode="horizontal">
-  <el-menu-item >全部学科</el-menu-item>
+  <el-menu-item @click="handleAll">全部学科</el-menu-item>
   <div class="left">
     <i v-if="currentTabIndex" class="el-icon-caret-left" @click="menuLeft">
     </i>
@@ -81,8 +81,11 @@ export default {
     };
   },
   methods: {
+    handleAll() {
+      this.$emit('majorFilter', '所有专业');
+    },
     handleClick(data) {
-      this.$emit('majorFilter', (data === '全部学科' ? '所有专业' : data));
+      this.$emit('majorFilter', data);
     },
     menuLeft() {
       this.currentTabIndex--;
@@ -93,8 +96,8 @@ export default {
   },
   created() {
     getMajorInfo().then((r) => {
-      r.data.nameList.forEach((major, index) => {
-        if (r.data.idList[index]) {
+      r.data.nameList.forEach((major) => {
+        if(major !== '所有专业') {
           this.major_count = this.major_count + 1;
           this.menuList.push({
             major_name: major
@@ -118,6 +121,7 @@ export default {
     justify-content: center;
     align-items: center;
     font-size: 20px;
+    cursor: pointer;
   }
 
   .right{
@@ -127,6 +131,7 @@ export default {
     justify-content: center;
     align-items: center;
     font-size: 20px;
+    cursor: pointer;
   }
 }
 </style>
