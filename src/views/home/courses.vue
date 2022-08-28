@@ -12,7 +12,7 @@
             v-for="(item, index) in CoursesList"
             :key="item.cid"
           >
-            <div @click="Jump(item.cid)">
+            <div class="courseBox" @click="Jump(item.cid)">
             <course
               :img_url="item.img_url"
               :cname="item.cname"
@@ -121,22 +121,27 @@ export default {
   .o-header {
     height: 2px;
   }
-  .courses {
-    width: 100%;
-    // padding: 20px;
-    margin: 0 auto;
-    background: rgb(238, 237, 246);
-    border-radius: 14px;
-    display: flex;
-    flex-direction: column;
-    .cinfo {
-      // background: #000;
-      .box {
-        // background: #ffaa7f;
-        // width: 100%;
+  .courseBox {
+    width: 300px;
+    // height: 300px;
+    .courses {
+      width: 100%;
+      // padding: 20px;
+      margin: 0 auto;
+      background: rgb(238, 237, 246);
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      .cinfo {
+        // background: #000;
+        .box {
+          // background: #ffaa7f;
+          // width: 100%;
+        }
       }
     }
   }
+  
   .o-footer {
     height: 2px;
   }
