@@ -1,6 +1,6 @@
 <template>
   <div class="plate">
-    <br/> 
+    <br/>
     <div class="pc-container">
       <div class="left">
         <h2><center>{{main.title}}</center></h2>
@@ -46,54 +46,63 @@
 </template>
 
 <script>
+import p2_p1 from '../../assets/p2_p1.png'
+import p2_p2 from '../../assets/p2_p2.png'
+import p2_p3 from '../../assets/p2_p3.png'
+import p2_p4 from '../../assets/p2_p4.png'
+import poster from '../../assets/poster.png'
+import home_p2 from '../../assets/home_p2.png'
+import home_p3 from '../../assets/home_p3.png'
+import home_p4 from '../../assets/home_p4.png'
+import home_p5 from '../../assets/home_p5.png'
 export default {
   data () {
     return {
       main:{
         title:'24张图帮你彻底了解九大常见数据结构',
         author:'发布于：2022年8月24日 作者：嘿嘿',
-        img:'..//..//..//..//public//p2_p1.png',
+        img:p2_p1
       },
       content_list:[
         {
           id:'1.数组',
-          img_info:'..//..//..//..//public//p2_p2.png',
+          img_info:p2_p2,
           text:'数组可以说是最基本最常见的数据结构。数组一般用来存储相同类型的数据，可通过数组名和下标进行数据的访问和更新。数组中元素的存储是按照先后顺序进行的，同时在内存中也是按照这个顺序进行连续存放。数组相邻元素之间的内存地址的间隔一般就是数组数据类型的大小。'
         },
         {
           id:'2.链表',
-          img_info:'..//..//..//..//public//p2_p3.png',
+          img_info:p2_p3,
           text:'链表相较于数组，除了数据域，还增加了指针域用于构建链式的存储数据。链表中每一个节点都包含此节点的数据和指向下一节点地址的指针。由于是通过指针进行下一个数据元素的查找和访问，使得链表的自由度更高。这表现在对节点进行增加和删除时，只需要对上一节点的指针地址进行修改，而无需变动其它的节点。不过事物皆有两极，指针带来高自由度的同时，自然会牺牲数据查找的效率和多余空间的使用。一般常见的是有头有尾的单链表，对指针域进行反向链接，还可以形成双向链表或者循环链表。'
         },
         {
           id:'链表和数组对比',
-          img_info:'..//..//..//..//public//p2_p4.png',
+          img_info:p2_p4,
           text:'一般常见的是有头有尾的单链表，对指针域进行反向链接，还可以形成双向链表或者循环链表。'
         }],
       info_list:[
         {
           id:1,
-          img_info:'..//..//..//..//public//poster.png',
+          img_info:poster,
           text:'今日话题||今天你学习快乐吗'
         },
         {
           id:2,
-          img_info:'..//..//..//..//public//home_p2.png',
+          img_info:home_p2,
           text:'专业课解析||24张图帮你彻底了解九大常见数据结构'
         },
         {
           id:3,
-          img_info:'..//..//..//..//public//home_p3.png',
+          img_info:home_p3,
           text:'热门课程||高等数学基本知识点大全'
         },
         {
           id:4,
-          img_info:'..//..//..//..//public//home_p4.png',
+          img_info:home_p4,
           text:'考研专题||复习过程中常见的十大弊病及方案'
         },
         {
           id:5,
-          img_info:'..//..//..//..//public//home_p5.png',
+          img_info:home_p5,
           text:'课外拓展||面试中脱颖而出，面试常用小技巧'
         }]
     }
@@ -205,7 +214,7 @@ export default {
       }
     }
   }
-  
+
 }
 
 </style>
