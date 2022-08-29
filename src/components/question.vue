@@ -33,20 +33,27 @@ export default {
 <style scoped lang="scss">
 .container {
   margin: 20px 0 0 0;
+  padding: 0 0 30px 20px;
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
   display: flex;
   width: auto;
-  height: 120px;
+  height: auto;
   border-radius: 15px;
   text-align: left;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
   .text {
     height: 20%;
     width: 100%;
-    padding: 30px 30px 0px;
+    padding: 30px 10px 20px 0px;
+
     .qtext {
       font-size: 24px;
       font-weight: bold;
+      line-height: 28px;
     }
     .atext {
       padding: 15px 0 0 0;

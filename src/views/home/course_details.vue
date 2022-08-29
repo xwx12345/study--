@@ -6,7 +6,7 @@
       </div>
       <div class="middle">
         <div class="image">
-          <img :src="courses.img_url" >
+          <img :src="courses.img_url" />
         </div>
         <div class="info">
           <p>课程id:{{ courses.cid }}</p>
@@ -19,7 +19,11 @@
           circle
           @click="collectcourse(courses.cid)"
         ></el-button>
-        <el-button v-if="usertype === 3" icon="el-icon-delete" @click="deletecourse(courses.cid)"></el-button>
+        <el-button
+          v-if="usertype === 3"
+          icon="el-icon-delete"
+          @click="deletecourse(courses.cid)"
+        ></el-button>
       </div>
       <div class="outline">
         <span>课程简介:</span>
@@ -31,25 +35,45 @@
       <div class="top">相关书籍与题目</div>
       <div class="books">
         <p>书籍</p>
-        <img src="" alt="" />
+        <div class="booksbg">
+          <itsmall
+            bimg="https://hepshow-image-formal.oss-cn-beijing.aliyuncs.com/bookCover/2022-07-3w/62cd50d00cf2b04a1a744a6e.jpg"
+            text="请使用组件"
+          ></itsmall>
+          <itsmall
+            bimg="https://hepshow-image-formal.oss-cn-beijing.aliyuncs.com/bookCover/2022-07-3w/62cd50d00cf2b04a1a744a6e.jpg"
+            text="请使用组件"
+          ></itsmall>
+          <itsmall
+            bimg="https://hepshow-image-formal.oss-cn-beijing.aliyuncs.com/bookCover/2022-07-3w/62cd50d00cf2b04a1a744a6e.jpg"
+            text="请使用组件"
+          ></itsmall>
+          <!-- <course img_url="https://hepshow-image-formal.oss-cn-beijing.aliyuncs.com/bookCover/2022-07-3w/62cd50d00cf2b04a1a744a6e.jpg">
+          </course> -->
+        </div>
       </div>
       <div class="questions">
         <p>题目</p>
-        <ul>
-          <li>题目1</li>
-          <li>题目2</li>
-        </ul>
+        <div class="booksbg">
+          <question qcontent="请使用组件"></question>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { CollectCourse,getCourse,deleCourse } from "@/api/subject";
-import router from '@/router';
-
+import { CollectCourse, getCourse, deleCourse } from "@/api/subject";
+import router from "@/router";
+import question from "@/components/question.vue";
+import itsmall from "@/components/item_small.vue";
+import course from "@/components/course.vue";
 export default {
-  components: {},
+  components: {
+    question,
+    itsmall,
+    course,
+  },
   data() {
     return {
       courses: {
@@ -75,18 +99,16 @@ export default {
           console.log(err);
         });
     },
-    deletecourse(data){
-      deleCourse(data).then((r)=>{
-        if(r.code === 0)
-        {
+    deletecourse(data) {
+      deleCourse(data).then((r) => {
+        if (r.code === 0) {
           this.$message(r.message);
           router.go(-1);
-        }
-        else{
+        } else {
           this.$message.error(r.message);
         }
-      })
-    }
+      });
+    },
   },
   mounted() {},
   created() {
@@ -119,7 +141,7 @@ export default {
   background: linear-gradient(120deg, #e8efff, #f3e8f0, #f4eaea);
   width: 100%;
   display: flex;
-  justify-content: center;
+  // justify-content: center;
   .detail {
     width: 60%;
     margin: 10px;
@@ -144,9 +166,9 @@ export default {
         width: 40%;
         display: flex;
         justify-content: center;
-        img{
-           object-fit: contain;
-           width:100%;
+        img {
+          object-fit: contain;
+          width: 100%;
         }
       }
       .info {
@@ -189,10 +211,11 @@ export default {
   .related {
     width: 30%;
     margin: 10px;
+    padding: 0 0px 20px 0px;
     background: rgba(255, 255, 255, 0.6);
     border-radius: 14px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
+    display: block;
     flex-direction: column;
     .top {
       // background: #aaaaff;
@@ -202,13 +225,24 @@ export default {
       font-weight: 600;
       color: #8383c5;
     }
-    .books,
+    p {
+      font-size: 20px;
+      color: #706a8c;
+    }
+    .booksbg {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: block;
+      width: auto;
+      flex-wrap: nowrap;
+    }
+    .books {
+      // color: #ffffff;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
     .questions {
       margin-left: 20px;
-      p {
-        font-size: 20px;
-        color: #706a8c;
-      }
+      margin-right: 40px;
     }
   }
 }
