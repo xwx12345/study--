@@ -22,7 +22,7 @@
           circle
           @click="collectbook(details.isbn)"
         ></el-button>
-        <el-button v-if="usertype === 3" icon="el-icon-delete"></el-button>
+        <el-button v-if="usertype === 3" icon="el-icon-delete" @click="deletebook(details.isbn)"></el-button>
       </div>
       <div class="outline">
         <span>内容简介:</span>
@@ -52,9 +52,9 @@
 </template>
 
 <script>
-import { getBook } from "@/api/subject";
-import { CollectBook } from "@/api/subject";
+import { CollectBook,getBook,deleBook } from "@/api/subject";
 import book from "../../components/book.vue";
+import router from '@/router';
 export default {
   components: {
     book,
@@ -87,6 +87,16 @@ export default {
           console.log(err);
         });
     },
+    deletebook(data){
+      deleBook(data).then((r)=>{
+        if(r.code===0){
+          this.$message(r.message);
+          router.go(-1);
+        }else{
+          this.$message.error(r.message);
+        }
+      })
+    }
   },
   mounted() {},
   created() {

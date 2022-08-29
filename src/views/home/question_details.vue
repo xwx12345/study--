@@ -10,7 +10,7 @@
           ></el-button>
         </p>
         <p>
-          <el-button v-if="usertype === 3" icon="el-icon-delete"></el-button>
+          <el-button v-if="usertype === 3" icon="el-icon-delete" @click="deletequestion(id)"></el-button>
         </p>
       </div>
       <div class="stem">
@@ -38,7 +38,8 @@
 </template>
 
 <script>
-import { getQuestion, CollectQuestion, getAnswer } from "@/api/subject";
+import { getQuestion, CollectQuestion, getAnswer ,deleQuestion} from "@/api/subject";
+import router from '@/router';
 
 export default {
   data() {
@@ -65,6 +66,16 @@ export default {
           console.log(err);
         });
     },
+    deletequestion(data){
+      deleQuestion(data).then((r)=>{
+        if(r.code === 0){
+          this.$message(r.message);
+          router.go(-1);
+        }else{
+          this.$message.error(r.message);
+        }
+      })
+    }
   },
   mounted() {},
   created() {

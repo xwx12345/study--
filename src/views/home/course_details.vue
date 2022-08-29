@@ -19,7 +19,7 @@
           circle
           @click="collectcourse(courses.cid)"
         ></el-button>
-        <el-button v-if="usertype === 3" icon="el-icon-delete"></el-button>
+        <el-button v-if="usertype === 3" icon="el-icon-delete" @click="deletecourse(courses.cid)"></el-button>
       </div>
       <div class="outline">
         <span>课程简介:</span>
@@ -45,8 +45,8 @@
 </template>
 
 <script>
-import { getCourse } from "@/api/subject";
-import { CollectCourse } from "@/api/subject";
+import { CollectCourse,getCourse,deleCourse } from "@/api/subject";
+import router from '@/router';
 
 export default {
   components: {},
@@ -75,6 +75,18 @@ export default {
           console.log(err);
         });
     },
+    deletecourse(data){
+      deleCourse(data).then((r)=>{
+        if(r.code === 0)
+        {
+          this.$message(r.message);
+          router.go(-1);
+        }
+        else{
+          this.$message.error(r.message);
+        }
+      })
+    }
   },
   mounted() {},
   created() {
