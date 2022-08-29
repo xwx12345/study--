@@ -34,7 +34,7 @@ export default {
     success(input)
       {
         this.$message('反馈提交成功');
-        console.log(input)
+        //console.log(input)
       }
   },
   mounted () {
