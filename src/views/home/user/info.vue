@@ -19,7 +19,15 @@
           <input v-model="userinfo.school"/>
           <br />
           <span>专业:</span>
-          <input v-model="userinfo.major" />
+          <el-select v-model="userinfo.major" placeholder="请选择专业">
+          <el-option 
+            v-for="item1 in userinfo.majorname"
+            :key="item1"
+            :label="item1"
+            :value="item1"
+            >
+          </el-option>
+          </el-select>
         </div>
         <div class="button">
           <button @click="save(userinfo)" >保存</button>
@@ -33,6 +41,7 @@
 <script>
 import { getInfo } from '@/api/user';
 import {saveInfo} from'@/api/user';
+import { getMajorInfo } from '@/api/query';
 export default {
   data () {
     return {
@@ -40,16 +49,21 @@ export default {
         username:'',
         major:'',
         tel:'',
-        school:''
+        school:'',
+        majorid:[],
+        majorname:[],
       }
     }
   },
   methods: {
     save(userinfo){
-      console.log(userinfo.major)
+      
       console.log(userinfo.school)
+      var i=0;
+      for(i=0;userinfo.majorname[i]!=userinfo.major;i++){}
+      console.log(userinfo.major)
       saveInfo({
-        major_id:userinfo.major,
+        major_id:userinfo.majorid[i],
         school:userinfo.school,
         user_name:userinfo.username
       },this.$store.getters.user.user_id).then((r)=>{
@@ -85,7 +99,18 @@ export default {
     }).catch((err)=>{
       console.log(err)
     })
-    
+    getMajorInfo().then(r=>{
+      if(r.header.code===0){
+          this.userinfo.majorname=r.data.nameList;
+          this.userinfo.majorid=r.data.idList;
+      }
+      else{
+        this.$message.error(r.header.message)
+        return
+      }
+    }).catch((err)=>{
+      console.log(err)
+    })
     
   }
 }
@@ -97,6 +122,10 @@ export default {
 img{
   border-radius:50%;
   margin:50px;
+}
+.el-dropdown-link{
+  cursor:pointer;
+  color:#409EFF;
 }
 .container{
   display:flex;
