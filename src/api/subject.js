@@ -149,7 +149,7 @@ export function queryCollectionQuestion(uid, text) {
 
 export function CollectBook(uid,cisbn){
     return request({
-        url:'Collection/CollectBook',
+        url:'/Collection/CollectBook',
         method:'POST',
         params:{
             user_id:uid,
@@ -160,7 +160,7 @@ export function CollectBook(uid,cisbn){
 
 export function CollectCourse(uid,cid){
     return request({
-        url:'Collection/CollectCourse',
+        url:'/Collection/CollectCourse',
         method:'POST',
         params:{
             user_id:uid,
@@ -170,7 +170,7 @@ export function CollectCourse(uid,cid){
 }
 export function CollectQuestion(uid,qid){
     return request({
-        url:'Collection/CollectQuestion',
+        url:'/Collection/CollectQuestion',
         method:'POST',
         params:{
             user_id:uid,
@@ -180,7 +180,7 @@ export function CollectQuestion(uid,qid){
 }
 export function getAnswer(aid){
     return request({
-        url:'Query/GetAnswer',
+        url:'/Query/GetAnswer',
         method:'GET',
         params:{
             answer_id:aid
@@ -188,3 +188,43 @@ export function getAnswer(aid){
     })
 }
 
+
+export function deleBook(data){
+    return request({
+        url:'/Data/DeleteBook',
+        method:'DELETE',
+        params:{
+            isbn:data
+        }
+    })
+}
+
+export function deleAnswer(data){
+    return request({
+        url:'/Data/DeleteAnswer',
+        method:'DELETE',
+        params:{
+            answer_id:data
+        }
+    })
+}
+
+export function deleQuestion(data){
+    return request({
+        url:'/Data/DeleteQuestion',
+        method:'DELETE',
+        params:{
+            question_id:data
+        }
+    })
+}
+
+export function deleCourse(data){
+    return request({
+        url:'/Data/DeleteCourse',
+        method:'DELETE',
+        params:{
+            course_id:data
+        }
+    })
+}

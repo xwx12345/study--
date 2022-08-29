@@ -129,6 +129,11 @@ const routes = [
         path: '/admin/feedback',
         name: 'adminfeedback',
         component: resolve => require(['@/views/admin/feedback'], resolve)
+      },
+      {
+        path: '/admin/add',
+        name: 'adminAdd',
+        component: resolve => require(['@/views/admin/add'], resolve)
       }
     ]
   }

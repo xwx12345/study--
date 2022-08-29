@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="modular_title">
-      <span style="font-size: 18px;color: #333333;">我的测试模块</span>
+      <span style="font-size: 18px;color: #333333;">首页推送</span>
       <div class="main_nav">
         <ul>
           <li
@@ -22,12 +22,12 @@
           <span class="main">{{ section.main_info }}</span>
           <br />
           <span class="sub">{{ section.sub_info }}</span>
-          <div class="button" @click="Jump()">点击查看</div>
+          <div class="button" @click="jump()">点击查看</div>
         </div>
         <div class="small_cards">
           <el-row>
-            <el-col :span="8" v-for="item in item_selected" :key="item.id" @click="jump" class="card_hover">
-                <div style="margin: 1px; background: white;">
+            <el-col :span="8" v-for="item in item_selected" :key="item.id" class="card_hover">
+                <div style="margin: 1px; background: white;" @click="jump()">
                   <div style="padding: 24px;">
                     <span>{{ item.main_info }}</span>
                     <br />
@@ -56,6 +56,19 @@
 </template>
 
 <script>
+import test2 from '../../../assets/test2.png'
+import feedback from '../../../assets/feedback.png'
+import wuya from '../../../assets/wuya.png'
+import component1 from '../../../assets/component1.png'
+import component2 from '../../../assets/component2.png'
+import component3 from '../../../assets/component3.png'
+import component4 from '../../../assets/component4.png'
+import component5 from '../../../assets/component5.png'
+import component6 from '../../../assets/component6.png'
+import component7 from '../../../assets/component7.png'
+import component8 from '../../../assets/component8.png'
+import component9 from '../../../assets/component9.png'
+import component10 from '../../../assets/component10.png'
 export default {
   data () {
     return {
@@ -64,90 +77,87 @@ export default {
         { name: '基本功能', id: '1' },
         { name: '最新资讯', id: '2' },
         // { name: '界面3', id: '3' },
-        // { name: '界面4', id: '4' },
-        // { name: '界面5', id: '5' },
-        // { name: '界面6', id: '6' }
       ],
       item_selected: [],
       section: {
         main_info: '线上学习',
         sub_info: '立即体验！',
-        img_info: '..//..//..//..//public//test2.png'
+        img_info: test2
       },
       items: [
         [
           { id: 1,
             main_info: '文本搜题',
             sub_info: '难题在线搜索，查询详细解析及相关题型推荐',
-            img_info: '..//..//..//..//public//feedback.png'
+            img_info: feedback
           },
           { id: 2,
             main_info: '名师答题',
             sub_info: '设有专家模块，在线答疑',
-            img_info: '..//..//..//..//public//poster.png'
+            img_info: component1
           },
           { id: 3,
             main_info: '管理员审核',
             sub_info: '对优质内容进行审核并且推送',
-            img_info: '..//..//..//..//public//poster.png'
+            img_info: component2
           },
           { id: 4,
             main_info: '收藏夹模块',
             sub_info: '难题错题一键收藏，需要时导出',
-            img_info: '..//..//..//..//public//poster.png'
+            img_info: component2
           },
           { id: 5,
             main_info: '书籍模块',
             sub_info: '带你体验投身书海的美妙',
-            img_info: '..//..//..//..//public//poster.png'
+            img_info: component4
           },
           { id: 6,
             main_info: '课程分类',
             sub_info: '快速了解专业课程相关知识',
-            img_info: '..//..//..//..//public//poster.png'
+            img_info: component5
           }
         ],
         [
           { id: 1,
             main_info: '最新课程',
             sub_info: '乌鸦坐飞机',
-            img_info: '..//..//..//..//public//wuya.png'
+            img_info: wuya
           },
           {
             id: 2,
             main_info: '经典回顾',
             sub_info: '脑袋砸核桃',
-            img_info: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png'
+            img_info: component6
           },
           {
             id: 3,
             main_info: '黑虎阿福专题',
             sub_info: '全新舞步更新',
-            img_info: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png'
+            img_info: component7
           },
           {
             id: 4,
             main_info: '全是数学',
             sub_info: '中等高等低等超高等一网打尽',
-            img_info: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png'
+            img_info: component8
           },
           {
             id: 5,
             main_info: '数学大学名师',
             sub_info: '小卡比教你学数学',
-            img_info: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png'
+            img_info: component9
           },
           {
             id: 6,
             main_info: '管理员真棒',
             sub_info: '每天处理的反馈内容竟然是这些',
-            img_info: '..//..//..//..//public//feedback.png'
+            img_info: component10
           }
         ]]
     }
   },
   methods: {
-    Jump () {
+    jump () {
       this.$router.push('/login')
     },
     changeValue (title) {
@@ -158,7 +168,6 @@ export default {
       this.activeIndex = title.id
       this.item_selected = this.items[this.activeIndex - '1']
     }
-
   },
   mounted () {
     this.item_selected = this.items[0]

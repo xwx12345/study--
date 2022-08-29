@@ -18,6 +18,10 @@
             <i class="el-icon-question"></i>
             反馈中心
           </el-menu-item>
+          <el-menu-item index="/admin/add">
+            <i class="el-icon-upload"></i>
+            增加中心
+          </el-menu-item>
         </el-menu>
       </div>
       <div class="right">

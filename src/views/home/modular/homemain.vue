@@ -44,11 +44,17 @@
 </template>
 
 <script>
+import home_main from '../../../assets/home_main.png'
+import poster from '../../../assets/poster.png'
+import home_p2 from '../../../assets/home_p2.png'
+import home_p3 from '../../../assets/home_p3.png'
+import home_p4 from '../../../assets/home_p4.png'
+import home_p5 from '../../../assets/home_p5.png'
 export default {
   data () {
     return {
       main:{
-        img:'..//..//..//..//public//poster.png',
+        img:home_main,
         title:'SOS平台',
         info:'SOS是一款面向全国大学生的移动学习平台，大学生可以通过文本搜索迅速得到题目的详细解析、具体考点。同时，我们收录包含大学基础课程、专业课程在内的多门课程，更涵盖考研题库，帮助大学生高效学习。'
       },
@@ -59,27 +65,27 @@ export default {
       info_list:[
         {
           id:1,
-          img_info:'..//..//..//..//public//poster.png',
+          img_info:poster,
           text:'今日话题||今天你学习快乐吗'
         },
         {
           id:2,
-          img_info:'..//..//..//..//public//home_p2.png',
+          img_info:home_p2,
           text:'专业课解析||24张图帮你彻底了解九大常见数据结构'
         },
         {
           id:3,
-          img_info:'..//..//..//..//public//home_p3.png',
+          img_info:home_p3,
           text:'热门课程||高等数学基本知识点大全'
         },
         {
           id:4,
-          img_info:'..//..//..//..//public//home_p4.png',
+          img_info:home_p4,
           text:'考研专题||复习过程中常见的十大弊病及方案'
         },
         {
           id:5,
-          img_info:'..//..//..//..//public//home_p5.png',
+          img_info:home_p5,
           text:'课外拓展||面试中脱颖而出，面试常用小技巧'
         }]
     }
