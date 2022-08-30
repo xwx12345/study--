@@ -37,19 +37,23 @@
       <div class="courses">
         <p>课程</p>
         <div class="booksbg" >
-          <span v-for="item in details.rcourses">
-            <itsmall
+          <div v-for="item in details.rcourses" class="card">
+            <img :src="item.cimg"/>
+            <span>{{item.text}}</span>
+            <!-- <itsmall
               :bimg="item.cimg"
-              :text="item.text"></itsmall>
-          </span>
+              :text="item.text"></itsmall> -->
+          </div>
         </div>
       </div>
       <div class="questions">
         <p>题目</p>
-        <div class="booksbg">
-          <span v-for="item in details.rquestions" >
-            <question :qcontent="item.content"></question>
-          </span>
+        <div class="quesbg">
+          <div v-for="item in details.rquestions" class="card">
+            <i class="el-icon-ship"></i>
+            <span>{{item.content}}</span>
+            <!-- <question :qcontent="item.content"></question> -->
+          </div>
         </div>
       </div>
     </div>
@@ -255,16 +259,50 @@ export default {
       // color: #ffffff;
       margin-left: 20px;
       margin-right: 20px;
-    }
-    .booksbg {
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      display: block;
-      width: auto;
-      flex-wrap: nowrap;
+      .booksbg {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        background-color: #ffffff;
+        flex-wrap: nowrap;
+        .card{
+          background: #ffffff;
+          width: 30%;
+          margin: 10px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          object-fit: contain;
+          img{
+            width: 100%;
+          }
+          span{
+            font-size: 14px;
+            display: inline-block;
+            padding: 5px;
+          }
+        }
+      }
     }
     .questions {
       margin-left: 20px;
-      margin-right: 40px;
+      margin-right: 20px;
+      .quesbg {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        flex-wrap: nowrap;
+        .card{
+          padding: 10px;
+          border-bottom: #cbb7d0 solid 1px;
+          font-size: 16px;
+          span{
+            display: inline-block;
+            margin-left: 5px;
+          }
+        }
+      }
     }
   }
 }
