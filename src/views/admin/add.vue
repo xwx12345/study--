@@ -105,11 +105,43 @@
         </div>
       </div>
     </div>
+    <div class="subject">
+      <div class="button">
+        <span>增加专家</span>
+      </div>
+      <div class="form">
+        <div class="main">
+          <span>用户名:</span>
+          <input v-model="subject.username"/>
+          <br />
+          <span>手机号:</span>
+          <input v-model="subject.tele"/>
+          <br />
+          <span>密码:</span>
+          <input v-model="subject.password"/>
+          <br />
+          <span>专业:</span>
+          <el-select v-model="subject.major" placeholder="请选择专业">
+          <el-option
+            v-for="item1 in subject.majorname"
+            :key="item1"
+            :label="item1"
+            :value="item1"
+            >
+          </el-option>
+          </el-select>
+        </div>
+        <div class="button" @click="addSubject()">
+          <i class="el-icon-circle-plus-outline"></i>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import { AddBook,AddMajor,AddCourse,AddQuestion } from '@/api/admin';
+import { AddBook,AddMajor,AddCourse,AddQuestion } from '@/api/admin'
+import { getMajorInfo } from '@/api/query'
 export default {
   data () {
     return {
@@ -138,6 +170,13 @@ export default {
         course_name:'',
         book_name:'',
         pic_url:''
+      },
+      subject:{
+        username:'',
+        tele:'',
+        password:'',
+        major:'',
+        majorname:[]
       }
     }
   },
@@ -206,12 +245,25 @@ export default {
           this.$message.error(r.message)
         }
       })
+    },
+    addSubject(){
+      console.log('addsubject')
     }
   },
   mounted () {
   },
   created () {
-
+    getMajorInfo().then(r=>{
+      if(r.header.code===0){
+          this.subject.majorname=r.data.nameList;
+      }
+      else{
+        this.$message.error(r.header.message)
+        return
+      }
+    }).catch((err)=>{
+      console.log(err)
+    })
   }
 }
 </script>
@@ -219,7 +271,7 @@ export default {
 <style scoped lang="scss">
 .container{
   width: 100%;
-  .major,.book,.course,.question{
+  .major,.book,.course,.question,.subject{
     .button{
       margin: 10px;
       span{
