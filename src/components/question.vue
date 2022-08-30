@@ -1,8 +1,10 @@
 <template>
   <div class="container">
     <div class="text">
-      <div class="qtext"><span v-html="display" /></div>
-      <div class="atext"><span v-html="acontent" /></div>
+      <div class="tarea">
+      <span v-html="display" class="qtext" />
+      </div>
+      <span v-html="acontent" class="atext" />
     </div>
   </div>
 </template>
@@ -36,21 +38,26 @@ export default {
   padding: 0 0 30px 20px;
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
-  display: flex;
   width: auto;
   height: auto;
   border-radius: 15px;
   text-align: left;
-  -webkit-line-clamp: 2;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
+  overflow: hidden;
+  display: flex;
   .text {
     height: 20%;
     width: 100%;
     padding: 30px 10px 20px 0px;
-
+    .tarea{
+      height: 58px;
+      overflow: hidden;
+    }
     .qtext {
+      word-break: break-all;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
       font-size: 24px;
       font-weight: bold;
       line-height: 28px;

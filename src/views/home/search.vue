@@ -78,72 +78,8 @@ export default {
     return {
       content: "1",
       BooksList: [
-        // {
-        //   isbn: "001",
-        //   bname: "高等数学",
-        //   author: "鼠来宝",
-        //   publisher: "同济大学出版社",
-        //   pub_year: 2001,
-        //   img_url: "https://s3.bmp.ovh/imgs/2022/08/17/a45d18cbf6e41773.jpeg",
-        // },
-        // {
-        //   isbn: "002",
-        //   bname: "低等数学",
-        //   author: "米老鼠",
-        //   publisher: "同济大学出版社",
-        //   pub_year: 2091,
-        //   img_url: "https://s3.bmp.ovh/imgs/2022/08/17/a45d18cbf6e41773.jpeg",
-        // },
-        // {
-        //   isbn: "003",
-        //   bname: "中等数学",
-        //   author: "马里奥",
-        //   publisher: "同济大学出版社",
-        //   pub_year: 2021,
-        //   img_url: "https://s3.bmp.ovh/imgs/2022/08/17/a45d18cbf6e41773.jpeg",
-        // },
-        // {
-        //   isbn: "004",
-        //   bname: "没有数学",
-        //   author: "马里奥",
-        //   publisher: "同济大学出版社",
-        //   pub_year: 2080,
-        //   img_url: "https://s3.bmp.ovh/imgs/2022/08/17/a45d18cbf6e41773.jpeg",
-        // },
-        // {
-        //   isbn: "005",
-        //   bname: "全是数学",
-        //   author: "胡锦辉",
-        //   publisher: "同济大学出版社",
-        //   pub_year: 2045,
-        //   img_url: "https://s3.bmp.ovh/imgs/2022/08/17/a45d18cbf6e41773.jpeg",
-        // },
       ],
       CoursesList: [
-        // {
-        //   cname: "乌鸦坐飞机",
-        //   img_url: "",
-        // },
-        // {
-        //   cname: "乌鸦坐飞机",
-        //   img_url: "",
-        // },
-        // {
-        //   cname: "乌鸦坐飞机",
-        //   img_url: "",
-        // },
-        // {
-        //   cname: "乌鸦坐飞机",
-        //   img_url: "",
-        // },
-        // {
-        //   cname: "乌鸦坐飞机",
-        //   img_url: "",
-        // },
-        // {
-        //   cname: "乌鸦坐飞机",
-        //   img_url: "",
-        // },
       ],
       QuestionsList: [],
     };
