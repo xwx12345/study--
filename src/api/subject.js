@@ -228,3 +228,21 @@ export function deleCourse(data){
         }
     })
 }
+export function getRecommendForCourse(data){
+    return request({
+        url:'/Query/RecommendForCourse',
+        method:'GET',
+        params:{
+            course_id:data
+        }
+    })
+}
+export function getRecommendForBook(data){
+    return request({
+        url:'/Query/RecommendForBook',
+        method:'GET',
+        params:{
+            isbn:data
+        }
+    })
+}

@@ -36,28 +36,37 @@
       </div>
       <div class="courses">
         <p>课程</p>
-        <img :src="details.img_url" width="40%" float="left" />
-        <img :src="details.img_url" width="40%" float="left" />
-        <img :src="details.img_url" width="40%" float="left" />
+        <div class="booksbg" >
+          <span v-for="item in details.rcourses">
+            <itsmall
+              :bimg="item.cimg"
+              :text="item.text"></itsmall>
+          </span>
+        </div>
       </div>
       <div class="questions">
         <p>题目</p>
-        <ul>
-          <li>题目1</li>
-          <li>题目2</li>
-        </ul>
+        <div class="booksbg">
+          <span v-for="item in details.rquestions" >
+            <question :qcontent="item.content"></question>
+          </span>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { CollectBook,getBook,deleBook } from "@/api/subject";
+import { CollectBook,getBook,deleBook, getRecommendForBook, getQuestion,getCourse } from "@/api/subject";
+import question from "@/components/question.vue";
+import itsmall from "@/components/item_small.vue";
 import book from "../../components/book.vue";
 import router from '@/router';
 export default {
   components: {
     book,
+    itsmall,
+    question,
   },
   data() {
     return {
@@ -69,6 +78,8 @@ export default {
         pub_year: "",
         img_url: "",
         outline: "",
+        rcourses:[],
+        rquestions:[]
       },
       usertype:0
     };
@@ -119,6 +130,27 @@ export default {
           this.$message.error(r.header.message);
           return;
         }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    getRecommendForBook(this.details.isbn)
+      .then((r)=>{
+        r.data.courseIDList.forEach((cid)=>{
+          getCourse(cid).then((cr)=>{
+            this.details.rcourses.push({
+              cimg:cr.data.pic_url,
+              text:cr.data.course_name,
+            })
+          })
+        })
+        r.data.questionIDList.forEach((qid)=>{
+          getQuestion(qid).then((qr)=>{
+            this.details.rquestions.push({
+              content:qr.data.question_stem,
+            })
+          })
+        })
       })
       .catch((err) => {
         console.log(err);
@@ -215,13 +247,24 @@ export default {
       font-weight: 600;
       color: #8383c5;
     }
-    .courses,
+     p {
+      font-size: 20px;
+      color: #706a8c;
+    }
+    .courses{
+      // color: #ffffff;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    .booksbg {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: block;
+      width: auto;
+      flex-wrap: nowrap;
+    }
     .questions {
       margin-left: 20px;
-      p {
-        font-size: 20px;
-        color: #706a8c;
-      }
+      margin-right: 40px;
     }
   }
 }

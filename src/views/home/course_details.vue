@@ -36,26 +36,22 @@
       <div class="books">
         <p>书籍</p>
         <div class="booksbg">
-          <itsmall
-            bimg="https://hepshow-image-formal.oss-cn-beijing.aliyuncs.com/bookCover/2022-07-3w/62cd50d00cf2b04a1a744a6e.jpg"
-            text="请使用组件"
-          ></itsmall>
-          <itsmall
-            bimg="https://hepshow-image-formal.oss-cn-beijing.aliyuncs.com/bookCover/2022-07-3w/62cd50d00cf2b04a1a744a6e.jpg"
-            text="请使用组件"
-          ></itsmall>
-          <itsmall
-            bimg="https://hepshow-image-formal.oss-cn-beijing.aliyuncs.com/bookCover/2022-07-3w/62cd50d00cf2b04a1a744a6e.jpg"
-            text="请使用组件"
-          ></itsmall>
+          <span v-for="item in courses.rbooks" >
+            <itsmall
+              :bimg="item.bimg"
+              :text="item.text"></itsmall>
+          </span>
           <!-- <course img_url="https://hepshow-image-formal.oss-cn-beijing.aliyuncs.com/bookCover/2022-07-3w/62cd50d00cf2b04a1a744a6e.jpg">
           </course> -->
         </div>
       </div>
       <div class="questions">
         <p>题目</p>
-        <div class="booksbg">
-          <question qcontent="请使用组件"></question>
+        <div class="booksbg" >
+          <span v-for="item in courses.rquestions" >
+            <question :qcontent="item.content" ></question>
+          </span>
+          
         </div>
       </div>
     </div>
@@ -63,11 +59,12 @@
 </template>
 
 <script>
-import { CollectCourse, getCourse, deleCourse } from "@/api/subject";
+import { CollectCourse, getCourse, deleCourse, getRecommendForCourse, getBook, getQuestion } from "@/api/subject";
 import router from "@/router";
 import question from "@/components/question.vue";
 import itsmall from "@/components/item_small.vue";
 import course from "@/components/course.vue";
+import bookVue from "@/components/book.vue";
 export default {
   components: {
     question,
@@ -81,6 +78,8 @@ export default {
         outline: "",
         cname: "",
         img_url: "",
+        rbooks:[],
+        rquestions:[]
       },
       usertype: 0,
     };
@@ -130,6 +129,33 @@ export default {
         }
       })
       .catch((err) => {
+        console.log(err);
+      });
+    getRecommendForCourse(this.courses.cid)
+      .then((r)=>{
+        if(r.header.code===0){
+          r.data.isbnList.forEach((risbn)=>{
+            getBook(risbn).then((br)=>{
+              this.courses.rbooks.push({
+                bimg:br.data.pic_url,
+                text:br.data.book_name,
+              })
+            })
+          })
+          r.data.questionIDList.forEach((qid)=>{
+            getQuestion(qid).then((qr)=>{
+              this.courses.rquestions.push({
+                content:qr.data.question_stem,
+              })
+            })
+          })
+        }
+        else{
+          this.$message.error(r.header.message);
+          return;
+        }
+      })
+       .catch((err) => {
         console.log(err);
       });
   },
