@@ -1,9 +1,47 @@
 <template>
   <div class="container">
     <div class="top">
-      <span>反馈列表</span>
+      <span>未处理反馈</span>
       <el-table
           :data="tableData1"
+          class="table"
+          style="width: 80%"
+          max-height="400">
+          <el-table-column
+            fixed
+            label="序号"
+            type="index"
+            width="50">
+          </el-table-column>
+          <el-table-column
+            prop="id"
+            label="反馈编号"
+            width="150">
+          </el-table-column>
+          <el-table-column
+            prop="date"
+            label="日期"
+            width="150">
+          </el-table-column>
+          <el-table-column
+            prop="content"
+            label="反馈内容"
+            width="400">
+          </el-table-column>
+          <el-table-column
+            fixed="right"
+            label="操作"
+            width="180">
+            <template slot-scope="scope">
+              <span @click="check(scope.row.id)" class="button">确认</span>
+            </template>
+          </el-table-column>
+        </el-table>
+    </div>
+    <div class="bottom">
+      <span>已处理反馈</span>
+      <el-table
+          :data="tableData2"
           class="table"
           style="width: 80%"
           max-height="400">
@@ -42,57 +80,66 @@
 </template>
 
 <script>
+import {getFeedbackList , getFeedback,changeFeedback} from '@/api/admin'
 export default {
   data () {
     return {
-      tableData1: [
-        {
-          date: '2016-05-03',
-          id: '01',
-          content:'你有问题你有问题！你有问题你有问题！你有问题你有问题！你有问题你有问题！你有问题你有问题！你有问题你有问题！你有问题你有问题！你有问题你有问题！你有问题你有问题！你有问题你有问题！你有问题你有问题！你有问题你有问题！你有问题你有问题！'
-        },
-        {
-          date: '2016-05-03',
-          id: '02',
-          content:'你才有问题你才有问题！'
-        },
-        {
-          date: '2016-05-03',
-          id: '我乱写',
-          content:'你才有问题哼你才有问题！'
-        },
-        {
-          date: '2016-05-03',
-          id: '我乱写',
-          content:'全是问题是问题！'
-         },
-         {
-           date: '2016-05-03',
-           id: '我乱写',
-           content:'全是问题不是问题！'
-          },
-          {
-            date: '2016-05-03',
-            id: '我乱写',
-            content:'全是问题哼哼！'
-          },
-          {
-            date: '2016-05-03',
-            id: '我乱写',
-            content:'全是问题阿八八八八八！'
-          }]
+      tableData1: [],
+      tableData2: []
     }
   },
   methods: {
     check(data){
       console.log(data)
-      location.reload()
+      changeFeedback(data).then(r=>{
+        console.log(r)
+        if(r.code===0){
+          this.$message('已成功更改反馈状态，数据更新可能存在延迟！请后续进行手动刷新')
+        }
+        else{
+          this.$message.error(r.message)
+        }
+      })
     }
   },
   mounted () {
   },
   created () {
-
+    getFeedbackList().then((r)=>{
+      console.log(r.data)
+      if(r.header.code===0){
+        // console.log(r.data.unfinishedList)
+        // console.log(r.data.finishedList)
+        r.data.unfinishedList.forEach((item) => {
+          if (item) {
+            getFeedback(item).then((br) => {
+              if(br.header.code===0){
+                console.log(br.data)
+                this.tableData1.push({
+                  date:br.data.time,
+                  id:br.data.feedback_id,
+                  content:br.data.content
+                })
+              }
+            })
+          }
+        })
+        r.data.finishedList.forEach((item) => {
+          if (item) {
+            getFeedback(item).then((br) => {
+              if(br.header.code===0){
+                console.log(br.data)
+                this.tableData2.push({
+                  date:br.data.time,
+                  id:br.data.feedback_id,
+                  content:br.data.content
+                })
+              }
+            })
+          }
+        })
+      }
+    })
   }
 }
 </script>
