@@ -36,22 +36,22 @@
       <div class="books">
         <p>书籍</p>
         <div class="booksbg">
-          <span v-for="item in courses.rbooks" >
-            <itsmall
-              :bimg="item.bimg"
-              :text="item.text"></itsmall>
-          </span>
+          <div v-for="item in courses.rbooks" class="card" >
+            <img :src="item.bimg"/>
+            <span>{{item.text}}</span>
+          </div>
           <!-- <course img_url="https://hepshow-image-formal.oss-cn-beijing.aliyuncs.com/bookCover/2022-07-3w/62cd50d00cf2b04a1a744a6e.jpg">
           </course> -->
         </div>
       </div>
       <div class="questions">
         <p>题目</p>
-        <div class="booksbg" >
-          <span v-for="item in courses.rquestions" >
-            <question :qcontent="item.content" ></question>
-          </span>
-          
+        <div class="quesbg" >
+          <div v-for="item in courses.rquestions" class="card">
+            <i class="el-icon-ship"></i>
+            <span>{{item.content}}</span>
+            <!-- <question :qcontent="item.content" ></question> -->
+          </div>
         </div>
       </div>
     </div>
@@ -255,20 +255,54 @@ export default {
       font-size: 20px;
       color: #706a8c;
     }
-    .booksbg {
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      display: block;
-      width: auto;
-      flex-wrap: nowrap;
-    }
     .books {
       // color: #ffffff;
       margin-left: 20px;
       margin-right: 20px;
+      .booksbg {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        background-color: #ffffff;
+        flex-wrap: nowrap;
+        .card{
+          background: #ffffff;
+          width: 30%;
+          margin: 10px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          object-fit: contain;
+          img{
+            width: 100%;
+          }
+          span{
+            font-size: 14px;
+            display: inline-block;
+            padding: 5px;
+          }
+        }
+      }
     }
     .questions {
       margin-left: 20px;
-      margin-right: 40px;
+      margin-right: 20px;
+      .quesbg{
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        flex-wrap: nowrap;
+        .card{
+          padding: 10px;
+          border-bottom: #cbb7d0 solid 1px;
+          font-size: 16px;
+          span{
+            display: inline-block;
+            margin-left: 5px;
+          }
+        }
+      }
     }
   }
 }
