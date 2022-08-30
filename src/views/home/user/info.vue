@@ -18,7 +18,7 @@
           <span>学校:</span>
           <input v-model="userinfo.school"/>
           <br />
-          <span>专业:</span>
+          <span v-if="this.$store.getters.user.user_type!=3">专业:</span>
           <el-select v-model="userinfo.major" placeholder="请选择专业" v-if="this.$store.getters.user.user_type==1">
           <el-option 
             v-for="item1 in userinfo.majorname"
@@ -28,7 +28,7 @@
             >
           </el-option>
           </el-select>
-          <span v-else>{{userinfo.major}}</span>
+          <span v-if="this.$store.getters.user.user_type==2">{{userinfo.major}}</span>
         </div>
         <div class="button">
           <button @click="save(userinfo)" >保存</button>
