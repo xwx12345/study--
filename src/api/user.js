@@ -53,3 +53,12 @@ export function saveInfo(data,id){
         data:param
     })
 }
+export function addFeedBack(data){
+    let param = new URLSearchParams(data);
+    console.log('paras', param);
+    return request({
+      url: '/FeedBack/AddFeedBack',
+      method: 'POST',
+      data:param
+  })
+}

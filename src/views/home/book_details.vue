@@ -37,7 +37,7 @@
       <div class="courses">
         <p>课程</p>
         <div class="booksbg" >
-          <div v-for="item in details.rcourses" class="card">
+          <div v-for="item in details.rcourses" class="card" @click="JumpCourse(item.c_id)" >
             <img :src="item.cimg"/>
             <span>{{item.text}}</span>
             <!-- <itsmall
@@ -49,7 +49,7 @@
       <div class="questions">
         <p>题目</p>
         <div class="quesbg">
-          <div v-for="item in details.rquestions" class="card">
+          <div v-for="item in details.rquestions" class="card" @click="JumpQuestion(item.q_id)" >
             <i class="el-icon-ship"></i>
             <span>{{item.content}}</span>
             <!-- <question :qcontent="item.content"></question> -->
@@ -89,6 +89,18 @@ export default {
     };
   },
   methods: {
+    JumpCourse(data){
+       this.$router.push({
+        path: '/courseDetails',
+        query: { cid: data }
+      })
+    },
+    JumpQuestion(data){
+      this.$router.push({
+        path: "/questionDetails",
+        query: { qid: data },
+      })
+    },
     collectbook(data) {
       CollectBook(this.$store.getters.user.user_id, data)
         .then((r) => {
@@ -145,6 +157,7 @@ export default {
             this.details.rcourses.push({
               cimg:cr.data.pic_url,
               text:cr.data.course_name,
+              c_id:cr.data.course_id,
             })
           })
         })
@@ -152,6 +165,7 @@ export default {
           getQuestion(qid).then((qr)=>{
             this.details.rquestions.push({
               content:qr.data.question_stem,
+              q_id:qr.data.question_id,
             })
           })
         })

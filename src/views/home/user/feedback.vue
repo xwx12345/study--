@@ -17,13 +17,15 @@
         </el-input>
       </div>
       <div class="bottom">
-        <button @click="success(input)">submit</button>
+        <button @click="submit()">submit</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { addFeedBack } from '@/api/user';
+
 export default {
   data () {
     return {
@@ -31,10 +33,18 @@ export default {
     }
   },
   methods: {
-    success(input)
-      {
-        this.$message('反馈提交成功');
-        //console.log(input)
+    
+      submit(){
+        addFeedBack({
+          content:this.input
+          }).then((r)=>{
+          if(r.code===0){
+            this.$message(r.message);
+          }
+          else{
+            this.$message.error(r.message);
+          }
+        })
       }
   },
   mounted () {
