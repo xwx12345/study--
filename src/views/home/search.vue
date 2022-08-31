@@ -21,6 +21,9 @@
           ></book>
         </div>
       </div>
+      <div v-if="NoBook === 1" class="result">
+        <span>暂无搜索结果~</span>
+      </div>
     </div>
     <div class="bigbox">
       <div class="btext">
@@ -36,20 +39,28 @@
           <course :cname="item.cname" :img_url="item.img_url"> </course>
         </div>
       </div>
+      <div v-if="NoCourse === 1" class="result">
+        <span>暂无搜索结果~</span>
+      </div>
     </div>
     <div class="bigbox">
       <div class="btext">
         <p>题目</p>
-        <div class="qinfo" 
-             v-for="(item, index) in QuestionsList" 
-             :key="index"
-             @click="JumpQuestion(item.id)">
+        <div
+          class="qinfo"
+          v-for="(item, index) in QuestionsList"
+          :key="index"
+          @click="JumpQuestion(item.id)"
+        >
           <question
             :qcontent="item.qtext"
             :keyword="content"
             :acontent="item.atext"
           ></question>
         </div>
+      </div>
+      <div v-if="NoQuestion === 1" class="result">
+        <span>暂无搜索结果~</span>
       </div>
     </div>
   </div>
@@ -77,11 +88,12 @@ export default {
   data() {
     return {
       content: "1",
-      BooksList: [
-      ],
-      CoursesList: [
-      ],
+      BooksList: [],
+      CoursesList: [],
       QuestionsList: [],
+      NoBook: 1,
+      NoCourse: 1,
+      NoQuestion: 1,
     };
   },
   methods: {
@@ -98,12 +110,12 @@ export default {
       });
     },
     //我把题目详情加上啦
-    JumpQuestion(data){
+    JumpQuestion(data) {
       this.$router.push({
         path: "/questionDetails",
         query: { qid: data },
-      })
-    }
+      });
+    },
   },
   mounted() {},
   watch: {
@@ -119,7 +131,7 @@ export default {
     // 搜索逻辑
     TextSearchBooks(this.content).then((r) =>
       r.data.idList.forEach((item, index) => {
-        console.log(item, index);
+        this.NoBook = 0;
         GetBook(item)
           .then((br) => {
             console.log(br.data);
@@ -141,7 +153,7 @@ export default {
     TextSearchCourses(this.content)
       .then((r) =>
         r.data.idList.forEach((item, index) => {
-          console.log(item, index);
+          this.NoCourse = 0;
           GetCourse(item).then((cr) => {
             this.CoursesList.push({
               id: item,
@@ -157,7 +169,7 @@ export default {
       });
     TextSearchQuestions(this.content).then((r) =>
       r.data.idList.forEach((item, index) => {
-        console.log(item, index);
+        this.NoQuestion = 0;
         GetQuestion(item)
           .then((qr) => {
             this.QuestionsList.push({
@@ -198,6 +210,16 @@ export default {
     border-radius: 14px;
     display: flex;
     flex-direction: column;
+    .result {
+      // background: rgba(0,30,0,1);
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      span {
+        display: inline-block;
+        font-size: 20px;
+      }
+    }
     .btext {
       margin: 3%;
       font-size: 40px;

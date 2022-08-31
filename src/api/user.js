@@ -62,3 +62,17 @@ export function addFeedBack(data){
       data:param
   })
 }
+
+export function updatePassword(id,data)
+{
+    let param = new URLSearchParams(data);
+    console.log('data',data)
+    return request({
+        url:'/Personal/UpdatePassword',
+        method:'POST',
+        params:{
+            user_id:id
+        },
+        data:param
+    })
+}

@@ -20,7 +20,6 @@
     </div>
     <div class="middle" v-show="img_url!=null">
       <img :src="img_url" />
-      我是图片
     </div>
     <div class="bottom">
       <div class="up">

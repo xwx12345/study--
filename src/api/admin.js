@@ -36,3 +36,27 @@ export function AddQuestion(data) {
       data:param
   })
 }
+export function getFeedbackList() {
+    return request({
+        url: '/Feedback/GetFeedbackList',
+        method: 'GET'
+    })
+}
+export function getFeedback(data) {
+    return request({
+        url: '/Feedback/GetFeedBack',
+        method: 'GET',
+        params:{
+          feedback_id:data
+        }
+    })
+}
+export function changeFeedback(id) {
+    return request({
+        url: '/Feedback/SwitchStatus',
+        method: 'POST',
+        params:{
+          feedback_id:id
+        }
+    })
+}
