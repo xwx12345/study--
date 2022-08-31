@@ -7,10 +7,20 @@
             icon="el-icon-star-off"
             circle
             @click="collectquestion(id)"
-          ></el-button>
+          >
+          </el-button>
         </p>
         <p>
           <el-button v-if="usertype === 3" icon="el-icon-delete" @click="deletequestion(id)"></el-button>
+        </p>
+        <p>
+          <el-button
+            icon="el-icon-thumb"
+            circle
+            @click="handleLike"
+          >
+            <span>{{ like }}</span>
+          </el-button>
         </p>
       </div>
       <div class="stem">
@@ -43,6 +53,7 @@ import router from '@/router';
 export default {
   data() {
     return {
+      like: 0,
       id: "",
       stem: "",
       answerList: [],
@@ -52,6 +63,10 @@ export default {
     };
   },
   methods: {
+    handleLike() {
+      // TODO: 点赞效果
+      this.like++;
+    },
     collectquestion(data) {
       CollectQuestion(this.$store.getters.user.user_id, data)
         .then((r) => {
