@@ -15,6 +15,7 @@
         </p>
         <p>
           <el-button
+            :disabled="once"
             icon="el-icon-thumb"
             circle
             @click="handleLike"
@@ -54,6 +55,7 @@ export default {
   data() {
     return {
       like: 0,
+      once: false,
       id: "",
       stem: "",
       answerList: [],
@@ -66,6 +68,7 @@ export default {
     handleLike() {
       // TODO: 点赞效果
       this.like++;
+      this.once = !this.once;
     },
     collectquestion(data) {
       CollectQuestion(this.$store.getters.user.user_id, data)
