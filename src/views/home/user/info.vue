@@ -41,30 +41,35 @@
           userinfo.major
         }}</span>
 
-        <el-button
-          class="cbutton"
-          v-if="changepwd === 0"
-          icon="el-icon-arrow-right"
-          @click="cpwdControl()"
-          >修改密码</el-button
-        >
-        <el-button
-          class="cbutton"
-          v-if="changepwd === 1"
-          icon="el-icon-arrow-down"
-          @click="cpwdControl()"
-          >修改密码</el-button
-        >
-        <div v-if="changepwd === 1">
-          <span>旧密码:</span>
-          <input v-model="userinfo.oldpwd" type="password" />
-          <br />
-          <span>新密码:</span>
-          <input v-model="userinfo.newpwd" type="password" />
+        <div class="button">
+          <button @click="save(userinfo)">保存</button>
         </div>
-      </div>
-      <div class="button">
-        <button @click="save(userinfo)">保存</button>
+        <div class="pwdmodify">
+          <el-button
+            class="cbutton"
+            v-if="changepwd === 0"
+            icon="el-icon-arrow-right"
+            @click="cpwdControl()"
+            >修改密码</el-button
+          >
+          <el-button
+            class="cbutton"
+            v-if="changepwd === 1"
+            icon="el-icon-arrow-down"
+            @click="cpwdControl()"
+            >修改密码</el-button
+          >
+          <div v-if="changepwd === 1">
+            <span>旧密码:</span>
+            <input v-model="userinfo.oldpwd" type="password" />
+            <br />
+            <span>新密码:</span>
+            <input v-model="userinfo.newpwd" type="password" />
+            <div class="button">
+              <button @click="savepwdInfo()">保存密码</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -115,6 +120,9 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+
+    },
+    savepwdInfo(){
       if (this.userinfo.newpwd) {
         updatePassword(this.userinfo.user_id, {
           old_password: this.userinfo.oldpwd,

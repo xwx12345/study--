@@ -231,8 +231,8 @@ export default {
       width: 96%;
       display: grid;
       justify-content: space-between;
-      grid-template-columns: repeat(auto-fill, 300px);
-      grid-gap: 20px;
+      grid-template-columns: repeat(auto-fill, 320px);
+      grid-gap: 50px;
     }
   }
 }
