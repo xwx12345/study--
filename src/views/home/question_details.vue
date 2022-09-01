@@ -28,7 +28,7 @@
       </div>
       <el-main>
         <span class="answer" v-if="answer.length == 0"> 暂无回答 </span>
-        <span v-else v-for="item in answer">
+        <span v-else v-for="item in filAnswer">
           <template>
             <p>
               <el-button
@@ -54,7 +54,6 @@
 import { getQuestion, CollectQuestion, getAnswer ,deleQuestion} from "@/api/subject";
 import { approveAnswer } from "@/api/query";
 import router from '@/router';
-
 export default {
   data() {
     return {
@@ -67,6 +66,17 @@ export default {
       img_url: "",
       answer: [],
     };
+  },
+  computed: {
+    filAnswer() {
+      const list = this.answer;
+      if (list.length) {
+        list.sort((item1, item2) => {
+          return item2.approve - item1.approve;
+        })
+      }
+      return list
+    }
   },
   methods: {
     handleLike(item) {
