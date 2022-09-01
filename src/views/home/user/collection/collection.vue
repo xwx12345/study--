@@ -28,13 +28,15 @@
         prop="title" label="收藏内容" width="1200">
       </el-table-column>
       <el-table-column
-        fixed="right" label="操作" width="150">
+        fixed="right" label="操作" width="225">
         <template slot-scope="scope">
           <el-button size="mini" @click="handleClick(scope.$index, scope.row)">查看</el-button>
           <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+          <el-button size="mini" type="warning" v-if="scope.row.tag === '题目'" @click="handleNotes(scope.$index, scope.row)">笔记</el-button>
         </template>
       </el-table-column>
     </el-table>
+    <dialogComponents v-if="Visible" ref="dialogComponents"></dialogComponents>
   </div>
 </template>
 
@@ -51,7 +53,11 @@ import {
   deCollectCourse,
   deCollectQuestion,
 } from '../../../../api/subject.js'
+import dialogComponents from '@/components/dialogComponents.vue'
 export default {
+  components: {
+    dialogComponents
+  },
   methods: {
     isSearched(value, row) {
       return row.searched === value;
@@ -104,6 +110,12 @@ export default {
         })
       }
 
+    },
+    handleNotes(index, row) {
+      this.Visible = true;
+      this.$nextTick(() => {
+        this.$refs.dialogComponents.init(row.id);
+      })
     },
     filterTag(value, row) {
       return row.tag === value;
@@ -176,6 +188,7 @@ export default {
   },
   data() {
     return {
+      Visible: false,
       searchContent: "",
       backup: [],
       tableData: [

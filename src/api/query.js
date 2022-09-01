@@ -108,3 +108,27 @@ export function approveAnswer(id, data) {
         data:param
     })
 }
+
+export function getNoteForQuestion(uid, qid) {
+    return request({
+        url:'/Collection/GetNoteForQuestion',
+        method:'GET',
+        params:{
+            user_id: uid,
+            question_id: qid
+        }
+    })
+}
+
+export function makeNoteForQuestion(uid, qid, data) {
+    let param = new URLSearchParams(data);
+    return request({
+        url:'/Collection/MakeNoteForQuestion',
+        method:'POST',
+        params:{
+            user_id: uid,
+            question_id: qid
+        },
+        data:param
+    })
+}
