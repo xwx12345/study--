@@ -140,7 +140,7 @@
 </template>
 
 <script>
-import { AddBook,AddMajor,AddCourse,AddQuestion } from '@/api/admin'
+import { AddBook,AddMajor,AddCourse,AddQuestion,AddExpert } from '@/api/admin'
 import { getMajorInfo } from '@/api/query'
 export default {
   data () {
@@ -247,7 +247,19 @@ export default {
       })
     },
     addSubject(){
-      console.log('addsubject')
+      AddExpert({
+        expert_name:this.subject.username,
+        phone_num:this.subject.tele,
+        password:this.subject.password,
+        major_name:this.subject.major
+      }).then(r=>{
+        console.log(r)
+        if(r.code===0){
+          this.$message(r.message)
+        }else{
+          this.$message.error(r.message)
+        }
+      })
     }
   },
   mounted () {

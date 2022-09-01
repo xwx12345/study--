@@ -36,6 +36,15 @@ export function AddQuestion(data) {
       data:param
   })
 }
+export function AddExpert(data) {
+  let param = new URLSearchParams(data);
+  console.log('paras', param);
+  return request({
+      url: '/Data/AddExpert',
+      method: 'POST',
+      data:param
+  })
+}
 export function getFeedbackList() {
     return request({
         url: '/Feedback/GetFeedbackList',
