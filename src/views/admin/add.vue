@@ -247,6 +247,11 @@ export default {
       })
     },
     addSubject(){
+      const reg=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
+      if (!reg.test(this.subject.password)) {
+        this.$message.error("密码格式不正确，请至少输入八位密码，必须包括一个大写字母一个小写字母一个数字")
+        return
+      }
       AddExpert({
         expert_name:this.subject.username,
         phone_num:this.subject.tele,
