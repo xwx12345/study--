@@ -96,3 +96,15 @@ export function getCourseByMajor(data) {
         }
     })
 }
+
+export function approveAnswer(id, data) {
+    let param = new URLSearchParams(data);
+    return request({
+        url:'/Data/ApproveAnswer',
+        method:'POST',
+        params:{
+            answer_id:id
+        },
+        data:param
+    })
+}

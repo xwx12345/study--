@@ -13,16 +13,6 @@
         <p>
           <el-button v-if="usertype === 3" icon="el-icon-delete" @click="deletequestion(id)"></el-button>
         </p>
-        <p>
-          <el-button
-            :disabled="once"
-            icon="el-icon-thumb"
-            circle
-            @click="handleLike"
-          >
-            <span>{{ like }}</span>
-          </el-button>
-        </p>
       </div>
       <div class="stem">
         <i class="el-icon-s-promotion"></i>
@@ -39,7 +29,20 @@
       <el-main>
         <span class="answer" v-if="answer.length == 0"> 暂无回答 </span>
         <span v-else v-for="item in answer">
-          <span>{{ item }}</span>
+          <template>
+            <p>
+              <el-button
+                :disabled="item.disabled"
+                icon="el-icon-thumb"
+                circle
+                @click="handleLike(item)"
+              >
+                <span>{{ item.approve }}</span>
+              </el-button>
+              <span>{{ " 来自 "+item.expert_name+" 的回答：" }}</span>
+            </p>
+          </template>
+          <span>{{ item.content }}</span>
           <el-divider></el-divider>
         </span>
       </el-main>
@@ -49,6 +52,7 @@
 
 <script>
 import { getQuestion, CollectQuestion, getAnswer ,deleQuestion} from "@/api/subject";
+import { approveAnswer } from "@/api/query";
 import router from '@/router';
 
 export default {
@@ -65,10 +69,17 @@ export default {
     };
   },
   methods: {
-    handleLike() {
+    handleLike(item) {
       // TODO: 点赞效果
-      this.like++;
-      this.once = !this.once;
+      approveAnswer(item.answer_id).then(r => {
+        if (r.code === 0) {
+          item.approve++;
+          item.disabled = !item.disbaled;
+          this.$message(r.message);
+        }else {
+          this.$message.error(r.message);
+        }
+      })
     },
     collectquestion(data) {
       CollectQuestion(this.$store.getters.user.user_id, data)
@@ -113,7 +124,13 @@ export default {
             getAnswer(this.answerList[i])
               .then((r) => {
                 if (r.header.code === 0) {
-                  this.answer.push(r.data.answer_content);
+                  this.answer.push({
+                    answer_id: r.data.answer_id,
+                    content: r.data.answer_content,
+                    expert_name: r.data.expert_name,
+                    approve: r.data.approve,
+                    disabled: false
+                  });
                 } else {
                   this.$message.error(r.header.message);
                 }
@@ -129,6 +146,7 @@ export default {
       .catch((err) => {
         console.log(err);
       });
+      //console.log(this.answer);
   },
 };
 </script>
