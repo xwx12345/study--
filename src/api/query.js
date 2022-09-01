@@ -97,15 +97,14 @@ export function getCourseByMajor(data) {
     })
 }
 
-export function approveAnswer(id, data) {
-    let param = new URLSearchParams(data);
+export function approveAnswer(aid, uid) {
     return request({
         url:'/Data/ApproveAnswer',
         method:'POST',
         params:{
-            answer_id:id
-        },
-        data:param
+            answer_id:aid,
+            user_id:uid
+        }
     })
 }
 
@@ -130,5 +129,15 @@ export function makeNoteForQuestion(uid, qid, data) {
             question_id: qid
         },
         data:param
+    })
+}
+
+export function getApproveAnswerIDList(uid) {
+    return request({
+        url:'/Query/GetApproveAnswerIDList',
+        method:'GET',
+        params:{
+            user_id: uid
+        }
     })
 }

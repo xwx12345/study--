@@ -52,7 +52,7 @@
 
 <script>
 import { getQuestion, CollectQuestion, getAnswer ,deleQuestion } from "@/api/subject";
-import { approveAnswer } from "@/api/query";
+import { approveAnswer, getApproveAnswerIDList } from "@/api/query";
 import router from '@/router';
 export default {
   data() {
@@ -65,6 +65,7 @@ export default {
       post_time: "",
       img_url: "",
       answer: [],
+      approveList: []
     };
   },
   computed: {
@@ -81,8 +82,9 @@ export default {
   methods: {
     handleLike(item) {
       // TODO: 点赞效果
+      console.log(item.answer_id, this.$store.getters.user.user_id);
       if (this.$store.getters.user) {
-        approveAnswer(item.answer_id).then(r => {
+        approveAnswer(item.answer_id, this.$store.getters.user.user_id).then(r => {
           if (r.code === 0) {
             item.approve++;
             item.disabled = !item.disabled;
@@ -127,6 +129,11 @@ export default {
       this.usertype = 0;
     }
     this.id = this.$route.query.qid;
+    getApproveAnswerIDList(this.$store.getters.user.user_id).then((r) => {
+      r.data.idList.forEach((item) => {
+        this.approveList.push(item);
+      })
+    });
     getQuestion(this.id)
       .then((r) => {
         if (r.header.code === 0) {
@@ -138,12 +145,13 @@ export default {
             getAnswer(this.answerList[i])
               .then((r) => {
                 if (r.header.code === 0) {
+                  console.log(r.data);
                   this.answer.push({
                     answer_id: r.data.answer_id,
                     content: r.data.answer_content,
                     expert_name: r.data.expert_name,
                     approve: r.data.approve,
-                    disabled: false
+                    disabled: this.approveList.filter(v => v === r.data.answer_id).length === 0 ? false : true
                   });
                 } else {
                   this.$message.error(r.header.message);
@@ -160,7 +168,7 @@ export default {
       .catch((err) => {
         console.log(err);
       });
-      //console.log(this.answer);
+      console.log(this.answer);
   },
 };
 </script>
