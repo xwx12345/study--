@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import { getQuestion, CollectQuestion, getAnswer ,deleQuestion} from "@/api/subject";
+import { getQuestion, CollectQuestion, getAnswer ,deleQuestion } from "@/api/subject";
 import { approveAnswer } from "@/api/query";
 import router from '@/router';
 export default {
@@ -81,15 +81,19 @@ export default {
   methods: {
     handleLike(item) {
       // TODO: 点赞效果
-      approveAnswer(item.answer_id).then(r => {
-        if (r.code === 0) {
-          item.approve++;
-          item.disabled = !item.disbaled;
-          this.$message(r.message);
-        }else {
-          this.$message.error(r.message);
-        }
-      })
+      if (this.$store.getters.user) {
+        approveAnswer(item.answer_id).then(r => {
+          if (r.code === 0) {
+            item.approve++;
+            item.disabled = !item.disabled;
+            this.$message(r.message);
+          }else {
+            this.$message.error(r.message);
+          }
+        })
+      }else {
+        this.$message.error("您尚未登录！");
+      }
     },
     collectquestion(data) {
       CollectQuestion(this.$store.getters.user.user_id, data)

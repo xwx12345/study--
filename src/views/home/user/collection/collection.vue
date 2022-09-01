@@ -171,7 +171,7 @@ export default {
       });
       this.backup = this.tableData;
     } else {
-      console.log("您尚未登录！");
+      this.$message.error("您尚未登录！");
     }
   },
   data() {
