@@ -46,6 +46,17 @@ export default {
         this.$message.error('请输入电话号码')
         return
       }
+      //校验手机号格式
+      const reg = /^1\d{10}$/
+      if (!reg.test(this.phone_number)) {
+        this.$message.error("手机号格式不正确")
+        return
+      }
+      const reg1=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
+      if (!reg1.test(this.password)) {
+        this.$message.error("密码格式不正确，请至少输入八位密码，必须包括一个大写字母一个小写字母一个数字")
+        return
+      }
       SignUp({
         user_name: this.user_name,
         password: this.password,
@@ -64,7 +75,6 @@ export default {
         console.log(err)
       })
     }
-
   },
   mounted () {
   },

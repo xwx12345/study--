@@ -124,6 +124,11 @@ export default {
     },
     savepwdInfo(){
       if (this.userinfo.newpwd) {
+        const reg=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
+        if (!reg.test(this.userinfo.newpwd)) {
+          this.$message.error("新密码格式不正确，请至少输入八位密码，必须包括一个大写字母一个小写字母一个数字")
+          return
+        }
         updatePassword(this.userinfo.user_id, {
           old_password: this.userinfo.oldpwd,
           new_password: this.userinfo.newpwd,
