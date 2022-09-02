@@ -173,6 +173,7 @@ export default {
       r.data.idList.forEach((item, index) => {
         this.NoQuestion = 0;
         while (this.SIG_QUESTION_LOCK);
+        var i = index;
         GetQuestion(item)
           .then((qr) => {
             this.SIG_QUESTION_LOCK = !this.SIG_QUESTION_LOCK;
@@ -185,7 +186,7 @@ export default {
               while (this.SIG_ANSWER_LOCK);
               GetAnswer(qr.data.answer_id_list[0]).then((ar) => {
                 this.SIG_ANSWER_LOCK = !this.SIG_ANSWER_LOCK;
-                this.QuestionsList[index].atext = ar.data.answer_content;
+                this.QuestionsList[i].atext = ar.data.answer_content;
                 this.SIG_ANSWER_LOCK = !this.SIG_ANSWER_LOCK;
               });
             }
