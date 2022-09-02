@@ -24,7 +24,15 @@
           <input v-model="course.course_name"/>
           <br />
           <span>专业:</span>
-          <input v-model="course.major_name"/>
+          <el-select v-model="course.major_name" placeholder="请选择专业">
+          <el-option
+            v-for="item1 in subject.majorname"
+            :key="item1"
+            :label="item1"
+            :value="item1"
+            >
+          </el-option>
+          </el-select>
           <br />
           <span>封面url:</span>
           <input v-model="course.pic_url"/>
@@ -91,7 +99,15 @@
           <input v-model="question.book_name"/>
           <br />
           <span>相关专业:</span>
-          <input v-model="question.major_name"/>
+          <el-select v-model="question.major_name" placeholder="请选择专业">
+          <el-option
+            v-for="item1 in subject.majorname"
+            :key="item1"
+            :label="item1"
+            :value="item1"
+            >
+          </el-option>
+          </el-select>
           <br />
           <span>图片url:</span>
           <input v-model="question.pic_url"/>
