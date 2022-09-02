@@ -28,7 +28,7 @@
       </div>
       <el-main>
         <span class="answer" v-if="answer.length == 0"> 暂无回答 </span>
-        <span v-else v-for="item in filAnswer">
+        <span v-else v-for="(item,index) in filAnswer" :key="index">
           <template>
             <p>
               <el-button
@@ -38,6 +38,12 @@
                 @click="handleLike(item)"
               >
                 <span>{{ item.approve }}</span>
+              </el-button>
+              <el-button
+                v-if="usertype === 3"
+                icon="el-icon-delete"
+                circle
+                @click="deleteanswer(item.answer_id)">
               </el-button>
               <span>{{ " 来自 "+item.expert_name+" 的回答：" }}</span>
             </p>
@@ -51,7 +57,7 @@
 </template>
 
 <script>
-import { getQuestion, CollectQuestion, getAnswer ,deleQuestion } from "@/api/subject";
+import { getQuestion, CollectQuestion, getAnswer ,deleQuestion ,deleAnswer} from "@/api/subject";
 import { approveAnswer, getApproveAnswerIDList } from "@/api/query";
 import router from '@/router';
 export default {
@@ -65,7 +71,8 @@ export default {
       post_time: "",
       img_url: "",
       answer: [],
-      approveList: []
+      approveList: [],
+      usertype:0,
     };
   },
   computed: {
@@ -115,6 +122,17 @@ export default {
         if(r.code === 0){
           this.$message(r.message);
           router.go(-1);
+        }else{
+          this.$message.error(r.message);
+        }
+      })
+    },
+    deleteanswer(data){
+      deleAnswer(data).then(r=>{
+        if(r.code === 0)
+        {
+          this.$message(r.message);
+          location.reload();
         }else{
           this.$message.error(r.message);
         }

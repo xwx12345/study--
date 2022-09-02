@@ -94,7 +94,8 @@ export default {
       changeFeedback(data).then(r=>{
         console.log(r)
         if(r.code===0){
-          this.$message('已成功更改反馈状态，数据更新可能存在延迟！请后续进行手动刷新')
+          this.$message(r.message)
+          location.reload()
         }
         else{
           this.$message.error(r.message)
