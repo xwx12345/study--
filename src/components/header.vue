@@ -10,8 +10,11 @@
       </button>
     </div>
     <div class="jump">
-      <button @click="gotologin()">
+      <button v-if="!usertype" @click="gotologin()">
         登录
+      </button>
+      <button v-else @click="exitlogin()">
+        退出登录
       </button>
       <button @click="gotouser()" v-show="usertype === 1">
         个人中心
@@ -53,6 +56,13 @@ export default {
     },
     gotologin() {
       this.$router.push("/login")
+    },
+    exitlogin () {
+      console.log("退出登录！")
+      this.$store.dispatch('logout')
+      this.$message('您已退出登录！')
+      this.usertype = 0
+      this.$router.push("/")
     },
     gotouser() {
       this.$router.push("/usercenter")
