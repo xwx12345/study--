@@ -87,6 +87,8 @@ export default {
   },
   data() {
     return {
+      SIG_QUESTION_LOCK: false,
+      SIG_ANSWER_LOCK: false,
       content: "1",
       BooksList: [],
       CoursesList: [],
@@ -170,19 +172,25 @@ export default {
     TextSearchQuestions(this.content).then((r) =>
       r.data.idList.forEach((item, index) => {
         this.NoQuestion = 0;
+        while (this.SIG_QUESTION_LOCK);
         GetQuestion(item)
           .then((qr) => {
+            this.SIG_QUESTION_LOCK = !this.SIG_QUESTION_LOCK;
             this.QuestionsList.push({
               id: item,
               qtext: qr.data.question_stem,
               atext: "现在还没有回答~",
             });
             if (qr.data.answer_id_list[0]) {
+              while (this.SIG_ANSWER_LOCK);
               GetAnswer(qr.data.answer_id_list[0]).then((ar) => {
+                this.SIG_ANSWER_LOCK = !this.SIG_ANSWER_LOCK;
                 this.QuestionsList[index].atext = ar.data.answer_content;
+                this.SIG_ANSWER_LOCK = !this.SIG_ANSWER_LOCK;
               });
             }
             console.log(this.QuestionsList[0]);
+            this.SIG_QUESTION_LOCK = !this.SIG_QUESTION_LOCK;
           })
           .catch((err) => {
             console.log(err);
