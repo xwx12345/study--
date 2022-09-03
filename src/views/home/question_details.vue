@@ -89,7 +89,7 @@ export default {
   methods: {
     handleLike(item) {
       // TODO: 点赞效果
-      console.log(item.answer_id, this.$store.getters.user.user_id);
+      console.log(item.answer_id, this.$store.getters.user);
       if (this.$store.getters.user) {
         approveAnswer(item.answer_id, this.$store.getters.user.user_id).then(r => {
           if (r.code === 0) {
@@ -147,11 +147,13 @@ export default {
       this.usertype = 0;
     }
     this.id = this.$route.query.qid;
-    getApproveAnswerIDList(this.$store.getters.user.user_id).then((r) => {
-      r.data.idList.forEach((item) => {
-        this.approveList.push(item);
-      })
-    });
+    if (this.$store.getters.user) {
+      getApproveAnswerIDList(this.$store.getters.user.user_id).then((r) => {
+        r.data.idList.forEach((item) => {
+          this.approveList.push(item);
+        })
+      });
+    }
     getQuestion(this.id)
       .then((r) => {
         if (r.header.code === 0) {
@@ -169,7 +171,7 @@ export default {
                     content: r.data.answer_content,
                     expert_name: r.data.expert_name,
                     approve: r.data.approve,
-                    disabled: this.approveList.filter(v => v === r.data.answer_id).length === 0 ? false : true
+                    disabled: this.$store.getters.user ? (this.approveList.filter(v => v === r.data.answer_id).length === 0 ? false : true) : false
                   });
                 } else {
                   this.$message.error(r.header.message);
